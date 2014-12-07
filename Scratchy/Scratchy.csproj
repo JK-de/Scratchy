@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F0E0375A-CD93-4A77-9803-2FCF8BD6BB59}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Scratchy</RootNamespace>
+    <AssemblyName>Scatchy</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Cyotek.Windows.Forms.ImageBox">
+      <HintPath>..\packages\CyotekImageBox.1.1.4.2\lib\net20\Cyotek.Windows.Forms.ImageBox.dll</HintPath>
+    </Reference>
+    <Reference Include="PA.Picture">
+      <HintPath>..\packages\PA.Picture.4.0.5394.15193\lib\net45\PA.Picture.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormObjectRotate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormObjectRotate.Designer.cs">
+      <DependentUpon>FormObjectRotate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormObjectFit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormObjectFit.Designer.cs">
+      <DependentUpon>FormObjectFit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormObjectTranslate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormObjectTranslate.Designer.cs">
+      <DependentUpon>FormObjectTranslate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PolygonList.cs" />
+    <Compile Include="Data\LineList.cs" />
+    <Compile Include="Data\PointList.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scratch\Scratch.cs" />
+    <Compile Include="Scratch\ScratchRender.Draw.cs" />
+    <Compile Include="Scratch\Scratch.Generate.cs" />
+    <Compile Include="Scratch\Scratch.Random.cs" />
+    <Compile Include="Data\ScratchData.Util.cs" />
+    <Compile Include="Data\ScratchData.cs" />
+    <Compile Include="Scratch\ScratchFile.cs" />
+    <Compile Include="Scratch\ScratchRender.cs" />
+    <Compile Include="Settings.cs" />
+    <EmbeddedResource Include="FormMain.en.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormObjectRotate.resx">
+      <DependentUpon>FormObjectRotate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormObjectFit.resx">
+      <DependentUpon>FormObjectFit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormObjectTranslate.resx">
+      <DependentUpon>FormObjectTranslate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\FormObjectRotate.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Open_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Add_32x32.png" />
+    <Content Include="Resources\Cancel_32x32.png" />
+    <Content Include="Resources\Check_32x32.png" />
+    <Content Include="Resources\Edit_32x32.png" />
+    <Content Include="Resources\Information_32x32.png" />
+    <Content Include="Resources\Negative_32x32.png" />
+    <Content Include="Resources\Positive_32x32.png" />
+    <Content Include="Resources\Preview_32x32.png" />
+    <Content Include="Resources\Print_32x32.png" />
+    <Content Include="Resources\Properties_32x32.png" />
+    <Content Include="Resources\Refresh_32x32.png" />
+    <Content Include="Resources\Save_32x32.png" />
+    <Content Include="Resources\Settings_32x32.png" />
+    <Content Include="Resources\Stock Index Up_32x32.png" />
+    <Content Include="Resources\Undo_32x32.png" />
+    <Content Include="Resources\Zoom In_32x32.png" />
+    <Content Include="Resources\Zoom Out_32x32.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

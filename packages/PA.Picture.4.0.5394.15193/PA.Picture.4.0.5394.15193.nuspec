@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>PA.Picture</id>
+    <version>4.0.5394.15193</version>
+    <title>PA.Picture</title>
+    <authors>PerspicApps</authors>
+    <owners>PerspicApps</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Picturebox controls with additionnal functionnalities (zoom, span)</description>
+    <copyright>© PA 2014</copyright>
+  </metadata>
+</package>
