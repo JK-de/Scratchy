@@ -307,7 +307,7 @@ namespace Scratchy
                         double dDummy = 0, dFactor = 1;
                         LoadSSXValues(sValues, ref dDummy, ref dDummy, ref dDummy, ref dFactor);
 
-                        _data.SetMaxSize(dFactor);
+                        _data.FitInBoundingBox(dFactor);
                     }
                     if (sCommand == "C")
                     {

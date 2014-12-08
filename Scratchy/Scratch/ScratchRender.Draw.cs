@@ -22,7 +22,9 @@ namespace Scratchy
         float fDPI = 300;
         float fAxisMax = 82;
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         void MoveUp()
         {
             if (bUp)
@@ -34,6 +36,9 @@ namespace Scratchy
             bUp = true;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         void MoveDown()
         {
             if (!bUp)
@@ -45,6 +50,11 @@ namespace Scratchy
             bUp = false;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
         void MoveTo(double x, double y)
         {
             if (x == xAct && y == yAct)
@@ -58,6 +68,11 @@ namespace Scratchy
             xAct = x; yAct = y;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
         void LineTo(double x, double y)
         {
             if (x == xAct && y == yAct)
@@ -78,6 +93,12 @@ namespace Scratchy
             xAct = x; yAct = y;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="r"></param>
         void Circle(double x, double y, double r)
         {
             if (_file != null)
@@ -127,6 +148,12 @@ namespace Scratchy
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="r"></param>
         void Arc(double x, double y, double r)
         {
             double ViewingAngle = 160;
@@ -197,6 +224,14 @@ namespace Scratchy
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="r"></param>
+        /// <param name="AngleBegin"></param>
+        /// <param name="AngleEnd"></param>
         void Arc(double x, double y, double r, double AngleBegin, double AngleEnd)
         {
             double dxBegin, dyBegin;
@@ -264,8 +299,12 @@ namespace Scratchy
             }
         }
 
-
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="h"></param>
         void DrawReflex(double x, double y, double h)
         {
             h *= 0.02;

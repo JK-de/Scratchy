@@ -42,6 +42,8 @@ namespace Scratchy
             return _image;
         }
 
+        /// <summary>Render image and NC</summary>
+        /// <param name="FileName"> optional file-name for NC export</param>
         public void Render(string FileName = null)
         {
             if (FileName != null && FileName.Length > 0)
@@ -72,6 +74,9 @@ namespace Scratchy
             _file = null;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         void RenderInit()
         {
 
@@ -82,7 +87,6 @@ namespace Scratchy
             }
 
             MoveUp();
-
 
             G = Graphics.FromImage(_image);
 
@@ -137,14 +141,19 @@ namespace Scratchy
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         void RenderExit()
         {
             MoveUp();
 
-
             G.Dispose();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         void RenderTableArc()
         {
             PointList L = new PointList(_data.Points);
@@ -156,7 +165,10 @@ namespace Scratchy
                 Arc(P.X, P.Y, P.Z);
             }
         }
-
+        
+        /// <summary>
+        /// 
+        /// </summary>
         void RenderTableCircle()
         {
             foreach (Point3D P in _data.Points)
@@ -168,6 +180,13 @@ namespace Scratchy
 
 
 
+       
+
+
+/// <summary>
+        /// Render image and NC for table-type-scratch with hidden-point-calculation
+/// </summary>
+/// <returns></returns>
         public bool RenderTableArcHidden()
         {
             double ViewingAngle = 80;
@@ -252,13 +271,15 @@ namespace Scratchy
             return true;
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="FileName"></param>
         public void ExportImage(string FileName)
         {
             Render();
             _image.Save(FileName);
         }
-
 
     }
 }

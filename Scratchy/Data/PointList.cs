@@ -143,7 +143,7 @@ namespace Scratchy
             return dMin;
         }
 
-        public void GetMinMax(out double Xmin, out double Xmax, out double Ymin, out double Ymax, out double Zmin, out double Zmax)
+        public void GetObjectMinMax(out double Xmin, out double Xmax, out double Ymin, out double Ymax, out double Zmin, out double Zmax)
         {
             Xmin = 99999;
             Xmax = -99999;

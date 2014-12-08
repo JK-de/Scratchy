@@ -74,6 +74,12 @@
             this.btnOpen = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
+            this.levelToMinHeightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.smashLinesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteUnreferencedPointsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.renderSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanelMain.SuspendLayout();
@@ -241,7 +247,11 @@
             this.rotateToolStripMenuItem,
             this.translateToolStripMenuItem,
             this.toolStripSeparator6,
-            this.fitToolStripMenuItem});
+            this.fitToolStripMenuItem,
+            this.levelToMinHeightToolStripMenuItem,
+            this.toolStripSeparator4,
+            this.smashLinesToolStripMenuItem,
+            this.deleteUnreferencedPointsToolStripMenuItem});
             this.objectToolStripMenuItem1.Name = "objectToolStripMenuItem1";
             resources.ApplyResources(this.objectToolStripMenuItem1, "objectToolStripMenuItem1");
             // 
@@ -295,7 +305,9 @@
             // 
             this.renderToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exportCNCToolStripMenuItem1,
-            this.exportImagePNGToolStripMenuItem});
+            this.exportImagePNGToolStripMenuItem,
+            this.toolStripSeparator7,
+            this.renderSettingsToolStripMenuItem});
             this.renderToolStripMenuItem.Name = "renderToolStripMenuItem";
             resources.ApplyResources(this.renderToolStripMenuItem, "renderToolStripMenuItem");
             // 
@@ -370,6 +382,36 @@
             this.btnExport.Image = global::Scratchy.Properties.Resources.Stock_Index_Up_32x32;
             this.btnExport.Name = "btnExport";
             this.btnExport.UseVisualStyleBackColor = true;
+            // 
+            // levelToMinHeightToolStripMenuItem
+            // 
+            this.levelToMinHeightToolStripMenuItem.Name = "levelToMinHeightToolStripMenuItem";
+            resources.ApplyResources(this.levelToMinHeightToolStripMenuItem, "levelToMinHeightToolStripMenuItem");
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            resources.ApplyResources(this.toolStripSeparator4, "toolStripSeparator4");
+            // 
+            // smashLinesToolStripMenuItem
+            // 
+            this.smashLinesToolStripMenuItem.Name = "smashLinesToolStripMenuItem";
+            resources.ApplyResources(this.smashLinesToolStripMenuItem, "smashLinesToolStripMenuItem");
+            // 
+            // deleteUnreferencedPointsToolStripMenuItem
+            // 
+            this.deleteUnreferencedPointsToolStripMenuItem.Name = "deleteUnreferencedPointsToolStripMenuItem";
+            resources.ApplyResources(this.deleteUnreferencedPointsToolStripMenuItem, "deleteUnreferencedPointsToolStripMenuItem");
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            resources.ApplyResources(this.toolStripSeparator7, "toolStripSeparator7");
+            // 
+            // renderSettingsToolStripMenuItem
+            // 
+            this.renderSettingsToolStripMenuItem.Name = "renderSettingsToolStripMenuItem";
+            resources.ApplyResources(this.renderSettingsToolStripMenuItem, "renderSettingsToolStripMenuItem");
             // 
             // FormMain
             // 
@@ -449,6 +491,12 @@
         private System.Windows.Forms.ToolStripMenuItem translateToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripMenuItem fitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem levelToMinHeightToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripMenuItem smashLinesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteUnreferencedPointsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripMenuItem renderSettingsToolStripMenuItem;
     }
 }
 

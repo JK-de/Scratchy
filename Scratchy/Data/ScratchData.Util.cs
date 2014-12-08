@@ -22,7 +22,7 @@ namespace Scratchy
 
         public void Fit(double dSize)
         {
-            SetMaxSize(dSize);
+            FitInBoundingBox(dSize);
         }
 
         public static Point3D LERP(double dFrac, Point3D P1, Point3D P2)
@@ -75,7 +75,12 @@ namespace Scratchy
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="P1"></param>
+        /// <param name="P2"></param>
+        /// <returns></returns>
         public static double GetDistance(Point3D P1, Point3D P2)
         {
             double x = P2.X - P1.X;
@@ -84,6 +89,11 @@ namespace Scratchy
             return Math.Sqrt(x * x + y * y + z * z);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="polygon"></param>
+        /// <returns></returns>
         public Vector3D GetFaceNormal(Polygon polygon)
         {
             if (polygon.Count < 3)
@@ -98,6 +108,11 @@ namespace Scratchy
             return GetFaceNormal(P);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="P"></param>
+        /// <returns></returns>
         public static Vector3D GetFaceNormal(Point3D[] P)
         {
             Vector3D normal = new Vector3D();
@@ -125,7 +140,10 @@ namespace Scratchy
             return normal;
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="vector"></param>
         public static void Normalise(ref Vector3D vector)           // Reduces A Normal Vector (3 Coordinates)
         {                                            // To A Unit Normal Vector With A Length Of One.
             double length;                           // Holds Unit Length
@@ -151,6 +169,17 @@ namespace Scratchy
    The equation of the plane is a x + b y + c z + d = 0
                                 n.x x + n.y y + n.z z + d = 0
 */
+
+        /// <summary>
+        /// Checks if the line intersects with a triangle
+        /// </summary>
+        /// <param name="P1">Point 1 of the line</param>
+        /// <param name="P2">Point 2 of the line</param>
+        /// <param name="PA">Point A of the triangle</param>
+        /// <param name="PB">Point B of the triangle</param>
+        /// <param name="PC">Point C of the triangle</param>
+        /// <param name="Pi">Point of intersection</param>
+        /// <returns>true if line intersects with the triangle</returns>
         public static bool LineTriangleIntersection(Point3D P1, Point3D P2, Point3D PA, Point3D PB, Point3D PC, ref Point3D Pi)
         {
             double EPS = 0.000000001;
@@ -206,7 +235,14 @@ namespace Scratchy
             return true;
         }
 
-
+        /// <summary>
+        /// Checks if the line intersects with a poligon
+        /// </summary>
+        /// <param name="P1">Point 1 of the line</param>
+        /// <param name="P2">Point 2 of the line</param>
+        /// <param name="Y">Polygon</param>
+        /// <param name="Pi">Point of intersection</param>
+        /// <returns>true if line intersects with the polygon</returns>
         public bool LinePolygonIntersection(Point3D P1, Point3D P2, Polygon Y, ref Point3D Pi)
         {
             int n = Y.Count;
@@ -232,7 +268,12 @@ namespace Scratchy
             return bIntersect;
         }
 
-
+        /// <summary>
+        /// Checks if the line intersects with a any poligon of list of polygons
+        /// </summary>
+        /// <param name="P1">Point 1 of the line</param>
+        /// <param name="P2">Point 2 of the line</param>
+        /// <returns>true if line intersects with the any poligon</returns>
         public bool LinePolygonsIntersection(Point3D P1, Point3D P2)
         {
             Point3D Pi = new Point3D();
@@ -247,8 +288,10 @@ namespace Scratchy
         }
 
 
-
-        public bool JoinPolygons()
+        /// <summary>
+        /// Searches polygons (or triangles) with common lines and joins them. The first polygon grows by the points of secong polygon. The second polygon is removed 
+        /// </summary>
+        public void JoinPolygons()
         {
             int nPols = Polygons.Count;
             double EPS = 0.001;
@@ -296,7 +339,6 @@ namespace Scratchy
                         }
                     FinishJoining:
                         nPointsB = 0;
-
                     }
 
             // remove empty polygons
@@ -306,7 +348,6 @@ namespace Scratchy
                     Polygons.RemoveAt(a);
             }
 
-            return true;
         }
 
         /*

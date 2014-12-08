@@ -14,6 +14,9 @@ namespace Scratchy
         public LineList Lines;
         public PolygonList Polygons;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public ScratchData()
         {
             Points = new PointList();
@@ -29,6 +32,11 @@ namespace Scratchy
             Polygons.Clear();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nAxis"></param>
+        /// <param name="dAngle"></param>
         public void Rotate(int nAxis, double dAngle)
         {
             //Matrix3D m = new Matrix3D();
@@ -48,21 +56,28 @@ namespace Scratchy
             Points.ApplyMatrix(rt.Value);
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Xoffset"></param>
+        /// <param name="Yoffset"></param>
+        /// <param name="Zoffset"></param>
         public void Translate(double Xoffset, double Yoffset, double Zoffset)
         {
-
             TranslateTransform3D tt = new TranslateTransform3D(Xoffset, Yoffset, Zoffset);
 
             Points.ApplyMatrix(tt.Value);
         }
 
-
-        public void SetMaxSize(double MaxSize)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="BoxSize"></param>
+        public void FitInBoundingBox(double BoxSize)
         {
             double Xmin, Xmax, Ymin, Ymax, Zmin, Zmax;
 
-            Points.GetMinMax(out Xmin, out Xmax, out Ymin, out Ymax, out Zmin, out Zmax);
+            Points.GetObjectMinMax(out Xmin, out Xmax, out Ymin, out Ymax, out Zmin, out Zmax);
 
             double Xsize = Xmax - Xmin;
             double Ysize = Ymax - Ymin;
@@ -70,7 +85,7 @@ namespace Scratchy
             double Asize = Math.Max(Xsize, Ysize);
             Asize = Math.Max(Asize, Zsize);
 
-            double scale = MaxSize / Asize;
+            double scale = BoxSize / Asize;
 
             double Xoffset = (Xmin + (Xmax - Xmin) * 0.5) * scale;
             double Yoffset = (Ymin + (Ymax - Ymin) * 0.5) * scale;
@@ -86,6 +101,9 @@ namespace Scratchy
             //Matrix3D m2 = new Matrix3D();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void LevelZ()
         {
             double AngleRange = 90;
@@ -109,7 +127,7 @@ namespace Scratchy
                     rt = new RotateTransform3D(new AxisAngleRotation3D(VectorX, AngleX+OffsetAngleX));
                     L.ApplyMatrix(rt.Value);
 
-                    L.GetMinMax(out Xmin, out Xmax, out Ymin, out Ymax, out Zmin, out Zmax);
+                    L.GetObjectMinMax(out Xmin, out Xmax, out Ymin, out Ymax, out Zmin, out Zmax);
                     double Z = Zmax - Zmin;
 
                     if ( Z<LevelZ)
@@ -129,9 +147,11 @@ namespace Scratchy
             Points.ApplyMatrix(rt.Value);
             rt = new RotateTransform3D(new AxisAngleRotation3D(VectorX, LevelAngleX));
             Points.ApplyMatrix(rt.Value);
-
         }
 
+        /// <summary>
+        /// Recreates the list of lines out of the list of polygons
+        /// </summary>
         public void LinesFromPolygons()
         {
             Lines.Clear();
