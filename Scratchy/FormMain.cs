@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Ciloci.Flee;
+using Ciloci.Flee.CalcEngine;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +15,57 @@ namespace Scratchy
     public partial class FormMain : Form
     {
         Scratch S = new Scratch();
+
+        private void tESTToolStripMenuItem1_Click_1(object sender, EventArgs e)
+        {
+            CalculationEngine engine = new CalculationEngine();
+            ExpressionContext context = new ExpressionContext();
+            VariableCollection variables = context.Variables;
+
+            // Add some variables
+            variables.Add("x", 100.0);
+            variables.Add("y", 200.0);
+
+            // Add an expression to the calculation engine as "a"
+            engine.Add("a", "x * 2 ", context);
+
+            // Add an expression to the engine as "b"
+            engine.Add("b", "y + 100.0 ", context);
+
+            // Add an expression at "c" that uses the results of "a" and "b"
+            engine.Add("c", "a + b", context);
+
+            // Get the value of "c"
+            var result = engine.GetResult<double>("c");
+
+            // Update a variable on the "a" expression            
+            variables["x"] = 200.0;
+
+            // Recalculate it
+            engine.Recalculate("a");
+
+            // Get the updated result
+            result = engine.GetResult<double>("c");
+
+            context.Imports.AddType(typeof(Math));
+
+            IDynamicExpression de = context.CompileDynamic("cos(a)*sqrt(2)");
+            result = (double)de.Evaluate();
+            
+
+            //xmasTreeRandomToolStripMenuItem1_Click(sender, e);
+            //S.Load(@"C:\Trefoil_knot\trefoil_JK.off");
+            S._data.JoinPolygons();
+
+            S._data.LinesFromPolygons();
+
+
+            S._data.SmashLines(2.5);
+            //S._data.LevelZ();
+            S.UpdateImage();
+            pictureBox.Refresh();
+        }
+
 
         public FormMain()
         {
@@ -31,12 +84,6 @@ namespace Scratchy
             pictureBox.Focus();
             S._render.progress = (ProgressBar)toolStripProgressBar.ProgressBar;
         }
-
-        private void tESTToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
-        }
-
 
         private void xmasTreeRandomToolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -58,21 +105,6 @@ namespace Scratchy
 
             //pictureBox.
 
-        }
-
-        private void tESTToolStripMenuItem1_Click_1(object sender, EventArgs e)
-        {
-            //xmasTreeRandomToolStripMenuItem1_Click(sender, e);
-            //S.Load(@"C:\Trefoil_knot\trefoil_JK.off");
-            S._data.JoinPolygons();
-            
-            S._data.LinesFromPolygons();
-
-
-            S._data.SmashLines(2.5);
-            //S._data.LevelZ();
-            S.UpdateImage();
-            pictureBox.Refresh();
         }
 
         private void pictureBox_Click(object sender, EventArgs e)

@@ -346,7 +346,7 @@
     <value>Object</value>
   </data>
   <data name="exportCNCToolStripMenuItem1.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Strg+E</value>
+    <value>Ctrl+E</value>
   </data>
   <data name="exportCNCToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
     <value>235, 24</value>
@@ -355,7 +355,7 @@
     <value>Export to CNC...</value>
   </data>
   <data name="exportImagePNGToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Strg+I</value>
+    <value>Ctrl+I</value>
   </data>
   <data name="exportImagePNGToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>235, 24</value>
@@ -418,7 +418,7 @@
     <value>3</value>
   </data>
   <data name="loadToolStripMenuItem1.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Strg+O</value>
+    <value>Ctrl+O</value>
   </data>
   <data name="loadToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
     <value>177, 24</value>
@@ -430,7 +430,7 @@
     <value>174, 6</value>
   </data>
   <data name="exitToolStripMenuItem1.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Strg+X</value>
+    <value>Ctrl+X</value>
   </data>
   <data name="exitToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
     <value>177, 24</value>

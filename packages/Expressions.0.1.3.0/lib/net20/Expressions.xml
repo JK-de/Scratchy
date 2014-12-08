@@ -1,0 +1,670 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Expressions</name>
+    </assembly>
+    <members>
+        <member name="T:Expressions.ExpressionsException">
+            <summary>
+            Represents an error that occurred while compiling, binding or
+            executing an expression.
+            </summary>
+        </member>
+        <member name="M:Expressions.ExpressionsException.#ctor(Expressions.ExpressionsExceptionType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Expressions.ExpressionsException"/>
+            class with the specified type.
+            </summary>
+            <param name="type">The type of the error.</param>
+        </member>
+        <member name="M:Expressions.ExpressionsException.#ctor(System.String,Expressions.ExpressionsExceptionType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Expressions.ExpressionsException"/>
+            class with the specified message and type.
+            </summary>
+            <param name="message">The message of the error.</param>
+            <param name="type">The type of the error.</param>
+        </member>
+        <member name="M:Expressions.ExpressionsException.#ctor(System.String,Expressions.ExpressionsExceptionType,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Expressions.ExpressionsException"/>
+            class with the specified message, type and inner exception.
+            </summary>
+            <param name="message">The message of the error.</param>
+            <param name="type">The type of the error.</param>
+            <param name="innerException">The inner exception of the error.</param>
+        </member>
+        <member name="M:Expressions.ExpressionsException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Exception"/> class with serialized data.
+            
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized object data about the exception being thrown.
+                            </param><param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual information about the source or destination.
+                            </param><exception cref="T:System.ArgumentNullException">The <paramref name="info"/> parameter is null.
+                            </exception><exception cref="T:System.Runtime.Serialization.SerializationException">The class name is null or <see cref="P:System.Exception.HResult"/> is zero (0).
+                            </exception>
+        </member>
+        <member name="M:Expressions.ExpressionsException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            When overridden in a derived class, sets the <see cref="T:System.Runtime.Serialization.SerializationInfo"/> with information about the exception.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized object data about the exception being thrown. 
+                            </param><param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual information about the source or destination. 
+                            </param><exception cref="T:System.ArgumentNullException">The <paramref name="info"/> parameter is a null reference (Nothing in Visual Basic). 
+                            </exception><filterpriority>2</filterpriority><PermissionSet><IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Read="*AllFiles*" PathDiscovery="*AllFiles*"/><IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="SerializationFormatter"/></PermissionSet>
+        </member>
+        <member name="P:Expressions.ExpressionsException.Type">
+            <summary>
+            Get the type of the error.
+            </summary>
+        </member>
+        <member name="T:Expressions.ExpressionsExceptionType">
+            <summary>
+            Type of an ExpressionsException.
+            </summary>
+        </member>
+        <member name="F:Expressions.ExpressionsExceptionType.SyntaxError">
+            <summary>
+            Exception is because of a syntax error.
+            </summary>
+        </member>
+        <member name="F:Expressions.ExpressionsExceptionType.ConstantOverflow">
+            <summary>
+            Exception is because of a constant overflow during parsing.
+            </summary>
+        </member>
+        <member name="F:Expressions.ExpressionsExceptionType.TypeMismatch">
+            <summary>
+            Exception is because of a type mismatch in a method call.
+            </summary>
+        </member>
+        <member name="F:Expressions.ExpressionsExceptionType.UndefinedName">
+            <summary>
+            Exception is because of an undefined name.
+            </summary>
+        </member>
+        <member name="F:Expressions.ExpressionsExceptionType.FunctionHasNoReturnValue">
+            <summary>
+            Exception is because a function was used that did not have a return value.
+            </summary>
+        </member>
+        <member name="F:Expressions.ExpressionsExceptionType.InvalidExplicitCast">
+            <summary>
+            Exception is because an invalid cast was made.
+            </summary>
+        </member>
+        <member name="F:Expressions.ExpressionsExceptionType.AmbiguousMatch">
+            <summary>
+            Exception is because of a method overload could not be matched unambiguously.
+            </summary>
+        </member>
+        <member name="F:Expressions.ExpressionsExceptionType.AccessDenied">
+            <summary>
+            Exception is because of access is denied.
+            </summary>
+        </member>
+        <member name="F:Expressions.ExpressionsExceptionType.InvalidFormat">
+            <summary>
+            Exception is because of an invalid format.
+            </summary>
+        </member>
+        <member name="F:Expressions.ExpressionsExceptionType.UnresolvedMethod">
+            <summary>
+            Exception is because a method could not be resolved.
+            </summary>
+        </member>
+        <member name="F:Expressions.ExpressionsExceptionType.InvalidOperation">
+            <summary>
+            Exception is because of an undefined invalid operation.
+            </summary>
+        </member>
+        <member name="T:Expressions.IBoundExpression">
+            <summary>
+            Represents a bound expression.
+            </summary>
+        </member>
+        <member name="M:Expressions.IBoundExpression.Invoke">
+            <summary>
+            Invokes the expression.
+            </summary>
+            <returns>The result of the expression.</returns>
+        </member>
+        <member name="M:Expressions.IBoundExpression.Invoke(Expressions.IExecutionContext)">
+            <summary>
+            Invokes the expression.
+            </summary>
+            <param name="executionContext">The execution context used to
+            execute the expression.</param>
+            <returns>The result of the expression.</returns>
+        </member>
+        <member name="T:Expressions.IBoundExpression`1">
+            <summary>
+            Represents a bound expression.
+            </summary>
+            <typeparam name="T">The type of the result of the expression.</typeparam>
+        </member>
+        <member name="M:Expressions.IBoundExpression`1.Invoke">
+            <summary>
+            Invokes the expression.
+            </summary>
+            <returns>The result of the expression.</returns>
+        </member>
+        <member name="M:Expressions.IBoundExpression`1.Invoke(Expressions.IExecutionContext)">
+            <summary>
+            Invokes the expression.
+            </summary>
+            <param name="executionContext">The execution context used to
+            execute the expression.</param>
+            <returns>The result of the expression.</returns>
+        </member>
+        <member name="T:Expressions.BoundExpressionOptions">
+            <summary>
+            Describes the options available when binding an expression.
+            </summary>
+        </member>
+        <member name="M:Expressions.BoundExpressionOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Expressions.BoundExpressionOptions"/>
+            class.
+            </summary>
+        </member>
+        <member name="M:Expressions.BoundExpressionOptions.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>.
+            </summary>
+            <returns>
+            true if the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>; otherwise, false.
+            </returns>
+            <param name="obj">The <see cref="T:System.Object"/> to compare with the current <see cref="T:System.Object"/>. 
+                            </param><exception cref="T:System.NullReferenceException">The <paramref name="obj"/> parameter is null.
+                            </exception><filterpriority>2</filterpriority>
+        </member>
+        <member name="M:Expressions.BoundExpressionOptions.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type. 
+            </summary>
+            <returns>
+            A hash code for the current <see cref="T:System.Object"/>.
+            </returns>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="P:Expressions.BoundExpressionOptions.AllowPrivateAccess">
+            <summary>
+            Get or set whether the expression may access private members.
+            </summary>
+        </member>
+        <member name="P:Expressions.BoundExpressionOptions.ResultType">
+            <summary>
+            Get or set the result type of the expression (when left at the default
+            value, using <see cref="T:Expressions.DynamicExpression`1"/> will automatically
+            provide the value for this parameter).
+            </summary>
+        </member>
+        <member name="P:Expressions.BoundExpressionOptions.Checked">
+            <summary>
+            Get or set whether the expression must perform checked arithmetic.
+            </summary>
+        </member>
+        <member name="P:Expressions.BoundExpressionOptions.RestrictedSkipVisibility">
+            <summary>
+            Get or set whether the visibility checkes must be skipped when
+            the expression is compiled.
+            </summary>
+        </member>
+        <member name="M:Expressions.ILUtil.EmitLoadValueIndirect(System.Reflection.Emit.ILGenerator,System.Type)">
+            <summary>
+            Emits a Ldind* instruction for the appropriate type
+            </summary>
+        </member>
+        <member name="M:Expressions.ILUtil.EmitStoreValueIndirect(System.Reflection.Emit.ILGenerator,System.Type)">
+            <summary>
+            Emits a Stind* instruction for the appropriate type.
+            </summary>
+        </member>
+        <member name="M:Expressions.ILUtil.EmitStoreElement(System.Reflection.Emit.ILGenerator,System.Type)">
+            <summary>
+            Emits a Stelem* instruction for the appropriate type.
+            </summary>
+        </member>
+        <member name="M:Expressions.ILUtil.EmitArray``1(System.Reflection.Emit.ILGenerator,System.Collections.Generic.IList{``0})">
+            <summary>
+            Emits an array of constant values provided in the given list.
+            The array is strongly typed.
+            </summary>
+        </member>
+        <member name="M:Expressions.ILUtil.EmitArray(System.Reflection.Emit.ILGenerator,System.Type,System.Int32,System.Action{System.Int32})">
+            <summary>
+            Emits an array of values of count size.  The items are emitted via the callback
+            which is provided with the current item index to emit.
+            </summary>
+        </member>
+        <member name="M:Expressions.ILUtil.EmitArray(System.Reflection.Emit.ILGenerator,System.Type)">
+            <summary>
+            Emits an array construction code.  
+            The code assumes that bounds for all dimensions
+            are already emitted.
+            </summary>
+        </member>
+        <member name="M:Expressions.ILUtil.EmitDefault(System.Reflection.Emit.ILGenerator,System.Type)">
+            <summary>
+            Emits default(T)
+            Semantics match C# compiler behavior
+            </summary>
+        </member>
+        <member name="T:Expressions.DynamicExpression">
+            <summary>
+            Represents a parsed expression.
+            </summary>
+        </member>
+        <member name="M:Expressions.DynamicExpression.#ctor(System.String,Expressions.ExpressionLanguage)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Expressions.DynamicExpression"/>
+            class with the specified expression and language.
+            </summary>
+            <param name="expression">The expression to parse.</param>
+            <param name="language">The language of the expression to parse.</param>
+        </member>
+        <member name="M:Expressions.DynamicExpression.Bind">
+            <summary>
+            Binds the compiled expression.
+            </summary>
+            <returns>The bound expression.</returns>
+        </member>
+        <member name="M:Expressions.DynamicExpression.Bind(Expressions.IBindingContext)">
+            <summary>
+            Binds the compiled expression with the specified binding context.
+            </summary>
+            <param name="binder">The binding context used to bind the expression.</param>
+            <returns>The bound expression.</returns>
+        </member>
+        <member name="M:Expressions.DynamicExpression.Bind(Expressions.IBindingContext,Expressions.BoundExpressionOptions)">
+            <summary>
+            Binds the compiled expression with the specified binding context and options.
+            </summary>
+            <param name="binder">The binding context used to bind the expression.</param>
+            <param name="options">The options used to bind the expression.</param>
+            <returns>The bound expression.</returns>
+        </member>
+        <member name="M:Expressions.DynamicExpression.Invoke">
+            <summary>
+            Invokes the expression.
+            </summary>
+            <returns>The result of the expression.</returns>
+        </member>
+        <member name="M:Expressions.DynamicExpression.Invoke(Expressions.IExpressionContext)">
+            <summary>
+            Invokes the expression with the specified expression context.
+            </summary>
+            <param name="expressionContext">The expression context used to
+            bind and execute the expression.</param>
+            <returns>The result of the expression.</returns>
+        </member>
+        <member name="M:Expressions.DynamicExpression.Invoke(Expressions.IExpressionContext,Expressions.BoundExpressionOptions)">
+            <summary>
+            Invokes the expression with the specified expression context and
+            binding options.
+            </summary>
+            <param name="expressionContext">The expression context used to
+            bind and execute the expression.</param>
+            <param name="options">The options used to bind the expression.</param>
+            <returns>The result of the expression.</returns>
+        </member>
+        <member name="M:Expressions.DynamicExpression.IsLanguageCaseSensitive(Expressions.ExpressionLanguage)">
+            <summary>
+            Determines whether the specified language is a case sensitive language.
+            </summary>
+            <param name="language">The language to determine case sensitivity for.</param>
+            <returns>True when the specified language is case sensitive; false otherwise.</returns>
+        </member>
+        <member name="M:Expressions.DynamicExpression.CheckSyntax(System.String,Expressions.ExpressionLanguage)">
+            <summary>
+            Checks the syntax of the specified expression.
+            </summary>
+            <param name="expression">The expression of which to check the syntax.</param>
+            <param name="language">The language used when checking the syntax.</param>
+        </member>
+        <member name="P:Expressions.DynamicExpression.Expression">
+            <summary>
+            Get the text of the parsed expression.
+            </summary>
+        </member>
+        <member name="P:Expressions.DynamicExpression.Language">
+            <summary>
+            Get the language of the parsed expression.
+            </summary>
+        </member>
+        <member name="T:Expressions.DynamicExpression`1">
+            <summary>
+            Represents a parsed expression.
+            </summary>
+            <typeparam name="T">The type of the result of the expression.</typeparam>
+        </member>
+        <member name="M:Expressions.DynamicExpression`1.#ctor(System.String,Expressions.ExpressionLanguage)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Expressions.DynamicExpression"/>
+            class with the specified expression and language.
+            </summary>
+            <param name="expression">The expression to parse.</param>
+            <param name="language">The language of the expression to parse.</param>
+        </member>
+        <member name="M:Expressions.DynamicExpression`1.Invoke">
+            <summary>
+            Invokes the expression.
+            </summary>
+            <returns>The result of the expression.</returns>
+        </member>
+        <member name="M:Expressions.DynamicExpression`1.Invoke(Expressions.IExpressionContext)">
+            <summary>
+            Invokes the expression with the specified expression context.
+            </summary>
+            <param name="expressionContext">The expression context used to
+            bind and execute the expression.</param>
+            <returns>The result of the expression.</returns>
+        </member>
+        <member name="M:Expressions.DynamicExpression`1.Invoke(Expressions.IExpressionContext,Expressions.BoundExpressionOptions)">
+            <summary>
+            Invokes the expression with the specified expression context and
+            binding options.
+            </summary>
+            <param name="expressionContext">The expression context used to
+            bind and execute the expression.</param>
+            <param name="options">The options used to bind the expression.</param>
+            <returns>The result of the expression.</returns>
+        </member>
+        <member name="M:Expressions.DynamicExpression`1.Bind">
+            <summary>
+            Binds the compiled expression.
+            </summary>
+            <returns>The bound expression.</returns>
+        </member>
+        <member name="M:Expressions.DynamicExpression`1.Bind(Expressions.IBindingContext)">
+            <summary>
+            Binds the compiled expression with the specified binding context.
+            </summary>
+            <param name="binder">The binding context used to bind the expression.</param>
+            <returns>The bound expression.</returns>
+        </member>
+        <member name="M:Expressions.DynamicExpression`1.Bind(Expressions.IBindingContext,Expressions.BoundExpressionOptions)">
+            <summary>
+            Binds the compiled expression with the specified binding context and options.
+            </summary>
+            <param name="binder">The binding context used to bind the expression.</param>
+            <param name="options">The options used to bind the expression.</param>
+            <returns>The bound expression.</returns>
+        </member>
+        <member name="T:Expressions.ExpressionContext">
+            <summary>
+            Provides a default implementation of the <see cref="T:Expressions.IExpressionContext"/>
+            interface.
+            </summary>
+        </member>
+        <member name="T:Expressions.IExpressionContext">
+            <summary>
+            Represents the context of an expression.
+            </summary>
+        </member>
+        <member name="T:Expressions.IBindingContext">
+            <summary>
+            Represents the binding context supplied when binding an expression.
+            </summary>
+        </member>
+        <member name="M:Expressions.IBindingContext.GetVariableType(System.String,System.Boolean)">
+            <summary>
+            Get the type of a variable of the expression or null when the
+            variable doesn't exist.
+            </summary>
+            <param name="variable">The name of the variable.</param>
+            <param name="ignoreCase">True to ignore case when resolving the variable; otherwise false.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Expressions.IBindingContext.OwnerType">
+            <summary>
+            Get the type of the owner of the expression or null when
+            the expression does not have an owner.
+            </summary>
+        </member>
+        <member name="P:Expressions.IBindingContext.Imports">
+            <summary>
+            Get the imports of the expression.
+            </summary>
+        </member>
+        <member name="T:Expressions.IExecutionContext">
+            <summary>
+            Represents the execution context supplied when executing a bound expression.
+            </summary>
+        </member>
+        <member name="M:Expressions.IExecutionContext.GetVariableValue(System.String,System.Boolean)">
+            <summary>
+            Get the value of a variable of the expression or null when
+            the variable does not exist.
+            </summary>
+            <param name="variable">The name of the variable to get the value for.</param>
+            <param name="ignoreCase">True to ignore case when resolving the variable; otherwise false.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Expressions.IExecutionContext.Owner">
+            <summary>
+            Get the owner of the expression or null when the expression
+            does not have an owner.
+            </summary>
+        </member>
+        <member name="M:Expressions.ExpressionContext.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Expressions.ExpressionContext"/>
+            class.
+            </summary>
+        </member>
+        <member name="M:Expressions.ExpressionContext.#ctor(System.Collections.Generic.IEnumerable{Expressions.Import})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Expressions.ExpressionContext"/>
+            class with the specified imports.
+            </summary>
+            <param name="imports">The imports of the expression context.</param>
+        </member>
+        <member name="M:Expressions.ExpressionContext.#ctor(System.Collections.Generic.IEnumerable{Expressions.Import},System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Expressions.ExpressionContext"/>
+            class with the specified imports and owner.
+            </summary>
+            <param name="imports">The imports of the expression context.</param>
+            <param name="owner">The owner of the expression context.</param>
+        </member>
+        <member name="M:Expressions.ExpressionContext.#ctor(System.Collections.Generic.IEnumerable{Expressions.Import},System.Object,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Expressions.ExpressionContext"/>
+            class with the specified imports, owner and whether to ignore case.
+            </summary>
+            <param name="imports">The imports of the expression context.</param>
+            <param name="owner">The owner of the expression context.</param>
+            <param name="ignoreCase">True to ignore case; otherwise false.</param>
+        </member>
+        <member name="P:Expressions.ExpressionContext.Owner">
+            <summary>
+            Get the owner of the expression or null when the expression
+            does not have an owner.
+            </summary>
+        </member>
+        <member name="P:Expressions.ExpressionContext.Imports">
+            <summary>
+            Get the imports of the expression.
+            </summary>
+        </member>
+        <member name="P:Expressions.ExpressionContext.IgnoreCase">
+            <summary>
+            Get whether to ignore case.
+            </summary>
+        </member>
+        <member name="P:Expressions.ExpressionContext.Variables">
+            <summary>
+            Get the variables associated with the expression context.
+            </summary>
+        </member>
+        <member name="T:Expressions.ExpressionLanguage">
+            <summary>
+            The language of an expression.
+            </summary>
+        </member>
+        <member name="F:Expressions.ExpressionLanguage.Flee">
+            <summary>
+            Flee language.
+            </summary>
+        </member>
+        <member name="F:Expressions.ExpressionLanguage.Csharp">
+            <summary>
+            C# language.
+            </summary>
+        </member>
+        <member name="F:Expressions.ExpressionLanguage.VisualBasic">
+            <summary>
+            VB.NET language.
+            </summary>
+        </member>
+        <member name="T:Expressions.Import">
+            <summary>
+            Describes an import definition of an expression.
+            </summary>
+        </member>
+        <member name="M:Expressions.Import.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Expressions.Import"/> class with
+            the specified type.
+            </summary>
+            <param name="type">The type to be imported.</param>
+        </member>
+        <member name="M:Expressions.Import.#ctor(System.String,System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Expressions.Import"/> class with
+            the specified type and namespace.
+            </summary>
+            <param name="ns">The namespace the type must be imported at.</param>
+            <param name="type">The type to be imported.</param>
+        </member>
+        <member name="M:Expressions.Import.#ctor(System.String,Expressions.Import[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Expressions.Import"/> class with
+            the specified namespace and nested imports.
+            </summary>
+            <param name="ns">The namespace the type must be imported at.</param>
+            <param name="imports">The imports that are nested under this import.</param>
+        </member>
+        <member name="M:Expressions.Import.#ctor(System.String,System.Type,Expressions.Import[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Expressions.Import"/> class with
+            the specified type, namespace and nested imports.
+            </summary>
+            <param name="ns">The namespace the type must be imported at.</param>
+            <param name="type">The type to be imported.</param>
+            <param name="imports">The imports that are nested under this import.</param>
+        </member>
+        <member name="M:Expressions.Import.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>.
+            </summary>
+            <returns>
+            true if the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>; otherwise, false.
+            </returns>
+            <param name="obj">The <see cref="T:System.Object"/> to compare with the current <see cref="T:System.Object"/>. 
+                            </param><exception cref="T:System.NullReferenceException">The <paramref name="obj"/> parameter is null.
+                            </exception><filterpriority>2</filterpriority>
+        </member>
+        <member name="M:Expressions.Import.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type. 
+            </summary>
+            <returns>
+            A hash code for the current <see cref="T:System.Object"/>.
+            </returns>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="M:Expressions.Import.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
+            </returns>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="P:Expressions.Import.Type">
+            <summary>
+            Get the type to be imported.
+            </summary>
+        </member>
+        <member name="P:Expressions.Import.Namespace">
+            <summary>
+            Get the namespace the type must be imported at.
+            </summary>
+        </member>
+        <member name="P:Expressions.Import.Imports">
+            <summary>
+            Get the imports that are imported as nested namespaces.
+            </summary>
+        </member>
+        <member name="M:Expressions.TypeUtil.GetBooleanOperator(System.Type,System.String)">
+            <summary>
+            Searches for an operator method on the type. The method must have
+            the specified signature, no generic arguments, and have the
+            SpecialName bit set. Also searches inherited operator methods.
+            
+            NOTE: This was designed to satisfy the needs of op_True and
+            op_False, because we have to do runtime lookup for those. It may
+            not work right for unary operators in general.
+            </summary>
+        </member>
+        <member name="M:Expressions.TypeUtil.CanCache(System.Type)">
+            <summary>
+            We can cache references to types, as long as they aren't in
+            collectable assemblies. Unfortunately, we can't really distinguish
+            between different flavors of assemblies. But, we can at least
+            create a white list for types in mscorlib (so we get the primitives)
+            and System.Core (so we find Func/Action overloads, etc).
+            </summary>
+        </member>
+        <member name="T:Expressions.Variable">
+            <summary>
+            Describes a variable used in an <see cref="T:Expressions.ExpressionContext"/>.
+            </summary>
+        </member>
+        <member name="M:Expressions.Variable.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Expressions.Variable"/> class with
+            the specified name.
+            </summary>
+            <param name="name">The name of the variable.</param>
+        </member>
+        <member name="P:Expressions.Variable.Name">
+            <summary>
+            Get the name of the variable.
+            </summary>
+        </member>
+        <member name="P:Expressions.Variable.Value">
+            <summary>
+            Get or set the value of the variable.
+            </summary>
+        </member>
+        <member name="T:Expressions.VariableCollection">
+            <summary>
+            A collection of <see cref="T:Expressions.Variable"/>'s.
+            </summary>
+        </member>
+        <member name="M:Expressions.VariableCollection.GetKeyForItem(Expressions.Variable)">
+            <summary>
+            When implemented in a derived class, extracts the key from the specified element.
+            </summary>
+            <returns>
+            The key for the specified element.
+            </returns>
+            <param name="item">The element from which to extract the key.
+                            </param>
+        </member>
+        <member name="M:Expressions.VariableCollection.Add(System.String,System.Object)">
+            <summary>
+            Add a new <see cref="T:Expressions.Variable"/> to the collection with the specified
+            name and value.
+            </summary>
+            <param name="name">The name of the variable.</param>
+            <param name="value">The value of the variable.</param>
+        </member>
+    </members>
+</doc>

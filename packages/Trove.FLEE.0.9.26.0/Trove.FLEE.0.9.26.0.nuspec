@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Trove.FLEE</id>
+    <version>0.9.26.0</version>
+    <title>Trove Unofficial FLEE (Fast Lightweight Expression Evaluator)</title>
+    <authors>Alan Dean</authors>
+    <owners>Alan Dean</owners>
+    <licenseUrl>http://www.opensource.org/licenses/LGPL-2.1</licenseUrl>
+    <projectUrl>http://flee.codeplex.com/</projectUrl>
+    <iconUrl>http://www.alan-dean.com/codeplex.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Flee is an expression parser and evaluator for the .NET framework. It allows you to compute the value of string expressions such as sqrt(a^2 + b^2) at runtime. It uses a custom compiler, strongly-typed expression language, and lightweight codegen to compile expressions directly to IL. This means that expression evaluation is extremely fast and efficient.</description>
+    <summary>An unofficial package of the FLEE (Fast Lightweight Expression Evaluator) library.</summary>
+    <releaseNotes />
+    <copyright>Copyright © 2009 Eugene Ciloci</copyright>
+    <tags>FLEE</tags>
+  </metadata>
+</package>
