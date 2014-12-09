@@ -20,7 +20,7 @@ namespace Scratchy
         Pen penScratch;
         Brush brushReflexR, brushReflexC;
         float fDPI = 300;
-        float fAxisMax = 82;
+        public float fAxisMax = 82;
 
         /// <summary>
         /// 

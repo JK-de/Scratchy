@@ -43,43 +43,48 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
+            this.statusCoordX = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusCoordY = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusProgress = new System.Windows.Forms.ToolStripProgressBar();
+            this.statusInfo = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.xmasTreeRandomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.loadToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuLoad = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuSave = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.objectToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.generateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xmasTreeRandomToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.scaleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rotateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.translateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuObjectScale = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuObjectRotate = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuObjectTranslate = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.fitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.renderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuObjectFit = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuObjectLevel = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuObjectSmashLines = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuObjectDeleteUnreferencedPoints = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuRenderExportNC = new System.Windows.Forms.ToolStripMenuItem();
             this.exportCNCToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportImagePNGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tESTToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuRenderExportImage = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuTEST = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanelButton = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnOpen = new System.Windows.Forms.Button();
+            this.btnLoad = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
-            this.levelToMinHeightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.smashLinesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteUnreferencedPointsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.renderSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanelMain.SuspendLayout();
@@ -97,6 +102,7 @@
             this.pictureBox.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.pictureBox.Zoom = 25;
             this.pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
+            this.pictureBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseMove_1);
             // 
             // objectToolStripMenuItem
             // 
@@ -163,25 +169,37 @@
             // statusStrip
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel,
-            this.toolStripProgressBar});
+            this.statusCoordX,
+            this.statusCoordY,
+            this.statusProgress,
+            this.statusInfo});
             resources.ApplyResources(this.statusStrip, "statusStrip");
             this.statusStrip.Name = "statusStrip";
             // 
-            // toolStripStatusLabel
+            // statusCoordX
             // 
-            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-            resources.ApplyResources(this.toolStripStatusLabel, "toolStripStatusLabel");
-            this.toolStripStatusLabel.Click += new System.EventHandler(this.toolStripStatusLabel1_Click);
+            resources.ApplyResources(this.statusCoordX, "statusCoordX");
+            this.statusCoordX.Name = "statusCoordX";
             // 
-            // toolStripProgressBar
+            // statusCoordY
             // 
-            this.toolStripProgressBar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripProgressBar.MarqueeAnimationSpeed = 500;
-            this.toolStripProgressBar.Name = "toolStripProgressBar";
-            resources.ApplyResources(this.toolStripProgressBar, "toolStripProgressBar");
-            this.toolStripProgressBar.Step = 1;
-            this.toolStripProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            resources.ApplyResources(this.statusCoordY, "statusCoordY");
+            this.statusCoordY.Name = "statusCoordY";
+            this.statusCoordY.Click += new System.EventHandler(this.toolStripStatusLabel1_Click);
+            // 
+            // statusProgress
+            // 
+            this.statusProgress.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.statusProgress.MarqueeAnimationSpeed = 500;
+            this.statusProgress.Name = "statusProgress";
+            resources.ApplyResources(this.statusProgress, "statusProgress");
+            this.statusProgress.Step = 1;
+            this.statusProgress.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            // 
+            // statusInfo
+            // 
+            this.statusInfo.Name = "statusInfo";
+            resources.ApplyResources(this.statusInfo, "statusInfo");
             // 
             // toolStripMenuItem1
             // 
@@ -205,9 +223,10 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem3,
+            this.toolStripMenuItem4,
             this.objectToolStripMenuItem1,
-            this.renderToolStripMenuItem,
-            this.tESTToolStripMenuItem1,
+            this.menuRenderExportNC,
+            this.menuTEST,
             this.helpToolStripMenuItem1});
             resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
@@ -215,43 +234,69 @@
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.loadToolStripMenuItem1,
+            this.menuLoad,
+            this.menuSave,
             this.toolStripSeparator5,
-            this.exitToolStripMenuItem1});
+            this.menuSettings,
+            this.toolStripSeparator8,
+            this.menuExit});
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             resources.ApplyResources(this.toolStripMenuItem3, "toolStripMenuItem3");
             // 
-            // loadToolStripMenuItem1
+            // menuLoad
             // 
-            this.loadToolStripMenuItem1.Image = global::Scratchy.Properties.Resources.Open_32x32;
-            this.loadToolStripMenuItem1.Name = "loadToolStripMenuItem1";
-            resources.ApplyResources(this.loadToolStripMenuItem1, "loadToolStripMenuItem1");
-            this.loadToolStripMenuItem1.Click += new System.EventHandler(this.loadToolStripMenuItem1_Click);
+            this.menuLoad.Image = global::Scratchy.Properties.Resources.Open_32x32;
+            this.menuLoad.Name = "menuLoad";
+            resources.ApplyResources(this.menuLoad, "menuLoad");
+            this.menuLoad.Click += new System.EventHandler(this.loadToolStripMenuItem1_Click);
+            // 
+            // menuSave
+            // 
+            this.menuSave.Name = "menuSave";
+            resources.ApplyResources(this.menuSave, "menuSave");
+            this.menuSave.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             resources.ApplyResources(this.toolStripSeparator5, "toolStripSeparator5");
             // 
-            // exitToolStripMenuItem1
+            // menuSettings
             // 
-            this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            resources.ApplyResources(this.exitToolStripMenuItem1, "exitToolStripMenuItem1");
+            this.menuSettings.Name = "menuSettings";
+            resources.ApplyResources(this.menuSettings, "menuSettings");
+            this.menuSettings.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            resources.ApplyResources(this.toolStripSeparator8, "toolStripSeparator8");
+            // 
+            // menuExit
+            // 
+            this.menuExit.Name = "menuExit";
+            resources.ApplyResources(this.menuExit, "menuExit");
+            this.menuExit.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            resources.ApplyResources(this.toolStripMenuItem4, "toolStripMenuItem4");
             // 
             // objectToolStripMenuItem1
             // 
             this.objectToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.generateToolStripMenuItem,
             this.toolStripSeparator3,
-            this.scaleToolStripMenuItem,
-            this.rotateToolStripMenuItem,
-            this.translateToolStripMenuItem,
+            this.menuObjectScale,
+            this.menuObjectRotate,
+            this.menuObjectTranslate,
             this.toolStripSeparator6,
-            this.fitToolStripMenuItem,
-            this.levelToMinHeightToolStripMenuItem,
+            this.menuObjectFit,
+            this.menuObjectLevel,
             this.toolStripSeparator4,
-            this.smashLinesToolStripMenuItem,
-            this.deleteUnreferencedPointsToolStripMenuItem});
+            this.menuObjectSmashLines,
+            this.menuObjectDeleteUnreferencedPoints});
             this.objectToolStripMenuItem1.Name = "objectToolStripMenuItem1";
             resources.ApplyResources(this.objectToolStripMenuItem1, "objectToolStripMenuItem1");
             // 
@@ -273,43 +318,66 @@
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
             // 
-            // scaleToolStripMenuItem
+            // menuObjectScale
             // 
-            this.scaleToolStripMenuItem.Name = "scaleToolStripMenuItem";
-            resources.ApplyResources(this.scaleToolStripMenuItem, "scaleToolStripMenuItem");
+            this.menuObjectScale.Name = "menuObjectScale";
+            resources.ApplyResources(this.menuObjectScale, "menuObjectScale");
+            this.menuObjectScale.Click += new System.EventHandler(this.scaleToolStripMenuItem_Click);
             // 
-            // rotateToolStripMenuItem
+            // menuObjectRotate
             // 
-            this.rotateToolStripMenuItem.Name = "rotateToolStripMenuItem";
-            resources.ApplyResources(this.rotateToolStripMenuItem, "rotateToolStripMenuItem");
-            this.rotateToolStripMenuItem.Click += new System.EventHandler(this.rotateToolStripMenuItem_Click);
+            this.menuObjectRotate.Name = "menuObjectRotate";
+            resources.ApplyResources(this.menuObjectRotate, "menuObjectRotate");
+            this.menuObjectRotate.Click += new System.EventHandler(this.rotateToolStripMenuItem_Click);
             // 
-            // translateToolStripMenuItem
+            // menuObjectTranslate
             // 
-            this.translateToolStripMenuItem.Name = "translateToolStripMenuItem";
-            resources.ApplyResources(this.translateToolStripMenuItem, "translateToolStripMenuItem");
-            this.translateToolStripMenuItem.Click += new System.EventHandler(this.translateToolStripMenuItem_Click);
+            this.menuObjectTranslate.Name = "menuObjectTranslate";
+            resources.ApplyResources(this.menuObjectTranslate, "menuObjectTranslate");
+            this.menuObjectTranslate.Click += new System.EventHandler(this.translateToolStripMenuItem_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
             resources.ApplyResources(this.toolStripSeparator6, "toolStripSeparator6");
             // 
-            // fitToolStripMenuItem
+            // menuObjectFit
             // 
-            this.fitToolStripMenuItem.Name = "fitToolStripMenuItem";
-            resources.ApplyResources(this.fitToolStripMenuItem, "fitToolStripMenuItem");
-            this.fitToolStripMenuItem.Click += new System.EventHandler(this.fitToolStripMenuItem_Click);
+            this.menuObjectFit.Name = "menuObjectFit";
+            resources.ApplyResources(this.menuObjectFit, "menuObjectFit");
+            this.menuObjectFit.Click += new System.EventHandler(this.fitToolStripMenuItem_Click);
             // 
-            // renderToolStripMenuItem
+            // menuObjectLevel
             // 
-            this.renderToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuObjectLevel.Name = "menuObjectLevel";
+            resources.ApplyResources(this.menuObjectLevel, "menuObjectLevel");
+            this.menuObjectLevel.Click += new System.EventHandler(this.levelToMinHeightToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            resources.ApplyResources(this.toolStripSeparator4, "toolStripSeparator4");
+            // 
+            // menuObjectSmashLines
+            // 
+            this.menuObjectSmashLines.Name = "menuObjectSmashLines";
+            resources.ApplyResources(this.menuObjectSmashLines, "menuObjectSmashLines");
+            this.menuObjectSmashLines.Click += new System.EventHandler(this.smashLinesToolStripMenuItem_Click);
+            // 
+            // menuObjectDeleteUnreferencedPoints
+            // 
+            this.menuObjectDeleteUnreferencedPoints.Name = "menuObjectDeleteUnreferencedPoints";
+            resources.ApplyResources(this.menuObjectDeleteUnreferencedPoints, "menuObjectDeleteUnreferencedPoints");
+            this.menuObjectDeleteUnreferencedPoints.Click += new System.EventHandler(this.deleteUnreferencedPointsToolStripMenuItem_Click);
+            // 
+            // menuRenderExportNC
+            // 
+            this.menuRenderExportNC.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exportCNCToolStripMenuItem1,
-            this.exportImagePNGToolStripMenuItem,
-            this.toolStripSeparator7,
-            this.renderSettingsToolStripMenuItem});
-            this.renderToolStripMenuItem.Name = "renderToolStripMenuItem";
-            resources.ApplyResources(this.renderToolStripMenuItem, "renderToolStripMenuItem");
+            this.menuRenderExportImage,
+            this.toolStripSeparator7});
+            this.menuRenderExportNC.Name = "menuRenderExportNC";
+            resources.ApplyResources(this.menuRenderExportNC, "menuRenderExportNC");
             // 
             // exportCNCToolStripMenuItem1
             // 
@@ -317,29 +385,35 @@
             resources.ApplyResources(this.exportCNCToolStripMenuItem1, "exportCNCToolStripMenuItem1");
             this.exportCNCToolStripMenuItem1.Click += new System.EventHandler(this.exportCNCToolStripMenuItem1_Click);
             // 
-            // exportImagePNGToolStripMenuItem
+            // menuRenderExportImage
             // 
-            this.exportImagePNGToolStripMenuItem.Name = "exportImagePNGToolStripMenuItem";
-            resources.ApplyResources(this.exportImagePNGToolStripMenuItem, "exportImagePNGToolStripMenuItem");
-            this.exportImagePNGToolStripMenuItem.Click += new System.EventHandler(this.exportImagePNGToolStripMenuItem_Click);
+            this.menuRenderExportImage.Name = "menuRenderExportImage";
+            resources.ApplyResources(this.menuRenderExportImage, "menuRenderExportImage");
+            this.menuRenderExportImage.Click += new System.EventHandler(this.exportImagePNGToolStripMenuItem_Click);
             // 
-            // tESTToolStripMenuItem1
+            // toolStripSeparator7
             // 
-            this.tESTToolStripMenuItem1.Name = "tESTToolStripMenuItem1";
-            resources.ApplyResources(this.tESTToolStripMenuItem1, "tESTToolStripMenuItem1");
-            this.tESTToolStripMenuItem1.Click += new System.EventHandler(this.tESTToolStripMenuItem1_Click_1);
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            resources.ApplyResources(this.toolStripSeparator7, "toolStripSeparator7");
+            // 
+            // menuTEST
+            // 
+            this.menuTEST.Name = "menuTEST";
+            resources.ApplyResources(this.menuTEST, "menuTEST");
+            this.menuTEST.Click += new System.EventHandler(this.tESTToolStripMenuItem1_Click_1);
             // 
             // helpToolStripMenuItem1
             // 
             this.helpToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem1});
+            this.menuAbout});
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
             resources.ApplyResources(this.helpToolStripMenuItem1, "helpToolStripMenuItem1");
             // 
-            // aboutToolStripMenuItem1
+            // menuAbout
             // 
-            this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            resources.ApplyResources(this.aboutToolStripMenuItem1, "aboutToolStripMenuItem1");
+            this.menuAbout.Name = "menuAbout";
+            resources.ApplyResources(this.menuAbout, "menuAbout");
+            this.menuAbout.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
             // 
             // contextMenuStrip1
             // 
@@ -356,18 +430,18 @@
             // flowLayoutPanelButton
             // 
             resources.ApplyResources(this.flowLayoutPanelButton, "flowLayoutPanelButton");
-            this.flowLayoutPanelButton.Controls.Add(this.btnOpen);
+            this.flowLayoutPanelButton.Controls.Add(this.btnLoad);
             this.flowLayoutPanelButton.Controls.Add(this.btnSave);
             this.flowLayoutPanelButton.Controls.Add(this.btnExport);
             this.flowLayoutPanelButton.Name = "flowLayoutPanelButton";
             // 
-            // btnOpen
+            // btnLoad
             // 
-            resources.ApplyResources(this.btnOpen, "btnOpen");
-            this.btnOpen.Image = global::Scratchy.Properties.Resources.Open_32x32;
-            this.btnOpen.Name = "btnOpen";
-            this.btnOpen.UseVisualStyleBackColor = true;
-            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
+            resources.ApplyResources(this.btnLoad, "btnLoad");
+            this.btnLoad.Image = global::Scratchy.Properties.Resources.Open_32x32;
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnOpen_Click);
             // 
             // btnSave
             // 
@@ -382,36 +456,6 @@
             this.btnExport.Image = global::Scratchy.Properties.Resources.Stock_Index_Up_32x32;
             this.btnExport.Name = "btnExport";
             this.btnExport.UseVisualStyleBackColor = true;
-            // 
-            // levelToMinHeightToolStripMenuItem
-            // 
-            this.levelToMinHeightToolStripMenuItem.Name = "levelToMinHeightToolStripMenuItem";
-            resources.ApplyResources(this.levelToMinHeightToolStripMenuItem, "levelToMinHeightToolStripMenuItem");
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            resources.ApplyResources(this.toolStripSeparator4, "toolStripSeparator4");
-            // 
-            // smashLinesToolStripMenuItem
-            // 
-            this.smashLinesToolStripMenuItem.Name = "smashLinesToolStripMenuItem";
-            resources.ApplyResources(this.smashLinesToolStripMenuItem, "smashLinesToolStripMenuItem");
-            // 
-            // deleteUnreferencedPointsToolStripMenuItem
-            // 
-            this.deleteUnreferencedPointsToolStripMenuItem.Name = "deleteUnreferencedPointsToolStripMenuItem";
-            resources.ApplyResources(this.deleteUnreferencedPointsToolStripMenuItem, "deleteUnreferencedPointsToolStripMenuItem");
-            // 
-            // toolStripSeparator7
-            // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            resources.ApplyResources(this.toolStripSeparator7, "toolStripSeparator7");
-            // 
-            // renderSettingsToolStripMenuItem
-            // 
-            this.renderSettingsToolStripMenuItem.Name = "renderSettingsToolStripMenuItem";
-            resources.ApplyResources(this.renderSettingsToolStripMenuItem, "renderSettingsToolStripMenuItem");
             // 
             // FormMain
             // 
@@ -452,7 +496,7 @@
         private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel statusCoordY;
         private System.Windows.Forms.ToolStripMenuItem loadSTLToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
@@ -460,43 +504,48 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem exportCNCToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar;
+        private System.Windows.Forms.ToolStripProgressBar statusProgress;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem xmasTreeRandomToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem objectToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem renderToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tESTToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem menuRenderExportNC;
+        private System.Windows.Forms.ToolStripMenuItem menuTEST;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem menuAbout;
         private System.Windows.Forms.ToolStripMenuItem generateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem xmasTreeRandomToolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem exportCNCToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem exportImagePNGToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuRenderExportImage;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         public Cyotek.Windows.Forms.ImageBox pictureBox;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem menuLoad;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem menuExit;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelMain;
-        private System.Windows.Forms.Button btnOpen;
+        private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelButton;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnExport;
-        private System.Windows.Forms.ToolStripMenuItem scaleToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem rotateToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem translateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuObjectScale;
+        private System.Windows.Forms.ToolStripMenuItem menuObjectRotate;
+        private System.Windows.Forms.ToolStripMenuItem menuObjectTranslate;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
-        private System.Windows.Forms.ToolStripMenuItem fitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem levelToMinHeightToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuObjectFit;
+        private System.Windows.Forms.ToolStripMenuItem menuObjectLevel;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripMenuItem smashLinesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem deleteUnreferencedPointsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuObjectSmashLines;
+        private System.Windows.Forms.ToolStripMenuItem menuObjectDeleteUnreferencedPoints;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
-        private System.Windows.Forms.ToolStripMenuItem renderSettingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuSave;
+        private System.Windows.Forms.ToolStripMenuItem menuSettings;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripStatusLabel statusInfo;
+        private System.Windows.Forms.ToolStripStatusLabel statusCoordX;
     }
 }
 

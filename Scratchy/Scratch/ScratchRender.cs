@@ -100,7 +100,7 @@ namespace Scratchy
             double range = fAxisMax;
             //G.ScaleTransform((float)(1024 / (range * 2.0)), (float)(1024 / (range * -2.0)));
             //G.TranslateTransform(512, 512, MatrixOrder.Append);
-            G.ScaleTransform(1.0f, -1.0f*0.7f);
+            G.ScaleTransform(1.0f, -1.0f * 0.7f);
             //G.RotateTransform(30, MatrixOrder.Append);
             G.TranslateTransform(fAxisMax, fAxisMax, MatrixOrder.Append);
 
@@ -165,7 +165,7 @@ namespace Scratchy
                 Arc(P.X, P.Y, P.Z);
             }
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -180,17 +180,17 @@ namespace Scratchy
 
 
 
-       
 
 
-/// <summary>
+
+        /// <summary>
         /// Render image and NC for table-type-scratch with hidden-point-calculation
-/// </summary>
-/// <returns></returns>
+        /// </summary>
+        /// <returns></returns>
         public bool RenderTableArcHidden()
         {
             double ViewingAngle = 80;
-            int Steps = 0;
+            int Steps = (int)(ViewingAngle / 10 + 0.5);
 
             Point3D P1, P2;
             double x, y, z;

@@ -1,5 +1,6 @@
 ﻿using Ciloci.Flee;
 using Ciloci.Flee.CalcEngine;
+using Cyotek.Windows.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -51,7 +52,7 @@ namespace Scratchy
 
             IDynamicExpression de = context.CompileDynamic("cos(a)*sqrt(2)");
             result = (double)de.Evaluate();
-            
+
 
             //xmasTreeRandomToolStripMenuItem1_Click(sender, e);
             //S.Load(@"C:\Trefoil_knot\trefoil_JK.off");
@@ -60,7 +61,7 @@ namespace Scratchy
             S._data.LinesFromPolygons();
 
 
-            S._data.SmashLines(2.5);
+            S._data.SmashLines(2.86);
             //S._data.LevelZ();
             S.UpdateImage();
             pictureBox.Refresh();
@@ -82,7 +83,7 @@ namespace Scratchy
         {
             pictureBox.Image = S.GetImage();
             pictureBox.Focus();
-            S._render.progress = (ProgressBar)toolStripProgressBar.ProgressBar;
+            S._render.progress = (ProgressBar)statusProgress.ProgressBar;
         }
 
         private void xmasTreeRandomToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -212,6 +213,76 @@ namespace Scratchy
 
         private void FormMain_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
+
+        }
+
+        private void scaleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+        private void levelToMinHeightToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void smashLinesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void deleteUnreferencedPointsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void toolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripMenuItem6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox_MouseMove_1(object sender, MouseEventArgs e)
+        {
+            Point p = new Point(e.Location.X, e.Location.Y);
+            string sX, sY;
+
+            if (((ImageBox)sender).IsPointInImage(p) == true)
+            {
+                //((ImageBox)sender).PointToClient(p);
+                p = ((ImageBox)sender).PointToImage(p);
+
+                double x = (double)p.X / ((ImageBox)sender).Image.Size.Width * S._render.fAxisMax * 2 - S._render.fAxisMax;
+                double y = (double)p.Y / ((ImageBox)sender).Image.Size.Height * S._render.fAxisMax * -2 + S._render.fAxisMax;
+
+                //((ImageBox)sender).Text = p.ToString();
+                p.ToString();
+
+                sX = string.Format("{0:0.0}", x);
+                sY = string.Format("{0:0.0}", y);
+            }
+            else
+            {
+                sX = "";
+                sY = "";
+            }
+
+            ((FormMain)((ImageBox)sender).Parent.Parent).statusCoordX.Text = sX;
+            ((FormMain)((ImageBox)sender).Parent.Parent).statusCoordY.Text = sY;
+
 
         }
 
