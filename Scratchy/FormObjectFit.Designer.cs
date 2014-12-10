@@ -48,7 +48,6 @@
             // 
             // numSize
             // 
-            this.numSize.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::Scratchy.Properties.Settings.Default, "ObjectFit_Size", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.numSize.DecimalPlaces = 1;
             this.numSize.Location = new System.Drawing.Point(12, 29);
             this.numSize.Maximum = new decimal(new int[] {
@@ -65,7 +64,11 @@
             this.numSize.Size = new System.Drawing.Size(120, 22);
             this.numSize.TabIndex = 1;
             this.numSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numSize.Value = global::Scratchy.Properties.Settings.Default.ObjectFit_Size;
+            this.numSize.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
             // 
             // label1
             // 
@@ -88,23 +91,26 @@
             this.btnOK.TabIndex = 101;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // FormObjectFit
             // 
+            this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(230, 110);
+            this.ControlBox = false;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.numSize);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.HelpButton = true;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "FormObjectFit";
             this.ShowInTaskbar = false;
-            this.Text = "Fit Object to";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Fit Object in Bounding Box";
+            this.Load += new System.EventHandler(this.FormObjectFit_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numSize)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

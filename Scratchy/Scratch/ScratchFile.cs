@@ -230,11 +230,11 @@ namespace Scratchy
 
         public void LoadSSX(string AllFile)
         {
-            string sX, sY, sZ;
+            //string sX, sY, sZ;
             double dActX = 0, dActY = 0, dActZ = 0, dActN = 1;
             double dLastX = 0, dLastY = 0, dLastZ = 0;
 
-            int nVertexes, nLines, nPolygons;
+            //int nVertexes, nLines, nPolygons;
 
             Point3D ActP = new Point3D(dActX, dActY, dActZ);
             Point3D LastP = new Point3D(dActX, dActY, dActZ);
@@ -261,7 +261,7 @@ namespace Scratchy
                     string sCommand = matchCommand.Groups[2].Value.ToUpper();
                     string sValues = matchCommand.Groups[3].Value.ToUpper();
 
-                    int nPoint;
+                    //int nPoint;
                     List<int> lIdx = new List<int>();
 
 
@@ -365,7 +365,7 @@ namespace Scratchy
             //Z = Z;
             //N = N;
 
-            double dV = 0;
+            //double dV = 0;
 
             string sRegExValue = @"([-+]?[0-9\.eE]+)";
             string sRegExValueXYZ = @"([xyzXYZ]?)\s*" + sRegExValue + @"";

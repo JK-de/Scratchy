@@ -28,15 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.btnCancel = new System.Windows.Forms.Button();
             this.numSize = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.formObjectRotateBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.comboAxis = new System.Windows.Forms.ComboBox();
             this.btnOK = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numSize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.formObjectRotateBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -52,7 +49,6 @@
             // 
             // numSize
             // 
-            this.numSize.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.formObjectRotateBindingSource, "Angle", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "0", "N1"));
             this.numSize.DecimalPlaces = 1;
             this.numSize.Location = new System.Drawing.Point(12, 76);
             this.numSize.Maximum = new decimal(new int[] {
@@ -69,11 +65,6 @@
             this.numSize.Size = new System.Drawing.Size(120, 22);
             this.numSize.TabIndex = 1;
             this.numSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numSize.Value = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
             // 
             // label1
             // 
@@ -84,23 +75,20 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Rotation Angle [°]";
             // 
-            // comboBox1
+            // comboAxis
             // 
-            this.comboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.formObjectRotateBindingSource, "Axis", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "0"));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "X",
-            "Y",
-            "Z",
-            "Viewing"});
-            this.comboBox1.Location = new System.Drawing.Point(15, 12);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 103;
-            // 
-            // formObjectRotateBindingSource
-            // 
-            this.formObjectRotateBindingSource.DataSource = typeof(Scratchy.FormObjectRotate);
+            this.comboAxis.DropDownHeight = 500;
+            this.comboAxis.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboAxis.IntegralHeight = false;
+            this.comboAxis.Items.AddRange(new object[] {
+            "X-Axis",
+            "Y-Axis",
+            "Z-Axis",
+            "Viewing-Axis"});
+            this.comboAxis.Location = new System.Drawing.Point(15, 12);
+            this.comboAxis.Name = "comboAxis";
+            this.comboAxis.Size = new System.Drawing.Size(121, 24);
+            this.comboAxis.TabIndex = 103;
             // 
             // btnOK
             // 
@@ -118,24 +106,24 @@
             // 
             // FormObjectRotate
             // 
+            this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(228, 161);
             this.ControlBox = false;
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboAxis);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.numSize);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "FormObjectRotate";
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Rotate Object";
             this.Load += new System.EventHandler(this.FormObjectRotate_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numSize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.formObjectRotateBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -147,7 +135,6 @@
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.NumericUpDown numSize;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.BindingSource formObjectRotateBindingSource;
+        private System.Windows.Forms.ComboBox comboAxis;
     }
 }

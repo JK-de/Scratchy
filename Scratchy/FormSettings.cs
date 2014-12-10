@@ -10,7 +10,12 @@ using System.Windows.Forms;
 
 namespace Scratchy
 {
-    public partial class FormMain : Form
+    public partial class FormSettings : Form
     {
+        public FormSettings()
+        {
+            InitializeComponent();
+        }
+
     }
 }

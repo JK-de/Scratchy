@@ -2,18 +2,28 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Scratchy.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="ExportImageName" Type="System.String" Scope="User">
+    <Setting Name="RenderExportImage_Name" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\</Value>
     </Setting>
     <Setting Name="TEST" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)" />
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="A" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="View_ShowScratches" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="ObjectFit_Size" Type="System.Decimal" Scope="User">
-      <Value Profile="(Default)">30</Value>
+    <Setting Name="View_ShowGrid" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="RenderExportNC_Name" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\</Value>
+    </Setting>
+    <Setting Name="NC_Prolog" Type="System.String" Scope="User">
+      <Value Profile="(Default)">G90
+G1 F400</Value>
+    </Setting>
+    <Setting Name="NC_Epilog" Type="System.String" Scope="User">
+      <Value Profile="(Default)">M3</Value>
     </Setting>
   </Settings>
 </SettingsFile>

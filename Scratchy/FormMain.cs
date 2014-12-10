@@ -10,14 +10,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Settings = Scratchy.Properties.Settings;
 
 namespace Scratchy
 {
+
+    /// <summary>
+    /// Main Form with menu and status bar
+    /// </summary>
     public partial class FormMain : Form
     {
         Scratch S = new Scratch();
 
-        private void tESTToolStripMenuItem1_Click_1(object sender, EventArgs e)
+        void Update()
+        {
+            UseWaitCursor = true;
+            S.UpdateImage();
+            pictureBox.Refresh();
+            UseWaitCursor = false;
+        }
+
+        private void MenuTEST_Click(object sender, EventArgs e)
         {
             CalculationEngine engine = new CalculationEngine();
             ExpressionContext context = new ExpressionContext();
@@ -67,7 +80,9 @@ namespace Scratchy
             pictureBox.Refresh();
         }
 
-
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public FormMain()
         {
             InitializeComponent();
@@ -86,7 +101,7 @@ namespace Scratchy
             S._render.progress = (ProgressBar)statusProgress.ProgressBar;
         }
 
-        private void xmasTreeRandomToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void MenuObjectGenerateXmasTreeRandom_Click(object sender, EventArgs e)
         {
             UseWaitCursor = true;
             S.GenerateXmasTreeRandom();
@@ -95,27 +110,9 @@ namespace Scratchy
             UseWaitCursor = false;
         }
 
-        private void pictureBox_MouseMove(object sender, MouseEventArgs e)
-        {
-            SizeF s = new SizeF(0.025f, 0.025f);
-
-            if (e.Button == MouseButtons.Right)
-            {
-                pictureBox.Scale(s);
-            }
-
-            //pictureBox.
-
-        }
-
-        private void pictureBox_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            loadToolStripMenuItem1_Click(sender, e);
+            MenuOpen_Click(sender, e);
         }
 
 
@@ -216,46 +213,7 @@ namespace Scratchy
 
         }
 
-        private void scaleToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-        private void levelToMinHeightToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void smashLinesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void deleteUnreferencedPointsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void toolStripMenuItem5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStripMenuItem6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox_MouseMove_1(object sender, MouseEventArgs e)
+        private void pictureBox_MouseMove(object sender, MouseEventArgs e)
         {
             Point p = new Point(e.Location.X, e.Location.Y);
             string sX, sY;
@@ -269,7 +227,7 @@ namespace Scratchy
                 double y = (double)p.Y / ((ImageBox)sender).Image.Size.Height * S._render.fAxisMax * -2 + S._render.fAxisMax;
 
                 //((ImageBox)sender).Text = p.ToString();
-                p.ToString();
+                //p.ToString();
 
                 sX = string.Format("{0:0.0}", x);
                 sY = string.Format("{0:0.0}", y);
@@ -282,10 +240,194 @@ namespace Scratchy
 
             ((FormMain)((ImageBox)sender).Parent.Parent).statusCoordX.Text = sX;
             ((FormMain)((ImageBox)sender).Parent.Parent).statusCoordY.Text = sY;
+        }
 
+        private void MenuOpen_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog loadFileDialog = new OpenFileDialog();
 
+            //loadFileDialog.FileName = Properties.Settings.Default.ExportImageName;
+            loadFileDialog.Title = "Load 3D-Object";
+            //saveFileDialog.InitialDirectory = "c:\\";
+            loadFileDialog.Filter = "Scratchable files|*.STL;*.M;*.OFF;*.SSX|STL files (*.STL)|*.STL|OFF files (*.OFF)|*.OFF|M files (*.M)|*.M|Scratch-Script files (*.SSC)|*.SCS|All files (*.*)|*.*";
+            loadFileDialog.FilterIndex = 1;
+            loadFileDialog.DefaultExt = "STL";
+            loadFileDialog.AddExtension = true;
+            loadFileDialog.CheckPathExists = true;
+            loadFileDialog.CheckFileExists = true;
+            loadFileDialog.RestoreDirectory = true;
+            loadFileDialog.ValidateNames = true;
+
+            if (loadFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                S._data.Clear();
+
+                //Properties.Settings.Default.ExportImageName = loadFileDialog.FileName;
+                //S.loadFileDialog.FileName(loadFileDialog.FileName);
+                S.Load(loadFileDialog.FileName);
+                //S.SmashLines(5);
+                Update();
+            }
         }
 
 
+        private void MenuSave_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MenuSettings_Click(object sender, EventArgs e)
+        {
+            FormSettings dlg = new FormSettings();
+
+            if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                //S._data.Translate(dlg.Data.X, dlg.Data.Y, dlg.Data.Z);
+                Update();
+            }
+        }
+
+        private void MenuExit_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void MenuRenderExportNC_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+
+            saveFileDialog.FileName = Settings.Default.RenderExportNC_Name;
+            saveFileDialog.Title = "Export NC File (G-Code)";
+            //saveFileDialog.InitialDirectory = "c:\\";
+            saveFileDialog.Filter = "NC files (*.NC)|*.NC;*.CNC|TXT files (*.TXT)|*.TXT|All files (*.*)|*.*";
+            saveFileDialog.FilterIndex = 1;
+            saveFileDialog.DefaultExt = "NC";
+            saveFileDialog.AddExtension = true;
+            saveFileDialog.CheckPathExists = true;
+            saveFileDialog.RestoreDirectory = true;
+            saveFileDialog.ValidateNames = true;
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                UseWaitCursor = true;
+
+                Settings.Default.RenderExportNC_Name = saveFileDialog.FileName;
+                S._render.Render(saveFileDialog.FileName);
+                pictureBox.Refresh();
+
+                UseWaitCursor = false;
+            }
+        }
+
+        private void MenuRenderExportImage_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+
+            saveFileDialog.FileName = Settings.Default.RenderExportImage_Name;
+            saveFileDialog.Title = "Export Image";
+            //saveFileDialog.InitialDirectory = "c:\\";
+            saveFileDialog.Filter = "PNG files (*.PNG)|*.PNG|JPG files (*.JPG)|*.JPG|Bitmap files (*.BMP)|*.BMP|Tiff files (*.TIF)|*.TIF|All files (*.*)|*.*";
+            saveFileDialog.FilterIndex = 1;
+            saveFileDialog.DefaultExt = "PNG";
+            saveFileDialog.AddExtension = true;
+            saveFileDialog.CheckPathExists = true;
+            saveFileDialog.RestoreDirectory = true;
+            saveFileDialog.ValidateNames = true;
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                UseWaitCursor = true;
+
+                Settings.Default.RenderExportImage_Name = saveFileDialog.FileName;
+                S._render.ExportImage(saveFileDialog.FileName);
+
+                UseWaitCursor = false;
+            }
+        }
+
+        private void MenuAbout_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MenuObjectScale_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MenuObjectRotate_Click(object sender, EventArgs e)
+        {
+            FormObjectRotate dlg = new FormObjectRotate();
+
+            if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                S._data.Rotate(dlg.Data.Axis, dlg.Data.Angle);
+                Update();
+            }
+        }
+
+        private void MenuObjectTranslate_Click(object sender, EventArgs e)
+        {
+            FormObjectTranslate dlg = new FormObjectTranslate();
+
+            if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                S._data.Translate(dlg.Data.X, dlg.Data.Y, dlg.Data.Z);
+                Update();
+            }
+        }
+
+        private void MenuObjectFit_Click(object sender, EventArgs e)
+        {
+            FormObjectFit dlg = new FormObjectFit();
+
+            if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                //(double)Settings.Default.ObjectFit_Size
+                S._data.Fit(dlg.Data.Size);
+                Update();
+            }
+        }
+
+        private void MenuObjectLevelToMinHeight_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MenuObjectSmashLines_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MenuObjectDeleteUnreferencedPoints_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MenuObjectGenerateXasTreeRandom_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            MenuSave_Click(sender, e);
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            MenuRenderExportNC_Click(sender, e);
+        }
+
+        private void MenuViewScratches_CheckStateChanged(object sender, EventArgs e)
+        {
+            Settings.Default.View_ShowScratches = ((ToolStripMenuItem)sender).Checked;
+            Update();
+        }
+
+        private void menuObjectInformation_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

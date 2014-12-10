@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Media.Media3D;
+using Settings = Scratchy.Properties.Settings;
 
 namespace Scratchy
 {
@@ -191,6 +192,10 @@ namespace Scratchy
         {
             double ViewingAngle = 80;
             int Steps = (int)(ViewingAngle / 10 + 0.5);
+
+//            if (Settings.Default.ViewScraches != CheckState.Checked)
+                if (!Settings.Default.View_ShowScratches)
+                    Steps = 0;
 
             Point3D P1, P2;
             double x, y, z;
