@@ -227,10 +227,10 @@ namespace Scratchy
             A3 = PA3.X * PA1.X + PA3.Y * PA1.Y + PA3.Z * PA1.Z;
             if (A3 > 1) A3 = 1;
             TOTAL = (Math.Acos(A1) + Math.Acos(A2) + Math.Acos(A3)) * (180 / Math.PI);
-//            if (TOTAL < (360-0.00001))
-//                if (Math.Abs(TOTAL - 360) > EPS)
-                    if ((360-TOTAL) > EPS)
-                        return false;
+            //            if (TOTAL < (360-0.00001))
+            //                if (Math.Abs(TOTAL - 360) > EPS)
+            if ((360 - TOTAL) > EPS)
+                return false;
 
             return true;
         }
@@ -387,6 +387,44 @@ namespace Scratchy
                 return (0);
         }*/
 
+        public void GenerateGrid(int nCountX, int nCountY, double dScale)
+        {
+            double dStepX;
+            if ( nCountX>nCountY)
+                dStepX = 2.0 / (nCountX - 1);
+            else
+                dStepX = 2.0 / (nCountY - 1);
+            double dOffsetX = -(nCountX - 1) / 2.0 * dStepX;
+            double dOffsetY = -(nCountY - 1) / 2.0 * dStepX;
+            Point3D P;
+            Polygon Y;
 
+            Clear();
+
+            for (int iY = 0; iY < nCountY; iY++)
+                for (int iX = 0; iX < nCountX; iX++)
+                {
+                    double dX=iX * dStepX + dOffsetX;
+                    double dY=iY * dStepX + dOffsetY;
+                    double dZ = Math.Cos(dX*3.14)*Math.Cos(dY*3.14);
+
+                    P = new Point3D(dX * dScale, dY * dScale, dZ * dScale);
+                    Points.Add(P);
+                }
+
+            for (int iY = 0; iY < (nCountY - 1); iY++)
+                for (int iX = 0; iX < (nCountX - 1); iX++)
+                {
+                    int i = iX  + iY* nCountX;
+
+                    Y = new Polygon(i, i+1, i+nCountX);
+                    Polygons.Add(Y);
+
+                    Y = new Polygon(i + 1, i + nCountX+1, i + nCountX);
+                    Polygons.Add(Y);
+                }
+
+            LinesFromPolygons();
+        }
     }
 }

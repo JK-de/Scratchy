@@ -11,6 +11,15 @@ namespace Scratchy
     {
         //public List<int> Idxs;
 
+        public Polygon()
+        { }
+
+        public Polygon(int A,int B, int C)
+        {
+            Add(A);
+            Add(B);
+            Add(C);
+        }
        
     };
 

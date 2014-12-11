@@ -25,7 +25,7 @@ namespace Scratchy.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\*.*")]
         public string RenderExportImage_Name {
             get {
                 return ((string)(this["RenderExportImage_Name"]));
@@ -70,7 +70,7 @@ namespace Scratchy.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\*.NC")]
         public string RenderExportNC_Name {
             get {
                 return ((string)(this["RenderExportNC_Name"]));
@@ -101,6 +101,18 @@ namespace Scratchy.Properties {
             }
             set {
                 this["NC_Epilog"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\*.OFF")]
+        public string SaveAsOFF_Name {
+            get {
+                return ((string)(this["SaveAsOFF_Name"]));
+            }
+            set {
+                this["SaveAsOFF_Name"] = value;
             }
         }
     }

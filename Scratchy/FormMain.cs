@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Settings = Scratchy.Properties.Settings;
+using Set = Scratchy.Properties.Settings;
 
 namespace Scratchy
 {
@@ -32,9 +32,15 @@ namespace Scratchy
 
         private void MenuTEST_Click(object sender, EventArgs e)
         {
+
+            S._data.GenerateGrid(44, 32, 30.0);
+            return;
+
+
             CalculationEngine engine = new CalculationEngine();
             ExpressionContext context = new ExpressionContext();
             VariableCollection variables = context.Variables;
+
 
             // Add some variables
             variables.Add("x", 100.0);
@@ -96,6 +102,7 @@ namespace Scratchy
 
         private void FormMain_Load(object sender, EventArgs e)
         {
+            Properties.Settings.Default.Reload();
             pictureBox.Image = S.GetImage();
             pictureBox.Focus();
             S._render.progress = (ProgressBar)statusProgress.ProgressBar;
@@ -276,7 +283,7 @@ namespace Scratchy
 
             SaveFileDialog saveFileDialog = new SaveFileDialog();
 
-            saveFileDialog.FileName = Settings.Default.RenderExportImage_Name;
+            saveFileDialog.FileName = Set.Default.RenderExportImage_Name;
             saveFileDialog.Title = "Save as OFF";
             //saveFileDialog.InitialDirectory = "c:\\";
             saveFileDialog.Filter = "OFF files (*.OFF)|*.OFF|All files (*.*)|*.*";
@@ -291,7 +298,7 @@ namespace Scratchy
             {
                 UseWaitCursor = true;
 
-                Settings.Default.RenderExportImage_Name = saveFileDialog.FileName;
+                Set.Default.RenderExportImage_Name = saveFileDialog.FileName;
                 S.Save(saveFileDialog.FileName);
 
                 UseWaitCursor = false;
@@ -318,7 +325,7 @@ namespace Scratchy
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
 
-            saveFileDialog.FileName = Settings.Default.RenderExportNC_Name;
+            saveFileDialog.FileName = Set.Default.RenderExportNC_Name;
             saveFileDialog.Title = "Export NC File (G-Code)";
             //saveFileDialog.InitialDirectory = "c:\\";
             saveFileDialog.Filter = "NC files (*.NC)|*.NC;*.CNC|TXT files (*.TXT)|*.TXT|All files (*.*)|*.*";
@@ -333,7 +340,7 @@ namespace Scratchy
             {
                 UseWaitCursor = true;
 
-                Settings.Default.RenderExportNC_Name = saveFileDialog.FileName;
+                Set.Default.RenderExportNC_Name = saveFileDialog.FileName;
                 S._render.Render(saveFileDialog.FileName);
                 pictureBox.Refresh();
 
@@ -345,7 +352,7 @@ namespace Scratchy
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
 
-            saveFileDialog.FileName = Settings.Default.RenderExportImage_Name;
+            saveFileDialog.FileName = Set.Default.RenderExportImage_Name;
             saveFileDialog.Title = "Export Image";
             //saveFileDialog.InitialDirectory = "c:\\";
             saveFileDialog.Filter = "PNG files (*.PNG)|*.PNG|JPG files (*.JPG)|*.JPG|Bitmap files (*.BMP)|*.BMP|Tiff files (*.TIF)|*.TIF|All files (*.*)|*.*";
@@ -360,7 +367,7 @@ namespace Scratchy
             {
                 UseWaitCursor = true;
 
-                Settings.Default.RenderExportImage_Name = saveFileDialog.FileName;
+                Set.Default.RenderExportImage_Name = saveFileDialog.FileName;
                 S._render.ExportImage(saveFileDialog.FileName);
 
                 UseWaitCursor = false;
@@ -443,7 +450,7 @@ namespace Scratchy
 
         private void MenuViewScratches_CheckStateChanged(object sender, EventArgs e)
         {
-            Settings.Default.View_ShowScratches = ((ToolStripMenuItem)sender).Checked;
+            Set.Default.View_ShowScratches = ((ToolStripMenuItem)sender).Checked;
             Update();
         }
 
@@ -455,6 +462,11 @@ namespace Scratchy
         private void menuJoinPolygons_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Properties.Settings.Default.Save();
         }
     }
 }

@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="RenderExportImage_Name" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\</Value>
+      <Value Profile="(Default)">C:\*.*</Value>
     </Setting>
     <Setting Name="TEST" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)" />
@@ -16,7 +16,7 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="RenderExportNC_Name" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\</Value>
+      <Value Profile="(Default)">C:\*.NC</Value>
     </Setting>
     <Setting Name="NC_Prolog" Type="System.String" Scope="User">
       <Value Profile="(Default)">G90
@@ -24,6 +24,9 @@ G1 F400</Value>
     </Setting>
     <Setting Name="NC_Epilog" Type="System.String" Scope="User">
       <Value Profile="(Default)">M3</Value>
+    </Setting>
+    <Setting Name="SaveAsOFF_Name" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\*.OFF</Value>
     </Setting>
   </Settings>
 </SettingsFile>

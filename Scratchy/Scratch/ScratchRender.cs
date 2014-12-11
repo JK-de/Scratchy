@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Media.Media3D;
-using Settings = Scratchy.Properties.Settings;
+using Set = Scratchy.Properties.Settings;
 
 namespace Scratchy
 {
@@ -111,7 +111,9 @@ namespace Scratchy
             brushReflexR = new SolidBrush(colorReflexR);
             Color colorReflexC = Color.FromArgb(96, 0, 255, 255);
             brushReflexC = new SolidBrush(colorReflexC);
-
+            
+            
+            if ( Set.Default.View_ShowGrid )
             {
                 Color c = Color.FromArgb(48, 128, 255, 0);
                 Pen pen = new Pen(c, 0.1f);
@@ -194,7 +196,7 @@ namespace Scratchy
             int Steps = (int)(ViewingAngle / 10 + 0.5);
 
 //            if (Settings.Default.ViewScraches != CheckState.Checked)
-                if (!Settings.Default.View_ShowScratches)
+                if (!Set.Default.View_ShowScratches)
                     Steps = 0;
 
             Point3D P1, P2;
