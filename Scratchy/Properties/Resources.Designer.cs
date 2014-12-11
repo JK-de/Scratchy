@@ -93,6 +93,16 @@ namespace Scratchy.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Scratch11 {
+            get {
+                object obj = ResourceManager.GetObject("Scratch11", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Stock_Index_Up_32x32 {
             get {
                 object obj = ResourceManager.GetObject("Stock Index Up_32x32", resourceCulture);

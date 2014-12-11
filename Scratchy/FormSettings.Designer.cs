@@ -45,7 +45,9 @@
             this.numSize = new System.Windows.Forms.NumericUpDown();
             this.tabPageExportNC = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.textBoxProlog = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.textBoxEpilog = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.checkCompensateRadius = new System.Windows.Forms.CheckBox();
@@ -60,8 +62,9 @@
             this.checkForceG1onNegZ = new System.Windows.Forms.CheckBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
-            this.textBoxProlog = new System.Windows.Forms.TextBox();
-            this.textBoxEpilog = new System.Windows.Forms.TextBox();
+            this.picAngles = new System.Windows.Forms.PictureBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
             this.tabCtrl.SuspendLayout();
             this.tabPageCommon.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -81,6 +84,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAngles)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
             this.SuspendLayout();
             // 
             // tabCtrl
@@ -98,6 +103,7 @@
             // 
             // tabPageCommon
             // 
+            this.tabPageCommon.Controls.Add(this.picAngles);
             this.tabPageCommon.Controls.Add(this.groupBox4);
             this.tabPageCommon.Controls.Add(this.groupBox2);
             this.tabPageCommon.Controls.Add(this.groupBox1);
@@ -115,7 +121,7 @@
             this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Controls.Add(this.numericUpDown6);
             this.groupBox4.Controls.Add(this.label9);
-            this.groupBox4.Location = new System.Drawing.Point(8, 132);
+            this.groupBox4.Location = new System.Drawing.Point(7, 191);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(408, 228);
             this.groupBox4.TabIndex = 10;
@@ -179,13 +185,15 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label12);
+            this.groupBox2.Controls.Add(this.numericUpDown7);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.numericUpDown5);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.numMovingAngle);
             this.groupBox2.Location = new System.Drawing.Point(214, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 120);
+            this.groupBox2.Size = new System.Drawing.Size(200, 179);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Observer";
@@ -195,9 +203,9 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(6, 67);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(114, 17);
+            this.label11.Size = new System.Drawing.Size(146, 17);
             this.label11.TabIndex = 9;
-            this.label11.Text = "Viewing Angle [°]";
+            this.label11.Text = "Viewing Angle (VA) [°]";
             // 
             // numericUpDown5
             // 
@@ -229,9 +237,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 18);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(119, 17);
+            this.label2.Size = new System.Drawing.Size(153, 17);
             this.label2.TabIndex = 7;
-            this.label2.Text = "Moving Angle [±°]";
+            this.label2.Text = "Moving Angle (MA) [±°]";
             // 
             // numMovingAngle
             // 
@@ -263,7 +271,7 @@
             this.groupBox1.Controls.Add(this.numSize);
             this.groupBox1.Location = new System.Drawing.Point(8, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 120);
+            this.groupBox1.Size = new System.Drawing.Size(200, 179);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Scratch Tool";
@@ -333,6 +341,22 @@
             this.splitContainer1.SplitterDistance = 357;
             this.splitContainer1.TabIndex = 10;
             // 
+            // textBoxProlog
+            // 
+            this.textBoxProlog.AcceptsReturn = true;
+            this.textBoxProlog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxProlog.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::Scratchy.Properties.Settings.Default, "NC_Prolog", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.textBoxProlog.Location = new System.Drawing.Point(6, 20);
+            this.textBoxProlog.Multiline = true;
+            this.textBoxProlog.Name = "textBoxProlog";
+            this.textBoxProlog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBoxProlog.Size = new System.Drawing.Size(348, 205);
+            this.textBoxProlog.TabIndex = 0;
+            this.textBoxProlog.Text = global::Scratchy.Properties.Settings.Default.NC_Prolog;
+            this.textBoxProlog.WordWrap = false;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -341,6 +365,22 @@
             this.label3.Size = new System.Drawing.Size(102, 17);
             this.label3.TabIndex = 6;
             this.label3.Text = "G-Code Prolog";
+            // 
+            // textBoxEpilog
+            // 
+            this.textBoxEpilog.AcceptsReturn = true;
+            this.textBoxEpilog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxEpilog.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::Scratchy.Properties.Settings.Default, "NC_Epilog", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.textBoxEpilog.Location = new System.Drawing.Point(6, 20);
+            this.textBoxEpilog.Multiline = true;
+            this.textBoxEpilog.Name = "textBoxEpilog";
+            this.textBoxEpilog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBoxEpilog.Size = new System.Drawing.Size(352, 205);
+            this.textBoxEpilog.TabIndex = 7;
+            this.textBoxEpilog.Text = global::Scratchy.Properties.Settings.Default.NC_Epilog;
+            this.textBoxEpilog.WordWrap = false;
             // 
             // label4
             // 
@@ -536,37 +576,50 @@
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             // 
-            // textBoxProlog
+            // picAngles
             // 
-            this.textBoxProlog.AcceptsReturn = true;
-            this.textBoxProlog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxProlog.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::Scratchy.Properties.Settings.Default, "NC_Prolog", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.textBoxProlog.Location = new System.Drawing.Point(6, 20);
-            this.textBoxProlog.Multiline = true;
-            this.textBoxProlog.Name = "textBoxProlog";
-            this.textBoxProlog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxProlog.Size = new System.Drawing.Size(348, 205);
-            this.textBoxProlog.TabIndex = 0;
-            this.textBoxProlog.Text = global::Scratchy.Properties.Settings.Default.NC_Prolog;
-            this.textBoxProlog.WordWrap = false;
+            this.picAngles.Image = global::Scratchy.Properties.Resources.Scratch11;
+            this.picAngles.InitialImage = null;
+            this.picAngles.Location = new System.Drawing.Point(421, 7);
+            this.picAngles.Name = "picAngles";
+            this.picAngles.Size = new System.Drawing.Size(298, 214);
+            this.picAngles.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picAngles.TabIndex = 11;
+            this.picAngles.TabStop = false;
             // 
-            // textBoxEpilog
+            // label12
             // 
-            this.textBoxEpilog.AcceptsReturn = true;
-            this.textBoxEpilog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxEpilog.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::Scratchy.Properties.Settings.Default, "NC_Epilog", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.textBoxEpilog.Location = new System.Drawing.Point(6, 20);
-            this.textBoxEpilog.Multiline = true;
-            this.textBoxEpilog.Name = "textBoxEpilog";
-            this.textBoxEpilog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxEpilog.Size = new System.Drawing.Size(352, 205);
-            this.textBoxEpilog.TabIndex = 7;
-            this.textBoxEpilog.Text = global::Scratchy.Properties.Settings.Default.NC_Epilog;
-            this.textBoxEpilog.WordWrap = false;
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 119);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(147, 17);
+            this.label12.TabIndex = 11;
+            this.label12.Text = "Lighting Angle (LA) [°]";
+            // 
+            // numericUpDown7
+            // 
+            this.numericUpDown7.DecimalPlaces = 1;
+            this.numericUpDown7.Enabled = false;
+            this.numericUpDown7.Location = new System.Drawing.Point(6, 139);
+            this.numericUpDown7.Maximum = new decimal(new int[] {
+            90,
+            0,
+            0,
+            0});
+            this.numericUpDown7.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDown7.Name = "numericUpDown7";
+            this.numericUpDown7.Size = new System.Drawing.Size(120, 22);
+            this.numericUpDown7.TabIndex = 10;
+            this.numericUpDown7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericUpDown7.Value = new decimal(new int[] {
+            90,
+            0,
+            0,
+            0});
             // 
             // FormSettings
             // 
@@ -607,6 +660,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAngles)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -647,5 +702,8 @@
         private System.Windows.Forms.CheckBox checkForceG1onNegZ;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.NumericUpDown numericUpDown5;
+        private System.Windows.Forms.PictureBox picAngles;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.NumericUpDown numericUpDown7;
     }
 }

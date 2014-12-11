@@ -406,8 +406,15 @@ namespace Scratchy
                 {
                     double dX=iX * dStepX + dOffsetX;
                     double dY=iY * dStepX + dOffsetY;
-                    double dZ = Math.Cos(dX*3.14)*Math.Cos(dY*3.14);
-
+                    double r = Math.Sqrt(dX * dX + dY * dY);
+//                    double dZ = Math.Cos(((Math.Exp(r)-1) * 1.5) *  3.14) * Math.Exp(-r * 1.5) * 0.5;
+                    double rrr=r*3.14*2.5;
+                    double dZ;
+                    if (rrr!=0)
+                     dZ = Math.Sin(rrr)/ rrr;
+                    else dZ = 1;
+                    dZ *= 0.75;
+                    
                     P = new Point3D(dX * dScale, dY * dScale, dZ * dScale);
                     Points.Add(P);
                 }
