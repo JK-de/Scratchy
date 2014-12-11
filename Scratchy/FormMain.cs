@@ -274,6 +274,28 @@ namespace Scratchy
         private void MenuSave_Click(object sender, EventArgs e)
         {
 
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+
+            saveFileDialog.FileName = Settings.Default.RenderExportImage_Name;
+            saveFileDialog.Title = "Save as OFF";
+            //saveFileDialog.InitialDirectory = "c:\\";
+            saveFileDialog.Filter = "OFF files (*.OFF)|*.OFF|All files (*.*)|*.*";
+            saveFileDialog.FilterIndex = 1;
+            saveFileDialog.DefaultExt = "OFF";
+            saveFileDialog.AddExtension = true;
+            saveFileDialog.CheckPathExists = true;
+            saveFileDialog.RestoreDirectory = true;
+            saveFileDialog.ValidateNames = true;
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                UseWaitCursor = true;
+
+                Settings.Default.RenderExportImage_Name = saveFileDialog.FileName;
+                S.Save(saveFileDialog.FileName);
+
+                UseWaitCursor = false;
+            }
         }
 
         private void MenuSettings_Click(object sender, EventArgs e)
@@ -426,6 +448,11 @@ namespace Scratchy
         }
 
         private void menuObjectInformation_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuJoinPolygons_Click(object sender, EventArgs e)
         {
 
         }

@@ -59,6 +59,7 @@
             this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuViewScratches = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuViewGrid = new System.Windows.Forms.ToolStripMenuItem();
             this.objectToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.generateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xmasTreeRandomToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,6 +73,8 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.menuObjectSmashLines = new System.Windows.Forms.ToolStripMenuItem();
             this.menuObjectDeleteUnreferencedPoints = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuObjectInformation = new System.Windows.Forms.ToolStripMenuItem();
             this.menuRenderExportNC = new System.Windows.Forms.ToolStripMenuItem();
             this.exportCNCToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuRenderExportImage = new System.Windows.Forms.ToolStripMenuItem();
@@ -85,9 +88,8 @@
             this.btnLoad = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
-            this.menuViewGrid = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuObjectInformation = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuJoinPolygons = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanelMain.SuspendLayout();
@@ -280,39 +282,39 @@
             this.menuLoad.Image = global::Scratchy.Properties.Resources.Open_32x32;
             this.menuLoad.Name = "menuLoad";
             this.menuLoad.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.menuLoad.Size = new System.Drawing.Size(173, 24);
+            this.menuLoad.Size = new System.Drawing.Size(177, 24);
             this.menuLoad.Text = "Load...";
             this.menuLoad.Click += new System.EventHandler(this.MenuOpen_Click);
             // 
             // menuSave
             // 
             this.menuSave.Name = "menuSave";
-            this.menuSave.Size = new System.Drawing.Size(173, 24);
+            this.menuSave.Size = new System.Drawing.Size(177, 24);
             this.menuSave.Text = "Save as OFF";
             this.menuSave.Click += new System.EventHandler(this.MenuSave_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(170, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(174, 6);
             // 
             // menuSettings
             // 
             this.menuSettings.Name = "menuSettings";
-            this.menuSettings.Size = new System.Drawing.Size(173, 24);
+            this.menuSettings.Size = new System.Drawing.Size(177, 24);
             this.menuSettings.Text = "Settings...";
             this.menuSettings.Click += new System.EventHandler(this.MenuSettings_Click);
             // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(170, 6);
+            this.toolStripSeparator8.Size = new System.Drawing.Size(174, 6);
             // 
             // menuExit
             // 
             this.menuExit.Name = "menuExit";
             this.menuExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.menuExit.Size = new System.Drawing.Size(173, 24);
+            this.menuExit.Size = new System.Drawing.Size(177, 24);
             this.menuExit.Text = "Exit";
             this.menuExit.Click += new System.EventHandler(this.MenuExit_Click);
             // 
@@ -331,9 +333,18 @@
             this.menuViewScratches.CheckOnClick = true;
             this.menuViewScratches.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuViewScratches.Name = "menuViewScratches";
-            this.menuViewScratches.Size = new System.Drawing.Size(175, 24);
+            this.menuViewScratches.Size = new System.Drawing.Size(140, 24);
             this.menuViewScratches.Text = "Scratches";
             this.menuViewScratches.CheckStateChanged += new System.EventHandler(this.MenuViewScratches_CheckStateChanged);
+            // 
+            // menuViewGrid
+            // 
+            this.menuViewGrid.Checked = true;
+            this.menuViewGrid.CheckOnClick = true;
+            this.menuViewGrid.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.menuViewGrid.Name = "menuViewGrid";
+            this.menuViewGrid.Size = new System.Drawing.Size(140, 24);
+            this.menuViewGrid.Text = "Grid";
             // 
             // objectToolStripMenuItem1
             // 
@@ -350,6 +361,8 @@
             this.menuObjectSmashLines,
             this.menuObjectDeleteUnreferencedPoints,
             this.toolStripSeparator9,
+            this.menuJoinPolygons,
+            this.toolStripSeparator10,
             this.menuObjectInformation});
             this.objectToolStripMenuItem1.Name = "objectToolStripMenuItem1";
             this.objectToolStripMenuItem1.Size = new System.Drawing.Size(65, 24);
@@ -438,6 +451,18 @@
             this.menuObjectDeleteUnreferencedPoints.Text = "Delete unreferenced Points";
             this.menuObjectDeleteUnreferencedPoints.Click += new System.EventHandler(this.MenuObjectDeleteUnreferencedPoints_Click);
             // 
+            // toolStripSeparator9
+            // 
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(258, 6);
+            // 
+            // menuObjectInformation
+            // 
+            this.menuObjectInformation.Name = "menuObjectInformation";
+            this.menuObjectInformation.Size = new System.Drawing.Size(261, 24);
+            this.menuObjectInformation.Text = "Information...";
+            this.menuObjectInformation.Click += new System.EventHandler(this.menuObjectInformation_Click);
+            // 
             // menuRenderExportNC
             // 
             this.menuRenderExportNC.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -452,7 +477,7 @@
             // 
             this.exportCNCToolStripMenuItem1.Name = "exportCNCToolStripMenuItem1";
             this.exportCNCToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-            this.exportCNCToolStripMenuItem1.Size = new System.Drawing.Size(222, 24);
+            this.exportCNCToolStripMenuItem1.Size = new System.Drawing.Size(226, 24);
             this.exportCNCToolStripMenuItem1.Text = "Export NC...";
             this.exportCNCToolStripMenuItem1.Click += new System.EventHandler(this.MenuRenderExportNC_Click);
             // 
@@ -460,14 +485,14 @@
             // 
             this.menuRenderExportImage.Name = "menuRenderExportImage";
             this.menuRenderExportImage.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.menuRenderExportImage.Size = new System.Drawing.Size(222, 24);
+            this.menuRenderExportImage.Size = new System.Drawing.Size(226, 24);
             this.menuRenderExportImage.Text = "Export Image...";
             this.menuRenderExportImage.Click += new System.EventHandler(this.MenuRenderExportImage_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(219, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(223, 6);
             // 
             // menuTEST
             // 
@@ -575,26 +600,17 @@
             this.btnExport.UseVisualStyleBackColor = true;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
-            // menuViewGrid
+            // toolStripSeparator10
             // 
-            this.menuViewGrid.Checked = true;
-            this.menuViewGrid.CheckOnClick = true;
-            this.menuViewGrid.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.menuViewGrid.Name = "menuViewGrid";
-            this.menuViewGrid.Size = new System.Drawing.Size(175, 24);
-            this.menuViewGrid.Text = "Grid";
+            this.toolStripSeparator10.Name = "toolStripSeparator10";
+            this.toolStripSeparator10.Size = new System.Drawing.Size(258, 6);
             // 
-            // toolStripSeparator9
+            // menuJoinPolygons
             // 
-            this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(258, 6);
-            // 
-            // menuObjectInformation
-            // 
-            this.menuObjectInformation.Name = "menuObjectInformation";
-            this.menuObjectInformation.Size = new System.Drawing.Size(261, 24);
-            this.menuObjectInformation.Text = "Information...";
-            this.menuObjectInformation.Click += new System.EventHandler(this.menuObjectInformation_Click);
+            this.menuJoinPolygons.Name = "menuJoinPolygons";
+            this.menuJoinPolygons.Size = new System.Drawing.Size(261, 24);
+            this.menuJoinPolygons.Text = "Join Polygons";
+            this.menuJoinPolygons.Click += new System.EventHandler(this.menuJoinPolygons_Click);
             // 
             // FormMain
             // 
@@ -694,6 +710,8 @@
         private System.Windows.Forms.ToolStripMenuItem menuViewGrid;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
         private System.Windows.Forms.ToolStripMenuItem menuObjectInformation;
+        private System.Windows.Forms.ToolStripMenuItem menuJoinPolygons;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
     }
 }
 

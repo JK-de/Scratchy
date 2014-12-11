@@ -13,6 +13,43 @@ namespace Scratchy
 {
     public partial class Scratch
     {
+        public void Save(string FileName)
+        {
+            if (FileName == null || FileName.Length == 0)
+                return;
+
+            StreamWriter file = null;
+
+            file = File.CreateText(FileName);
+
+            file.WriteLine("OFF");
+            file.WriteLine("{0} {1} 0",_data.Points.Count,_data.Polygons.Count);
+            file.WriteLine("");
+
+            foreach ( Point3D P in _data.Points)
+            {
+                file.WriteLine("{0:0.######} {1:0.######} {2:0.######}", P.X, P.Y, P.Z);
+
+            }
+
+            foreach (Polygon Y in _data.Polygons)
+            {
+                int n = Y.Count;
+
+                file.Write("{0}", n);
+                foreach (int I in Y)
+                {
+                    file.Write(" {0}", I);
+                }
+                file.WriteLine("");
+            }
+
+            file.WriteLine("");
+
+            file.Close();
+
+        }
+
         public void Load(string Name)
         {
             StreamReader file = null;
@@ -74,7 +111,7 @@ namespace Scratchy
             {
                 string[] Nums = Lines[i + 3].Split(aSerarators, StringSplitOptions.RemoveEmptyEntries);
 
-                if (double.TryParse(Nums[0], out dX) && double.TryParse(Nums[2], out dY) && double.TryParse(Nums[1], out dZ))
+                if (double.TryParse(Nums[0], out dX) && double.TryParse(Nums[1], out dY) && double.TryParse(Nums[2], out dZ))
                 {
                     // Add point
                     Point3D P = new Point3D(dX, dY, dZ);
