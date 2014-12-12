@@ -22,55 +22,9 @@ namespace Scratchy
     {
         Scratch S = new Scratch();
 
-        void Update()
-        {
-            UseWaitCursor = true;
-            S.UpdateImage();
-            pictureBox.Refresh();
-            UseWaitCursor = false;
-        }
-
         private void MenuTEST_Click(object sender, EventArgs e)
         {
-
-            S._data.GenerateGrid(44, 32, 30.0);
-            return;
-
-
-            CalculationEngine engine = new CalculationEngine();
-            ExpressionContext context = new ExpressionContext();
-            VariableCollection variables = context.Variables;
-
-
-            // Add some variables
-            variables.Add("x", 100.0);
-            variables.Add("y", 200.0);
-
-            // Add an expression to the calculation engine as "a"
-            engine.Add("a", "x * 2 ", context);
-
-            // Add an expression to the engine as "b"
-            engine.Add("b", "y + 100.0 ", context);
-
-            // Add an expression at "c" that uses the results of "a" and "b"
-            engine.Add("c", "a + b", context);
-
-            // Get the value of "c"
-            var result = engine.GetResult<double>("c");
-
-            // Update a variable on the "a" expression            
-            variables["x"] = 200.0;
-
-            // Recalculate it
-            engine.Recalculate("a");
-
-            // Get the updated result
-            result = engine.GetResult<double>("c");
-
-            context.Imports.AddType(typeof(Math));
-
-            IDynamicExpression de = context.CompileDynamic("cos(a)*sqrt(2)");
-            result = (double)de.Evaluate();
+            GridCalcSinc calc = new GridCalcSinc();
 
 
             //xmasTreeRandomToolStripMenuItem1_Click(sender, e);
@@ -85,6 +39,16 @@ namespace Scratchy
             S.UpdateImage();
             pictureBox.Refresh();
         }
+
+        void Update()
+        {
+            UseWaitCursor = true;
+            S.UpdateImage();
+            pictureBox.Refresh();
+            UseWaitCursor = false;
+        }
+
+
 
         /// <summary>
         /// Constructor
@@ -376,12 +340,20 @@ namespace Scratchy
 
         private void MenuAbout_Click(object sender, EventArgs e)
         {
+            FormAbout dlg = new FormAbout();
 
+            dlg.ShowDialog();
         }
 
         private void MenuObjectScale_Click(object sender, EventArgs e)
         {
+            FormObjectScale dlg = new FormObjectScale();
 
+            if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                S._data.Scale(dlg.Data.X, dlg.Data.Y, dlg.Data.Z);
+                Update();
+            }
         }
 
         private void MenuObjectRotate_Click(object sender, EventArgs e)
@@ -412,7 +384,6 @@ namespace Scratchy
 
             if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                //(double)Settings.Default.ObjectFit_Size
                 S._data.Fit(dlg.Data.Size);
                 Update();
             }
@@ -420,12 +391,24 @@ namespace Scratchy
 
         private void MenuObjectLevelToMinHeight_Click(object sender, EventArgs e)
         {
-
+            S._data.LevelZ();
+            Update();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MenuObjectSmashLines_Click(object sender, EventArgs e)
         {
+            FormObjectSmashLines dlg = new FormObjectSmashLines();
 
+            if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                S._data.SmashLines(dlg.Data.Dist);
+                Update();
+            }
         }
 
         private void MenuObjectDeleteUnreferencedPoints_Click(object sender, EventArgs e)
@@ -467,6 +450,160 @@ namespace Scratchy
         private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             Properties.Settings.Default.Save();
+        }
+
+        class GridCalcSinc : ScratchData.IGridCalc
+        {
+            public bool CalcZ(int nX, int nY, ref double dX, ref double dY, ref double dZ)
+            {
+                double r = Math.Sqrt(dX * dX + dY * dY);
+                double v = r * 3.14 * 2.5;
+
+                if (v != 0)
+                    dZ = Math.Sin(v) / v;
+                else
+                    dZ = 1;
+                dZ *= 0.75;
+
+                return true;
+            }
+        }
+
+        private void menuGenerateGridSinc40_Click(object sender, EventArgs e)
+        {
+            GridCalcSinc calc = new GridCalcSinc();
+
+            S._data.GenerateGrid(40, 40, calc);
+            S._data.Points.Scale(40);
+            Update();
+        }
+
+        class GridCalcSinX2Y2 : ScratchData.IGridCalc
+        {
+            public bool CalcZ(int nX, int nY, ref double dX, ref double dY, ref double dZ)
+            {
+                dZ = Math.Sin(10 * (dX * dX + dY * dY)) / 10;
+
+                return true;
+            }
+        }
+
+        private void menuGenerateGridSincX2Y2_40_Click(object sender, EventArgs e)
+        {
+            GridCalcSinX2Y2 calc = new GridCalcSinX2Y2();
+
+            S._data.GenerateGrid(40, 40, calc);
+            S._data.Points.Scale(40);
+            Update();
+        }
+
+        class GridCalcFunction : ScratchData.IGridCalc
+        {
+            CalculationEngine engine;
+            ExpressionContext context;
+            VariableCollection variables;
+            string strError = "";
+
+            public GridCalcFunction(string strA, string strB, string strC, string strZ)
+            {
+                engine = new CalculationEngine();
+                context = new ExpressionContext();
+                variables = context.Variables;
+                context.Imports.AddType(typeof(Math));
+
+                try
+                {
+                    // Add some variables
+                    variables.Add("x", 0.0);
+                    variables.Add("y", 0.0);
+                    variables.Add("r", 0.0);
+
+                    // Add an expression to the calculation engine as "a"
+                    engine.Add("a", strA, context);
+                    engine.Add("b", strB, context);
+                    engine.Add("c", strC, context);
+                    engine.Add("z", strZ, context);
+
+                    engine.Recalculate("a");
+                }
+                catch (Exception e)
+                {
+                    
+                    //throw;
+                }
+
+                // Get the value of "c"
+                //var result = engine.GetResult<double>("c");
+
+                // Update a variable on the "a" expression            
+                //variables["x"] = 200.0;
+
+                // Recalculate it
+
+                // Get the updated result
+                //result = engine.GetResult<double>("c");
+
+                //IDynamicExpression de = context.CompileDynamic("cos(a)*sqrt(2)");
+                //result = (double)de.Evaluate();
+
+
+            }
+
+            public bool CalcZ(int nX, int nY, ref double dX, ref double dY, ref double dZ)
+            {
+                try
+                {
+                    variables["x"] = dX;
+                    variables["y"] = dY;
+                    variables["r"] = Math.Sqrt(dX * dX + dY * dY);
+
+                    engine.Recalculate("a");
+                    engine.Recalculate("b");
+                    engine.Recalculate("c");
+                    engine.Recalculate("z");
+
+                    // Get the updated result
+//                    dZ = engine.GetResult<double>();
+                    var result = engine.GetResult("z");
+                    //var t = result.GetType();
+                    dZ = Convert.ToDouble(result);
+                }
+                catch (Exception e)
+                {
+                    strError = e.ToString();
+                    dZ = 0;                    
+                    //throw;
+                }
+
+                return true;
+            }
+        }
+
+        private void menuGenerateGridFunction_Click(object sender, EventArgs e)
+        {
+            FormGenerateGridFunction dlg = new FormGenerateGridFunction();
+
+            if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+//                GridCalcFunction calc = new GridCalcFunction("0", "0", "0", "Sin(x*5)*Cos(y*5)-sin(0)");
+                GridCalcFunction calc = new GridCalcFunction(dlg.Data.strA, dlg.Data.strB, dlg.Data.strC, dlg.Data.strZ);
+
+                S._data.GenerateGrid(dlg.Data.nPoints, dlg.Data.nPoints, calc);
+                S._data.Points.Scale(dlg.Data.nPoints);
+                Update();
+
+                //JK S._data.Fit(dlg.Data.Size);
+            }
+        }
+
+        private void menuObjectAlignCenterZ_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuObjectAlignDropZ_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

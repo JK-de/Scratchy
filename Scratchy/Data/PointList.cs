@@ -181,5 +181,20 @@ namespace Scratchy
 
         }
 
+        public void Scale(double Factor)
+        {
+            Point3D P;
+
+            for (int i = 0; i < Count; i++)
+            {
+                P=this[i];
+                P.X *= Factor;
+                P.Y *= Factor;
+                P.Z *= Factor;
+                this[i] = P;
+            }
+        }
+
+
     }
 }

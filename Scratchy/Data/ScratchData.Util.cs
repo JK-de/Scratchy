@@ -387,15 +387,20 @@ namespace Scratchy
                 return (0);
         }*/
 
-        public void GenerateGrid(int nCountX, int nCountY, double dScale)
+        public interface IGridCalc
         {
-            double dStepX;
+            bool CalcZ(int nX, int nY, ref double dX, ref double dY, ref double dZ);
+        }
+
+        public void GenerateGrid(int nCountX, int nCountY, IGridCalc Callback)
+        {
+            double dStep;
             if ( nCountX>nCountY)
-                dStepX = 2.0 / (nCountX - 1);
+                dStep = 2.0 / (nCountX - 1);
             else
-                dStepX = 2.0 / (nCountY - 1);
-            double dOffsetX = -(nCountX - 1) / 2.0 * dStepX;
-            double dOffsetY = -(nCountY - 1) / 2.0 * dStepX;
+                dStep = 2.0 / (nCountY - 1);
+            double dOffsetX = -(nCountX - 1) / 2.0 * dStep;
+            double dOffsetY = -(nCountY - 1) / 2.0 * dStep;
             Point3D P;
             Polygon Y;
 
@@ -404,17 +409,13 @@ namespace Scratchy
             for (int iY = 0; iY < nCountY; iY++)
                 for (int iX = 0; iX < nCountX; iX++)
                 {
-                    double dX=iX * dStepX + dOffsetX;
-                    double dY=iY * dStepX + dOffsetY;
-                    double r = Math.Sqrt(dX * dX + dY * dY);
-//                    double dZ = Math.Cos(((Math.Exp(r)-1) * 1.5) *  3.14) * Math.Exp(-r * 1.5) * 0.5;
-                    double rrr=r*3.14*2.5;
-                    double dZ;
-                    if (rrr!=0)
-                     dZ = Math.Sin(rrr)/ rrr;
-                    else dZ = 1;
-                    dZ *= 0.75;
+                    double dX=iX * dStep + dOffsetX;
+                    double dY=iY * dStep + dOffsetY;
+                    double dZ = 0;
+
+                    Callback.CalcZ(iX, iY, ref dX, ref dY, ref dZ);
                     
+                    double dScale = 1;
                     P = new Point3D(dX * dScale, dY * dScale, dZ * dScale);
                     Points.Add(P);
                 }

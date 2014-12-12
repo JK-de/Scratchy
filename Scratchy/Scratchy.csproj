@@ -76,6 +76,18 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAbout.Designer.cs">
+      <DependentUpon>FormAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormGenerateGridFunction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormGenerateGridFunction.Designer.cs">
+      <DependentUpon>FormGenerateGridFunction.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +105,18 @@
     </Compile>
     <Compile Include="FormObjectFit.Designer.cs">
       <DependentUpon>FormObjectFit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormObjectScale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormObjectScale.Designer.cs">
+      <DependentUpon>FormObjectScale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormObjectSmashLines.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormObjectSmashLines.Designer.cs">
+      <DependentUpon>FormObjectSmashLines.cs</DependentUpon>
     </Compile>
     <Compile Include="FormObjectTranslate.cs">
       <SubType>Form</SubType>
@@ -120,6 +144,12 @@
     <Compile Include="Scratch\ScratchFile.cs" />
     <Compile Include="Scratch\ScratchRender.cs" />
     <Compile Include="Settings.cs" />
+    <EmbeddedResource Include="FormAbout.resx">
+      <DependentUpon>FormAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGenerateGridFunction.resx">
+      <DependentUpon>FormGenerateGridFunction.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.en.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -133,6 +163,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormObjectFit.resx">
       <DependentUpon>FormObjectFit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormObjectScale.resx">
+      <DependentUpon>FormObjectScale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormObjectSmashLines.resx">
+      <DependentUpon>FormObjectSmashLines.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormObjectTranslate.resx">
       <DependentUpon>FormObjectTranslate.cs</DependentUpon>

@@ -10,17 +10,21 @@ using System.Windows.Forms;
 
 namespace Scratchy
 {
-    /// <summary>
-    /// Settings dialog for object translation (move)
-    /// </summary>
-    public partial class FormObjectTranslate : Form
+    public partial class FormObjectScale : Form
     {
-        static DataObjectTranslate _data = new DataObjectTranslate();
-        public DataObjectTranslate Data { get { return _data; } }
+        static DataObjectScale _data = new DataObjectScale();
+        public DataObjectScale Data { get { return _data; } }
 
-        public FormObjectTranslate()
+        public FormObjectScale()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            numX.Value = 1;
+            numY.Value = 1;
+            numZ.Value = 1;
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -30,32 +34,25 @@ namespace Scratchy
             _data.Z = (double)numZ.Value;
         }
 
-        private void FormObjectTranslate_Load(object sender, EventArgs e)
+        private void FormObjectScale_Load(object sender, EventArgs e)
         {
             numX.Value = (decimal)_data.X;
             numY.Value = (decimal)_data.Y;
             numZ.Value = (decimal)_data.Z;
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            numX.Value = 0;
-            numY.Value = 0;
-            numZ.Value = 0;
-        }
     }
 
-    public class DataObjectTranslate
+    public class DataObjectScale
     {
         public double X { get; set; }
         public double Y { get; set; }
         public double Z { get; set; }
 
-        public DataObjectTranslate()
+        public DataObjectScale()
         {
-            X = 0;
-            Y = 0;
-            Z = 0;
+            X = 1;
+            Y = 1;
+            Z = 1;
         }
     }
 

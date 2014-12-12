@@ -59,6 +59,20 @@ namespace Scratchy
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="FactorX"></param>
+        /// <param name="FactorY"></param>
+        /// <param name="FactorZ"></param>
+        public void Scale(double FactorX, double FactorY, double FactorZ)
+        {
+            ScaleTransform3D tt = new ScaleTransform3D(FactorX, FactorY, FactorZ);
+
+            Points.ApplyMatrix(tt.Value);
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="Xoffset"></param>
         /// <param name="Yoffset"></param>
         /// <param name="Zoffset"></param>
