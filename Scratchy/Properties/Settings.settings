@@ -19,14 +19,56 @@
       <Value Profile="(Default)">C:\*.NC</Value>
     </Setting>
     <Setting Name="NC_Prolog" Type="System.String" Scope="User">
-      <Value Profile="(Default)">G90
+      <Value Profile="(Default)">G21 G90
 G1 F400</Value>
     </Setting>
     <Setting Name="NC_Epilog" Type="System.String" Scope="User">
-      <Value Profile="(Default)">M3</Value>
+      <Value Profile="(Default)">M2</Value>
     </Setting>
     <Setting Name="SaveAsOFF_Name" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\*.OFF</Value>
+    </Setting>
+    <Setting Name="Common_ToolAngle" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">120</Value>
+    </Setting>
+    <Setting Name="Common_Type" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Common_ViewingAngle" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">30</Value>
+    </Setting>
+    <Setting Name="Common_LightingAngle" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">90</Value>
+    </Setting>
+    <Setting Name="Common_MovingAngle" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">80</Value>
+    </Setting>
+    <Setting Name="NC_TravelHeight" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="NC_ScratchingDepthMax" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">-2</Value>
+    </Setting>
+    <Setting Name="NC_ScratchingDepthZero" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">-2</Value>
+    </Setting>
+    <Setting Name="NC_ScratchingDepthAtHeight" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">50</Value>
+    </Setting>
+    <Setting Name="NC_ForceG1onNegZ" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="NC_CompensateRadius" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Common_ScanningStepAngle" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="Common_WorkingAreaX" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">120</Value>
+    </Setting>
+    <Setting Name="Common_WorkingAreaY" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">90</Value>
     </Setting>
   </Settings>
 </SettingsFile>

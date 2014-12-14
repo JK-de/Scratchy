@@ -30,19 +30,22 @@
         {
             this.tabCtrl = new System.Windows.Forms.TabControl();
             this.tabPageCommon = new System.Windows.Forms.TabPage();
+            this.picAngles = new System.Windows.Forms.PictureBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboType = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
+            this.numScanningStepAngle = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.numLightingAngle = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
-            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
+            this.numViewingAngle = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.numMovingAngle = new System.Windows.Forms.NumericUpDown();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.numSize = new System.Windows.Forms.NumericUpDown();
+            this.numToolAngle = new System.Windows.Forms.NumericUpDown();
             this.tabPageExportNC = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.textBoxProlog = new System.Windows.Forms.TextBox();
@@ -53,39 +56,46 @@
             this.checkCompensateRadius = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.numScratchingDepthAtHeight = new System.Windows.Forms.NumericUpDown();
+            this.numScratchingDepthZero = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.numScratchingDepthMax = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numTravelHeight = new System.Windows.Forms.NumericUpDown();
             this.checkForceG1onNegZ = new System.Windows.Forms.CheckBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
-            this.picAngles = new System.Windows.Forms.PictureBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
+            this.label13 = new System.Windows.Forms.Label();
+            this.numWorkingAreaX = new System.Windows.Forms.NumericUpDown();
+            this.numWorkingAreaY = new System.Windows.Forms.NumericUpDown();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label14 = new System.Windows.Forms.Label();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.tabCtrl.SuspendLayout();
             this.tabPageCommon.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picAngles)).BeginInit();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numScanningStepAngle)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numLightingAngle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numViewingAngle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMovingAngle)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numToolAngle)).BeginInit();
             this.tabPageExportNC.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numScratchingDepthAtHeight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numScratchingDepthZero)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numScratchingDepthMax)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numTravelHeight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numWorkingAreaX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numWorkingAreaY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picAngles)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
             this.SuspendLayout();
             // 
             // tabCtrl
@@ -115,61 +125,81 @@
             this.tabPageCommon.Text = "Common";
             this.tabPageCommon.UseVisualStyleBackColor = true;
             // 
+            // picAngles
+            // 
+            this.picAngles.Image = global::Scratchy.Properties.Resources.Scratch11;
+            this.picAngles.InitialImage = null;
+            this.picAngles.Location = new System.Drawing.Point(421, 7);
+            this.picAngles.Name = "picAngles";
+            this.picAngles.Size = new System.Drawing.Size(298, 214);
+            this.picAngles.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picAngles.TabIndex = 11;
+            this.picAngles.TabStop = false;
+            // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.comboBox1);
+            this.groupBox4.Controls.Add(this.checkBox2);
+            this.groupBox4.Controls.Add(this.label14);
+            this.groupBox4.Controls.Add(this.checkBox1);
+            this.groupBox4.Controls.Add(this.numericUpDown1);
+            this.groupBox4.Controls.Add(this.numWorkingAreaY);
+            this.groupBox4.Controls.Add(this.label13);
+            this.groupBox4.Controls.Add(this.numWorkingAreaX);
+            this.groupBox4.Controls.Add(this.comboType);
             this.groupBox4.Controls.Add(this.label10);
-            this.groupBox4.Controls.Add(this.numericUpDown6);
+            this.groupBox4.Controls.Add(this.numScanningStepAngle);
             this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.Location = new System.Drawing.Point(7, 191);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(408, 228);
+            this.groupBox4.Size = new System.Drawing.Size(408, 253);
             this.groupBox4.TabIndex = 10;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Rendering";
             // 
-            // comboBox1
+            // comboType
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Table-Type Circle (Mirror on Z=0 Plane)",
-            "Table-Type Arc",
-            "Table-Type Arc with hidden Surface (slow)"});
-            this.comboBox1.Location = new System.Drawing.Point(5, 39);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(397, 24);
-            this.comboBox1.TabIndex = 10;
+            this.comboType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboType.FormattingEnabled = true;
+            this.comboType.Items.AddRange(new object[] {
+            "TTD-WC Table-Top-Display Wireframe-Circle (as above, so below (Z-0-Mirror))",
+            "TTD-WA Table-Top-Display Wireframe-Arc",
+            "TTD-SA Table-Top-Display Solid-Arc (with hidden Lines, slow)",
+            "WMD-xx Wall-Mounted-Display ???"});
+            this.comboType.Location = new System.Drawing.Point(5, 39);
+            this.comboType.Name = "comboType";
+            this.comboType.Size = new System.Drawing.Size(397, 24);
+            this.comboType.TabIndex = 10;
+            this.comboType.SelectedIndexChanged += new System.EventHandler(this.comboType_SelectedIndexChanged);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(5, 107);
+            this.label10.Location = new System.Drawing.Point(1, 124);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(44, 17);
+            this.label10.Size = new System.Drawing.Size(290, 17);
             this.label10.TabIndex = 9;
-            this.label10.Text = "xxx [°]";
+            this.label10.Text = "Scanning Step Angle (only for solid types) [°]";
             // 
-            // numericUpDown6
+            // numScanningStepAngle
             // 
-            this.numericUpDown6.DecimalPlaces = 1;
-            this.numericUpDown6.Location = new System.Drawing.Point(5, 127);
-            this.numericUpDown6.Maximum = new decimal(new int[] {
-            90,
-            0,
-            0,
-            0});
-            this.numericUpDown6.Minimum = new decimal(new int[] {
+            this.numScanningStepAngle.DecimalPlaces = 2;
+            this.numScanningStepAngle.Location = new System.Drawing.Point(1, 144);
+            this.numScanningStepAngle.Maximum = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown6.Name = "numericUpDown6";
-            this.numericUpDown6.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDown6.TabIndex = 8;
-            this.numericUpDown6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDown6.Value = new decimal(new int[] {
-            80,
+            this.numScanningStepAngle.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.numScanningStepAngle.Name = "numScanningStepAngle";
+            this.numScanningStepAngle.Size = new System.Drawing.Size(120, 22);
+            this.numScanningStepAngle.TabIndex = 8;
+            this.numScanningStepAngle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numScanningStepAngle.Value = new decimal(new int[] {
+            1,
             0,
             0,
             0});
@@ -179,16 +209,16 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(6, 18);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(40, 17);
+            this.label9.Size = new System.Drawing.Size(90, 17);
             this.label9.TabIndex = 7;
-            this.label9.Text = "Type";
+            this.label9.Text = "Display Type";
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Controls.Add(this.numericUpDown7);
+            this.groupBox2.Controls.Add(this.numLightingAngle);
             this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.numericUpDown5);
+            this.groupBox2.Controls.Add(this.numViewingAngle);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.numMovingAngle);
             this.groupBox2.Location = new System.Drawing.Point(214, 6);
@@ -198,35 +228,69 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Observer";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 118);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(147, 17);
+            this.label12.TabIndex = 11;
+            this.label12.Text = "Lighting Angle (LA) [°]";
+            // 
+            // numLightingAngle
+            // 
+            this.numLightingAngle.DecimalPlaces = 1;
+            this.numLightingAngle.Enabled = false;
+            this.numLightingAngle.Location = new System.Drawing.Point(6, 138);
+            this.numLightingAngle.Maximum = new decimal(new int[] {
+            90,
+            0,
+            0,
+            0});
+            this.numLightingAngle.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numLightingAngle.Name = "numLightingAngle";
+            this.numLightingAngle.Size = new System.Drawing.Size(120, 22);
+            this.numLightingAngle.TabIndex = 10;
+            this.numLightingAngle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numLightingAngle.Value = new decimal(new int[] {
+            90,
+            0,
+            0,
+            0});
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 67);
+            this.label11.Location = new System.Drawing.Point(6, 68);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(146, 17);
             this.label11.TabIndex = 9;
             this.label11.Text = "Viewing Angle (VA) [°]";
             // 
-            // numericUpDown5
+            // numViewingAngle
             // 
-            this.numericUpDown5.DecimalPlaces = 1;
-            this.numericUpDown5.Enabled = false;
-            this.numericUpDown5.Location = new System.Drawing.Point(6, 87);
-            this.numericUpDown5.Maximum = new decimal(new int[] {
+            this.numViewingAngle.DecimalPlaces = 1;
+            this.numViewingAngle.Enabled = false;
+            this.numViewingAngle.Location = new System.Drawing.Point(6, 88);
+            this.numViewingAngle.Maximum = new decimal(new int[] {
             80,
             0,
             0,
             0});
-            this.numericUpDown5.Minimum = new decimal(new int[] {
+            this.numViewingAngle.Minimum = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDown5.TabIndex = 8;
-            this.numericUpDown5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDown5.Value = new decimal(new int[] {
+            this.numViewingAngle.Name = "numViewingAngle";
+            this.numViewingAngle.Size = new System.Drawing.Size(120, 22);
+            this.numViewingAngle.TabIndex = 8;
+            this.numViewingAngle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numViewingAngle.Value = new decimal(new int[] {
             30,
             0,
             0,
@@ -268,7 +332,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.numSize);
+            this.groupBox1.Controls.Add(this.numToolAngle);
             this.groupBox1.Location = new System.Drawing.Point(8, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 179);
@@ -285,29 +349,31 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Tool Angle [°]";
             // 
-            // numSize
+            // numToolAngle
             // 
-            this.numSize.DecimalPlaces = 1;
-            this.numSize.Location = new System.Drawing.Point(6, 38);
-            this.numSize.Maximum = new decimal(new int[] {
+            this.numToolAngle.DecimalPlaces = 1;
+            this.numToolAngle.Location = new System.Drawing.Point(6, 38);
+            this.numToolAngle.Maximum = new decimal(new int[] {
             150,
             0,
             0,
             0});
-            this.numSize.Minimum = new decimal(new int[] {
+            this.numToolAngle.Minimum = new decimal(new int[] {
             100,
             0,
             0,
             0});
-            this.numSize.Name = "numSize";
-            this.numSize.Size = new System.Drawing.Size(120, 22);
-            this.numSize.TabIndex = 4;
-            this.numSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numSize.Value = new decimal(new int[] {
+            this.numToolAngle.Name = "numToolAngle";
+            this.numToolAngle.Size = new System.Drawing.Size(120, 22);
+            this.numToolAngle.TabIndex = 4;
+            this.numToolAngle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numToolAngle.Value = new decimal(new int[] {
             120,
             0,
             0,
             0});
+            this.numToolAngle.ValueChanged += new System.EventHandler(this.numToolAngle_ValueChanged);
+            this.numToolAngle.Validating += new System.ComponentModel.CancelEventHandler(this.numToolAngle_Validating);
             // 
             // tabPageExportNC
             // 
@@ -347,14 +413,13 @@
             this.textBoxProlog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxProlog.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::Scratchy.Properties.Settings.Default, "NC_Prolog", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.textBoxProlog.Location = new System.Drawing.Point(6, 20);
             this.textBoxProlog.Multiline = true;
             this.textBoxProlog.Name = "textBoxProlog";
             this.textBoxProlog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.textBoxProlog.Size = new System.Drawing.Size(348, 205);
             this.textBoxProlog.TabIndex = 0;
-            this.textBoxProlog.Text = global::Scratchy.Properties.Settings.Default.NC_Prolog;
+            this.textBoxProlog.Text = "G21 G90\r\nG1 F400";
             this.textBoxProlog.WordWrap = false;
             // 
             // label3
@@ -372,14 +437,13 @@
             this.textBoxEpilog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxEpilog.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::Scratchy.Properties.Settings.Default, "NC_Epilog", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.textBoxEpilog.Location = new System.Drawing.Point(6, 20);
             this.textBoxEpilog.Multiline = true;
             this.textBoxEpilog.Name = "textBoxEpilog";
             this.textBoxEpilog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.textBoxEpilog.Size = new System.Drawing.Size(352, 205);
             this.textBoxEpilog.TabIndex = 7;
-            this.textBoxEpilog.Text = global::Scratchy.Properties.Settings.Default.NC_Epilog;
+            this.textBoxEpilog.Text = "M2";
             this.textBoxEpilog.WordWrap = false;
             // 
             // label4
@@ -396,16 +460,16 @@
             this.groupBox3.Controls.Add(this.checkCompensateRadius);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Controls.Add(this.numericUpDown4);
-            this.groupBox3.Controls.Add(this.numericUpDown3);
+            this.groupBox3.Controls.Add(this.numScratchingDepthZero);
+            this.groupBox3.Controls.Add(this.numScratchingDepthMax);
+            this.groupBox3.Controls.Add(this.numScratchingDepthAtHeight);
             this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.numericUpDown2);
             this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.numericUpDown1);
+            this.groupBox3.Controls.Add(this.numTravelHeight);
             this.groupBox3.Controls.Add(this.checkForceG1onNegZ);
             this.groupBox3.Location = new System.Drawing.Point(6, 240);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(346, 197);
+            this.groupBox3.Size = new System.Drawing.Size(356, 197);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Z-Movement";
@@ -419,58 +483,59 @@
             this.checkCompensateRadius.TabIndex = 14;
             this.checkCompensateRadius.Text = "Compensate Radius";
             this.checkCompensateRadius.UseVisualStyleBackColor = true;
+            this.checkCompensateRadius.CheckedChanged += new System.EventHandler(this.checkCompensateRadius_CheckedChanged);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(132, 141);
+            this.label8.Location = new System.Drawing.Point(132, 113);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(118, 17);
+            this.label8.Size = new System.Drawing.Size(137, 17);
             this.label8.TabIndex = 13;
-            this.label8.Text = "at Obj.Z of ZERO";
+            this.label8.Text = "at Object Z of ZERO";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(132, 113);
+            this.label7.Location = new System.Drawing.Point(132, 141);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(75, 17);
+            this.label7.Size = new System.Drawing.Size(94, 17);
             this.label7.TabIndex = 12;
-            this.label7.Text = "at Obj.Z of";
+            this.label7.Text = "at Object Z of";
             // 
-            // numericUpDown4
+            // numScratchingDepthAtHeight
             // 
-            this.numericUpDown4.DecimalPlaces = 1;
-            this.numericUpDown4.Location = new System.Drawing.Point(220, 111);
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDown4.TabIndex = 11;
-            this.numericUpDown4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDown4.Value = new decimal(new int[] {
+            this.numScratchingDepthAtHeight.DecimalPlaces = 1;
+            this.numScratchingDepthAtHeight.Location = new System.Drawing.Point(230, 139);
+            this.numScratchingDepthAtHeight.Name = "numScratchingDepthAtHeight";
+            this.numScratchingDepthAtHeight.Size = new System.Drawing.Size(120, 22);
+            this.numScratchingDepthAtHeight.TabIndex = 11;
+            this.numScratchingDepthAtHeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numScratchingDepthAtHeight.Value = new decimal(new int[] {
             50,
             0,
             0,
             0});
             // 
-            // numericUpDown3
+            // numScratchingDepthZero
             // 
-            this.numericUpDown3.DecimalPlaces = 1;
-            this.numericUpDown3.Location = new System.Drawing.Point(6, 139);
-            this.numericUpDown3.Maximum = new decimal(new int[] {
+            this.numScratchingDepthZero.DecimalPlaces = 1;
+            this.numScratchingDepthZero.Location = new System.Drawing.Point(6, 111);
+            this.numScratchingDepthZero.Maximum = new decimal(new int[] {
             1,
             0,
             0,
             -2147418112});
-            this.numericUpDown3.Minimum = new decimal(new int[] {
+            this.numScratchingDepthZero.Minimum = new decimal(new int[] {
             20,
             0,
             0,
             -2147483648});
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDown3.TabIndex = 10;
-            this.numericUpDown3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDown3.Value = new decimal(new int[] {
+            this.numScratchingDepthZero.Name = "numScratchingDepthZero";
+            this.numScratchingDepthZero.Size = new System.Drawing.Size(120, 22);
+            this.numScratchingDepthZero.TabIndex = 10;
+            this.numScratchingDepthZero.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numScratchingDepthZero.Value = new decimal(new int[] {
             2,
             0,
             0,
@@ -485,25 +550,25 @@
             this.label6.TabIndex = 9;
             this.label6.Text = "Scratching Depth [mm]";
             // 
-            // numericUpDown2
+            // numScratchingDepthMax
             // 
-            this.numericUpDown2.DecimalPlaces = 1;
-            this.numericUpDown2.Location = new System.Drawing.Point(6, 111);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
+            this.numScratchingDepthMax.DecimalPlaces = 1;
+            this.numScratchingDepthMax.Location = new System.Drawing.Point(6, 139);
+            this.numScratchingDepthMax.Maximum = new decimal(new int[] {
             1,
             0,
             0,
             -2147418112});
-            this.numericUpDown2.Minimum = new decimal(new int[] {
+            this.numScratchingDepthMax.Minimum = new decimal(new int[] {
             20,
             0,
             0,
             -2147483648});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDown2.TabIndex = 8;
-            this.numericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDown2.Value = new decimal(new int[] {
+            this.numScratchingDepthMax.Name = "numScratchingDepthMax";
+            this.numScratchingDepthMax.Size = new System.Drawing.Size(120, 22);
+            this.numScratchingDepthMax.TabIndex = 8;
+            this.numScratchingDepthMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numScratchingDepthMax.Value = new decimal(new int[] {
             2,
             0,
             0,
@@ -518,25 +583,25 @@
             this.label5.TabIndex = 7;
             this.label5.Text = "Travel Height [mm]";
             // 
-            // numericUpDown1
+            // numTravelHeight
             // 
-            this.numericUpDown1.DecimalPlaces = 1;
-            this.numericUpDown1.Location = new System.Drawing.Point(6, 66);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.numTravelHeight.DecimalPlaces = 1;
+            this.numTravelHeight.Location = new System.Drawing.Point(6, 66);
+            this.numTravelHeight.Maximum = new decimal(new int[] {
             20,
             0,
             0,
             0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
+            this.numTravelHeight.Minimum = new decimal(new int[] {
             5,
             0,
             0,
             65536});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDown1.TabIndex = 6;
-            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.numTravelHeight.Name = "numTravelHeight";
+            this.numTravelHeight.Size = new System.Drawing.Size(120, 22);
+            this.numTravelHeight.TabIndex = 6;
+            this.numTravelHeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numTravelHeight.Value = new decimal(new int[] {
             2,
             0,
             0,
@@ -575,55 +640,120 @@
             this.btnOK.TabIndex = 103;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
-            // picAngles
+            // label13
             // 
-            this.picAngles.Image = global::Scratchy.Properties.Resources.Scratch11;
-            this.picAngles.InitialImage = null;
-            this.picAngles.Location = new System.Drawing.Point(421, 7);
-            this.picAngles.Name = "picAngles";
-            this.picAngles.Size = new System.Drawing.Size(298, 214);
-            this.picAngles.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picAngles.TabIndex = 11;
-            this.picAngles.TabStop = false;
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(1, 71);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(154, 17);
+            this.label13.TabIndex = 7;
+            this.label13.Text = "Working Area X/Y [mm]";
             // 
-            // label12
+            // numWorkingAreaX
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 119);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(147, 17);
-            this.label12.TabIndex = 11;
-            this.label12.Text = "Lighting Angle (LA) [°]";
-            // 
-            // numericUpDown7
-            // 
-            this.numericUpDown7.DecimalPlaces = 1;
-            this.numericUpDown7.Enabled = false;
-            this.numericUpDown7.Location = new System.Drawing.Point(6, 139);
-            this.numericUpDown7.Maximum = new decimal(new int[] {
-            90,
-            0,
-            0,
-            0});
-            this.numericUpDown7.Minimum = new decimal(new int[] {
+            this.numWorkingAreaX.DecimalPlaces = 1;
+            this.numWorkingAreaX.Increment = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown7.Name = "numericUpDown7";
-            this.numericUpDown7.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDown7.TabIndex = 10;
-            this.numericUpDown7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDown7.Value = new decimal(new int[] {
+            this.numWorkingAreaX.Location = new System.Drawing.Point(1, 91);
+            this.numWorkingAreaX.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.numWorkingAreaX.Minimum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.numWorkingAreaX.Name = "numWorkingAreaX";
+            this.numWorkingAreaX.Size = new System.Drawing.Size(120, 22);
+            this.numWorkingAreaX.TabIndex = 6;
+            this.numWorkingAreaX.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numWorkingAreaX.Value = new decimal(new int[] {
+            120,
+            0,
+            0,
+            0});
+            // 
+            // numWorkingAreaY
+            // 
+            this.numWorkingAreaY.DecimalPlaces = 1;
+            this.numWorkingAreaY.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numWorkingAreaY.Location = new System.Drawing.Point(127, 91);
+            this.numWorkingAreaY.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.numWorkingAreaY.Minimum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.numWorkingAreaY.Name = "numWorkingAreaY";
+            this.numWorkingAreaY.Size = new System.Drawing.Size(120, 22);
+            this.numWorkingAreaY.TabIndex = 11;
+            this.numWorkingAreaY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numWorkingAreaY.Value = new decimal(new int[] {
             90,
             0,
             0,
             0});
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(2, 201);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(250, 21);
+            this.checkBox1.TabIndex = 16;
+            this.checkBox1.Text = "Compensate Observer Perspective";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.DecimalPlaces = 1;
+            this.numericUpDown1.Location = new System.Drawing.Point(282, 223);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 22);
+            this.numericUpDown1.TabIndex = 15;
+            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(22, 225);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(149, 17);
+            this.label14.TabIndex = 17;
+            this.label14.Text = "Observer Distance [m]";
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(1, 174);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(264, 21);
+            this.checkBox2.TabIndex = 18;
+            this.checkBox2.Text = "Compensate Observer Viewing Angle";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
             // FormSettings
             // 
-            this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
@@ -635,18 +765,21 @@
             this.Name = "FormSettings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Settings";
+            this.Load += new System.EventHandler(this.FormSettings_Load);
             this.tabCtrl.ResumeLayout(false);
             this.tabPageCommon.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picAngles)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numScanningStepAngle)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numLightingAngle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numViewingAngle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMovingAngle)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numToolAngle)).EndInit();
             this.tabPageExportNC.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
@@ -656,12 +789,13 @@
             this.splitContainer1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numScratchingDepthAtHeight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numScratchingDepthZero)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numScratchingDepthMax)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numTravelHeight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numWorkingAreaX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numWorkingAreaY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picAngles)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -674,7 +808,7 @@
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown numSize;
+        private System.Windows.Forms.NumericUpDown numToolAngle;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown numMovingAngle;
         private System.Windows.Forms.Label label4;
@@ -682,9 +816,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxProlog;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboType;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.NumericUpDown numericUpDown6;
+        private System.Windows.Forms.NumericUpDown numScanningStepAngle;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -693,17 +827,24 @@
         private System.Windows.Forms.CheckBox checkCompensateRadius;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
+        private System.Windows.Forms.NumericUpDown numScratchingDepthAtHeight;
+        private System.Windows.Forms.NumericUpDown numScratchingDepthZero;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown numScratchingDepthMax;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown numTravelHeight;
         private System.Windows.Forms.CheckBox checkForceG1onNegZ;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.NumericUpDown numericUpDown5;
+        private System.Windows.Forms.NumericUpDown numViewingAngle;
         private System.Windows.Forms.PictureBox picAngles;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.NumericUpDown numericUpDown7;
+        private System.Windows.Forms.NumericUpDown numLightingAngle;
+        private System.Windows.Forms.NumericUpDown numWorkingAreaY;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.NumericUpDown numWorkingAreaX;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }
