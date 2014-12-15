@@ -53,13 +53,17 @@ namespace Scratchy
             double z1 = (double)Set.Default.NC_ScratchingDepthMax;
             double z;
 
-            if (Set.Default.NC_CompensateRadius)
+            if (Set.Default.NC_CompensateRadius && (double)Set.Default.NC_ScratchingDepthAtHeight > 0)
             {
-                 z = z0;
+                if (r > (double)Set.Default.NC_ScratchingDepthAtHeight)
+                    r = (double)Set.Default.NC_ScratchingDepthAtHeight;
+                r /= (double)Set.Default.NC_ScratchingDepthAtHeight;
+
+                z = z0 + (z1 - z0) * r;
             }
             else
             {
-                 z = z0;
+                z = z0;
             }
 
             if (Set.Default.NC_ForceG1onNegZ)
@@ -142,6 +146,10 @@ namespace Scratchy
             NC_MoveTo(x1, y1);
 
             NC_MoveDown(r);
+
+            //JK
+            if (true)
+                _file.WriteLine("G1 X{0:0.####} Y{1:0.####}", x1, y1);
 
             _file.WriteLine("G{3} X{0:0.####} Y{1:0.####} R{2:0.####}", x2, y2, r, bClockwise ? 2 : 3);
 

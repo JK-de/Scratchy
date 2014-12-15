@@ -283,5 +283,17 @@ namespace Scratchy.Properties {
                 this["Common_WorkingAreaY"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool View_ShowReflex {
+            get {
+                return ((bool)(this["View_ShowReflex"]));
+            }
+            set {
+                this["View_ShowReflex"] = value;
+            }
+        }
     }
 }

@@ -70,6 +70,10 @@ namespace Scratchy
             pictureBox.Image = S.GetImage();
             pictureBox.Focus();
             S._render.progress = (ProgressBar)statusProgress.ProgressBar;
+
+            menuViewGrid.Checked = Set.Default.View_ShowGrid;
+            menuViewScratches.Checked = Set.Default.View_ShowScratches;
+            menuViewReflex.Checked = Set.Default.View_ShowReflex;
         }
 
         private void MenuObjectGenerateXmasTreeRandom_Click(object sender, EventArgs e)
@@ -431,11 +435,6 @@ namespace Scratchy
             MenuRenderExportNC_Click(sender, e);
         }
 
-        private void MenuViewScratches_CheckStateChanged(object sender, EventArgs e)
-        {
-            Set.Default.View_ShowScratches = ((ToolStripMenuItem)sender).Checked;
-            Update();
-        }
 
         private void menuObjectInformation_Click(object sender, EventArgs e)
         {
@@ -604,6 +603,24 @@ namespace Scratchy
         private void menuObjectAlignDropZ_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void MenuViewScratches_CheckStateChanged(object sender, EventArgs e)
+        {
+            Set.Default.View_ShowScratches = ((ToolStripMenuItem)sender).Checked;
+            Update();
+        }
+
+        private void menuViewGrid_Click(object sender, EventArgs e)
+        {
+            Set.Default.View_ShowGrid = ((ToolStripMenuItem)sender).Checked;
+            Update();
+        }
+
+        private void menuViewReflex_Click(object sender, EventArgs e)
+        {
+            Set.Default.View_ShowReflex = ((ToolStripMenuItem)sender).Checked;
+            Update();
         }
     }
 }

@@ -51,12 +51,14 @@
             this.xmasTreeRandomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuLoad = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSave = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.xToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gridToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGenerateGridSinc_40 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGenerateGridSincX2Y2_40 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuGenerateGridFunction = new System.Windows.Forms.ToolStripMenuItem();
             this.xmasTreeRandomToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.menuSettings = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,6 +73,9 @@
             this.menuObjectRotate = new System.Windows.Forms.ToolStripMenuItem();
             this.menuObjectTranslate = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuObjectAlignCenterZ = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuObjectAlignDropZ = new System.Windows.Forms.ToolStripMenuItem();
             this.menuObjectFit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuObjectLevel = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
@@ -90,14 +95,10 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanelButton = new System.Windows.Forms.FlowLayoutPanel();
-            this.menuGenerateGridFunction = new System.Windows.Forms.ToolStripMenuItem();
             this.btnLoad = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
-            this.menuLoad = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuObjectAlignCenterZ = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuObjectAlignDropZ = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuViewReflex = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanelMain.SuspendLayout();
@@ -287,17 +288,26 @@
             this.toolStripMenuItem3.Size = new System.Drawing.Size(44, 24);
             this.toolStripMenuItem3.Text = "File";
             // 
+            // menuLoad
+            // 
+            this.menuLoad.Image = global::Scratchy.Properties.Resources.Open_32x32;
+            this.menuLoad.Name = "menuLoad";
+            this.menuLoad.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.menuLoad.Size = new System.Drawing.Size(177, 24);
+            this.menuLoad.Text = "Load...";
+            this.menuLoad.Click += new System.EventHandler(this.MenuOpen_Click);
+            // 
             // menuSave
             // 
             this.menuSave.Name = "menuSave";
-            this.menuSave.Size = new System.Drawing.Size(175, 24);
+            this.menuSave.Size = new System.Drawing.Size(177, 24);
             this.menuSave.Text = "Save as OFF";
             this.menuSave.Click += new System.EventHandler(this.MenuSave_Click);
             // 
             // toolStripSeparator11
             // 
             this.toolStripSeparator11.Name = "toolStripSeparator11";
-            this.toolStripSeparator11.Size = new System.Drawing.Size(172, 6);
+            this.toolStripSeparator11.Size = new System.Drawing.Size(174, 6);
             // 
             // xToolStripMenuItem
             // 
@@ -305,7 +315,7 @@
             this.gridToolStripMenuItem,
             this.xmasTreeRandomToolStripMenuItem1});
             this.xToolStripMenuItem.Name = "xToolStripMenuItem";
-            this.xToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.xToolStripMenuItem.Size = new System.Drawing.Size(177, 24);
             this.xToolStripMenuItem.Text = "Generate";
             // 
             // gridToolStripMenuItem
@@ -332,6 +342,13 @@
             this.menuGenerateGridSincX2Y2_40.Text = "sin ( x²+ y² ) [40x40]";
             this.menuGenerateGridSincX2Y2_40.Click += new System.EventHandler(this.menuGenerateGridSincX2Y2_40_Click);
             // 
+            // menuGenerateGridFunction
+            // 
+            this.menuGenerateGridFunction.Name = "menuGenerateGridFunction";
+            this.menuGenerateGridFunction.Size = new System.Drawing.Size(211, 24);
+            this.menuGenerateGridFunction.Text = "Function...";
+            this.menuGenerateGridFunction.Click += new System.EventHandler(this.menuGenerateGridFunction_Click);
+            // 
             // xmasTreeRandomToolStripMenuItem1
             // 
             this.xmasTreeRandomToolStripMenuItem1.Name = "xmasTreeRandomToolStripMenuItem1";
@@ -341,25 +358,25 @@
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(172, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(174, 6);
             // 
             // menuSettings
             // 
             this.menuSettings.Name = "menuSettings";
-            this.menuSettings.Size = new System.Drawing.Size(175, 24);
+            this.menuSettings.Size = new System.Drawing.Size(177, 24);
             this.menuSettings.Text = "Settings...";
             this.menuSettings.Click += new System.EventHandler(this.MenuSettings_Click);
             // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(172, 6);
+            this.toolStripSeparator8.Size = new System.Drawing.Size(174, 6);
             // 
             // menuExit
             // 
             this.menuExit.Name = "menuExit";
             this.menuExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.menuExit.Size = new System.Drawing.Size(175, 24);
+            this.menuExit.Size = new System.Drawing.Size(177, 24);
             this.menuExit.Text = "Exit";
             this.menuExit.Click += new System.EventHandler(this.MenuExit_Click);
             // 
@@ -367,7 +384,8 @@
             // 
             this.toolStripMenuItem4.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuViewScratches,
-            this.menuViewGrid});
+            this.menuViewGrid,
+            this.menuViewReflex});
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
             this.toolStripMenuItem4.Size = new System.Drawing.Size(53, 24);
             this.toolStripMenuItem4.Text = "View";
@@ -378,7 +396,7 @@
             this.menuViewScratches.CheckOnClick = true;
             this.menuViewScratches.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuViewScratches.Name = "menuViewScratches";
-            this.menuViewScratches.Size = new System.Drawing.Size(140, 24);
+            this.menuViewScratches.Size = new System.Drawing.Size(194, 24);
             this.menuViewScratches.Text = "Scratches";
             this.menuViewScratches.CheckStateChanged += new System.EventHandler(this.MenuViewScratches_CheckStateChanged);
             // 
@@ -388,8 +406,9 @@
             this.menuViewGrid.CheckOnClick = true;
             this.menuViewGrid.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuViewGrid.Name = "menuViewGrid";
-            this.menuViewGrid.Size = new System.Drawing.Size(140, 24);
+            this.menuViewGrid.Size = new System.Drawing.Size(194, 24);
             this.menuViewGrid.Text = "Grid";
+            this.menuViewGrid.Click += new System.EventHandler(this.menuViewGrid_Click);
             // 
             // objectToolStripMenuItem1
             // 
@@ -446,6 +465,29 @@
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
             this.toolStripSeparator6.Size = new System.Drawing.Size(258, 6);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuObjectAlignCenterZ,
+            this.menuObjectAlignDropZ});
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(261, 24);
+            this.toolStripMenuItem5.Text = "Align";
+            // 
+            // menuObjectAlignCenterZ
+            // 
+            this.menuObjectAlignCenterZ.Name = "menuObjectAlignCenterZ";
+            this.menuObjectAlignCenterZ.Size = new System.Drawing.Size(134, 24);
+            this.menuObjectAlignCenterZ.Text = "Center Z";
+            this.menuObjectAlignCenterZ.Click += new System.EventHandler(this.menuObjectAlignCenterZ_Click);
+            // 
+            // menuObjectAlignDropZ
+            // 
+            this.menuObjectAlignDropZ.Name = "menuObjectAlignDropZ";
+            this.menuObjectAlignDropZ.Size = new System.Drawing.Size(134, 24);
+            this.menuObjectAlignDropZ.Text = "Drop Z";
+            this.menuObjectAlignDropZ.Click += new System.EventHandler(this.menuObjectAlignDropZ_Click);
             // 
             // menuObjectFit
             // 
@@ -519,7 +561,7 @@
             // 
             this.exportCNCToolStripMenuItem1.Name = "exportCNCToolStripMenuItem1";
             this.exportCNCToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-            this.exportCNCToolStripMenuItem1.Size = new System.Drawing.Size(222, 24);
+            this.exportCNCToolStripMenuItem1.Size = new System.Drawing.Size(226, 24);
             this.exportCNCToolStripMenuItem1.Text = "Export NC...";
             this.exportCNCToolStripMenuItem1.Click += new System.EventHandler(this.MenuRenderExportNC_Click);
             // 
@@ -527,14 +569,14 @@
             // 
             this.menuRenderExportImage.Name = "menuRenderExportImage";
             this.menuRenderExportImage.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.menuRenderExportImage.Size = new System.Drawing.Size(222, 24);
+            this.menuRenderExportImage.Size = new System.Drawing.Size(226, 24);
             this.menuRenderExportImage.Text = "Export Image...";
             this.menuRenderExportImage.Click += new System.EventHandler(this.MenuRenderExportImage_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(219, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(223, 6);
             // 
             // menuTEST
             // 
@@ -597,13 +639,6 @@
             this.flowLayoutPanelButton.Size = new System.Drawing.Size(66, 386);
             this.flowLayoutPanelButton.TabIndex = 7;
             // 
-            // menuGenerateGridFunction
-            // 
-            this.menuGenerateGridFunction.Name = "menuGenerateGridFunction";
-            this.menuGenerateGridFunction.Size = new System.Drawing.Size(211, 24);
-            this.menuGenerateGridFunction.Text = "Function...";
-            this.menuGenerateGridFunction.Click += new System.EventHandler(this.menuGenerateGridFunction_Click);
-            // 
             // btnLoad
             // 
             this.btnLoad.AutoSize = true;
@@ -649,37 +684,14 @@
             this.btnExport.UseVisualStyleBackColor = true;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
-            // menuLoad
+            // menuViewReflex
             // 
-            this.menuLoad.Image = global::Scratchy.Properties.Resources.Open_32x32;
-            this.menuLoad.Name = "menuLoad";
-            this.menuLoad.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.menuLoad.Size = new System.Drawing.Size(175, 24);
-            this.menuLoad.Text = "Load...";
-            this.menuLoad.Click += new System.EventHandler(this.MenuOpen_Click);
-            // 
-            // toolStripMenuItem5
-            // 
-            this.toolStripMenuItem5.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuObjectAlignCenterZ,
-            this.menuObjectAlignDropZ});
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(261, 24);
-            this.toolStripMenuItem5.Text = "Align";
-            // 
-            // menuObjectAlignCenterZ
-            // 
-            this.menuObjectAlignCenterZ.Name = "menuObjectAlignCenterZ";
-            this.menuObjectAlignCenterZ.Size = new System.Drawing.Size(175, 24);
-            this.menuObjectAlignCenterZ.Text = "Center Z";
-            this.menuObjectAlignCenterZ.Click += new System.EventHandler(this.menuObjectAlignCenterZ_Click);
-            // 
-            // menuObjectAlignDropZ
-            // 
-            this.menuObjectAlignDropZ.Name = "menuObjectAlignDropZ";
-            this.menuObjectAlignDropZ.Size = new System.Drawing.Size(175, 24);
-            this.menuObjectAlignDropZ.Text = "Drop Z";
-            this.menuObjectAlignDropZ.Click += new System.EventHandler(this.menuObjectAlignDropZ_Click);
+            this.menuViewReflex.Checked = true;
+            this.menuViewReflex.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.menuViewReflex.Name = "menuViewReflex";
+            this.menuViewReflex.Size = new System.Drawing.Size(194, 24);
+            this.menuViewReflex.Text = "Reflex Simulation";
+            this.menuViewReflex.Click += new System.EventHandler(this.menuViewReflex_Click);
             // 
             // FormMain
             // 
@@ -790,6 +802,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem menuObjectAlignCenterZ;
         private System.Windows.Forms.ToolStripMenuItem menuObjectAlignDropZ;
+        private System.Windows.Forms.ToolStripMenuItem menuViewReflex;
     }
 }
 

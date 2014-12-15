@@ -55,15 +55,26 @@ namespace Scratchy
 
             if (_file != null)
             {
+                _file.WriteLine(";(SCRATCHY V0.1)");
                 _file.WriteLine(Set.Default.NC_Prolog);
             }
 
             RenderInit();
 
-            RenderTableArcHidden();
-            //RenderTableArc();
-            //            RenderTableCircle();
-
+            switch (Set.Default.Common_Type)
+            {
+                case 0:
+                    RenderTableCircle();
+                    break;
+                case 1:
+                default:
+                    RenderTableArc();
+                    break;
+                case 2:
+                    RenderTableArcHidden();
+                    break;
+            }
+            
             RenderExit();
 
             if (_file != null)

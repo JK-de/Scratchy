@@ -70,5 +70,8 @@ G1 F400</Value>
     <Setting Name="Common_WorkingAreaY" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">90</Value>
     </Setting>
+    <Setting Name="View_ShowReflex" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
