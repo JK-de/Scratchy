@@ -143,6 +143,7 @@
     <Compile Include="Data\ScratchData.cs" />
     <Compile Include="Scratch\ScratchFile.cs" />
     <Compile Include="Scratch\ScratchRender.cs" />
+    <Compile Include="Scratch\ScratchRender.NC.cs" />
     <Compile Include="Settings.cs" />
     <EmbeddedResource Include="FormAbout.resx">
       <DependentUpon>FormAbout.cs</DependentUpon>

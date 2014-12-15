@@ -29,8 +29,9 @@ namespace Scratchy
         {
             _image = null;
 
-            int nImageWidth = (int)((fDPI / 25.4) * fAxisMax) * 2;
-            _image = new Bitmap(nImageWidth, nImageWidth, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+            int nImageX = (int)((fDPI / 25.4) * (double)Set.Default.Common_WorkingAreaX);
+            int nImageY = (int)((fDPI / 25.4) * (double)Set.Default.Common_WorkingAreaY);
+            _image = new Bitmap(nImageX, nImageY, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
             _image.SetResolution(fDPI, fDPI);
 
             Render();
@@ -54,7 +55,7 @@ namespace Scratchy
 
             if (_file != null)
             {
-                _file.WriteLine("G1 F400");
+                _file.WriteLine(Set.Default.NC_Prolog);
             }
 
             RenderInit();
@@ -67,8 +68,7 @@ namespace Scratchy
 
             if (_file != null)
             {
-                //C _file.WriteLine("// Exit");
-                _file.WriteLine("M2");
+                _file.WriteLine(Set.Default.NC_Epilog);
                 _file.Close();
             }
 
@@ -81,13 +81,7 @@ namespace Scratchy
         void RenderInit()
         {
 
-
-            if (_file != null)
-            {
-                //C _file.WriteLine("// Init");
-            }
-
-            MoveUp();
+            NC_MoveUp();
 
             G = Graphics.FromImage(_image);
 
@@ -98,12 +92,17 @@ namespace Scratchy
             G.PageUnit = GraphicsUnit.Millimeter;
             G.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
-            double range = fAxisMax;
+            float fRangeX = (float)Set.Default.Common_WorkingAreaX / 2;
+            float fRangeY = (float)Set.Default.Common_WorkingAreaY / 2;
+            float fRangeM = Math.Max(fRangeX, fRangeY);
+
             //G.ScaleTransform((float)(1024 / (range * 2.0)), (float)(1024 / (range * -2.0)));
             //G.TranslateTransform(512, 512, MatrixOrder.Append);
-            G.ScaleTransform(1.0f, -1.0f * 0.7f);
+            
+            G.ScaleTransform(1.0f, -1.0f);//  * 0.7f
+
             //G.RotateTransform(30, MatrixOrder.Append);
-            G.TranslateTransform(fAxisMax, fAxisMax, MatrixOrder.Append);
+            G.TranslateTransform(fRangeX, fRangeY, MatrixOrder.Append);
 
             Color colorScratch = Color.FromArgb(12, 0, 0, 0);
             penScratch = new Pen(colorScratch, 0.3f);
@@ -117,28 +116,27 @@ namespace Scratchy
             {
                 Color c = Color.FromArgb(48, 128, 255, 0);
                 Pen pen = new Pen(c, 0.1f);
-                float fRange = (float)range;
 
-                for (float fStep = 0; fStep < fRange; fStep += 1.0f)
+                for (float fStep = 0; fStep < fRangeM; fStep += 1.0f)
                 {
-                    G.DrawLine(pen, fStep, -fRange, fStep, fRange);
-                    G.DrawLine(pen, -fStep, -fRange, -fStep, fRange);
-                    G.DrawLine(pen, -fRange, fStep, fRange, fStep);
-                    G.DrawLine(pen, -fRange, -fStep, fRange, -fStep);
+                    G.DrawLine(pen, fStep, -fRangeY, fStep, fRangeY);
+                    G.DrawLine(pen, -fStep, -fRangeY, -fStep, fRangeY);
+                    G.DrawLine(pen, -fRangeX, fStep, fRangeX, fStep);
+                    G.DrawLine(pen, -fRangeX, -fStep, fRangeX, -fStep);
                 }
-                for (float fStep = 0; fStep < fRange; fStep += 10.0f)
+                for (float fStep = 0; fStep < fRangeM; fStep += 10.0f)
                 {
-                    G.DrawLine(pen, fStep, -fRange, fStep, fRange);
-                    G.DrawLine(pen, -fStep, -fRange, -fStep, fRange);
-                    G.DrawLine(pen, -fRange, fStep, fRange, fStep);
-                    G.DrawLine(pen, -fRange, -fStep, fRange, -fStep);
+                    G.DrawLine(pen, fStep, -fRangeY, fStep, fRangeY);
+                    G.DrawLine(pen, -fStep, -fRangeY, -fStep, fRangeY);
+                    G.DrawLine(pen, -fRangeX, fStep, fRangeX, fStep);
+                    G.DrawLine(pen, -fRangeX, -fStep, fRangeX, -fStep);
                 }
-                for (float fStep = 0; fStep < fRange; fStep += 50.0f)
+                for (float fStep = 0; fStep < fRangeM; fStep += 50.0f)
                 {
-                    G.DrawLine(pen, fStep, -fRange, fStep, fRange);
-                    G.DrawLine(pen, -fStep, -fRange, -fStep, fRange);
-                    G.DrawLine(pen, -fRange, fStep, fRange, fStep);
-                    G.DrawLine(pen, -fRange, -fStep, fRange, -fStep);
+                    G.DrawLine(pen, fStep, -fRangeY, fStep, fRangeY);
+                    G.DrawLine(pen, -fStep, -fRangeY, -fStep, fRangeY);
+                    G.DrawLine(pen, -fRangeX, fStep, fRangeX, fStep);
+                    G.DrawLine(pen, -fRangeX, -fStep, fRangeX, -fStep);
                 }
             }
 
@@ -149,7 +147,7 @@ namespace Scratchy
         /// </summary>
         void RenderExit()
         {
-            MoveUp();
+            NC_MoveUp();
 
             G.Dispose();
         }
