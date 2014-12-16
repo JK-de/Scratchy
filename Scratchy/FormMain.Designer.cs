@@ -68,6 +68,7 @@
             this.menuViewScratches = new System.Windows.Forms.ToolStripMenuItem();
             this.menuViewGrid = new System.Windows.Forms.ToolStripMenuItem();
             this.menuViewReflex = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuViewCompressY = new System.Windows.Forms.ToolStripMenuItem();
             this.objectToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.menuObjectScale = new System.Windows.Forms.ToolStripMenuItem();
@@ -99,7 +100,6 @@
             this.btnLoad = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
-            this.menuViewCompressY = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanelMain.SuspendLayout();
@@ -294,21 +294,21 @@
             this.menuLoad.Image = global::Scratchy.Properties.Resources.Open_32x32;
             this.menuLoad.Name = "menuLoad";
             this.menuLoad.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.menuLoad.Size = new System.Drawing.Size(173, 24);
+            this.menuLoad.Size = new System.Drawing.Size(177, 24);
             this.menuLoad.Text = "Load...";
             this.menuLoad.Click += new System.EventHandler(this.MenuOpen_Click);
             // 
             // menuSave
             // 
             this.menuSave.Name = "menuSave";
-            this.menuSave.Size = new System.Drawing.Size(173, 24);
+            this.menuSave.Size = new System.Drawing.Size(177, 24);
             this.menuSave.Text = "Save as OFF";
             this.menuSave.Click += new System.EventHandler(this.MenuSave_Click);
             // 
             // toolStripSeparator11
             // 
             this.toolStripSeparator11.Name = "toolStripSeparator11";
-            this.toolStripSeparator11.Size = new System.Drawing.Size(170, 6);
+            this.toolStripSeparator11.Size = new System.Drawing.Size(174, 6);
             // 
             // xToolStripMenuItem
             // 
@@ -316,7 +316,7 @@
             this.gridToolStripMenuItem,
             this.xmasTreeRandomToolStripMenuItem1});
             this.xToolStripMenuItem.Name = "xToolStripMenuItem";
-            this.xToolStripMenuItem.Size = new System.Drawing.Size(173, 24);
+            this.xToolStripMenuItem.Size = new System.Drawing.Size(177, 24);
             this.xToolStripMenuItem.Text = "Generate";
             // 
             // gridToolStripMenuItem
@@ -359,25 +359,25 @@
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(170, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(174, 6);
             // 
             // menuSettings
             // 
             this.menuSettings.Name = "menuSettings";
-            this.menuSettings.Size = new System.Drawing.Size(173, 24);
+            this.menuSettings.Size = new System.Drawing.Size(177, 24);
             this.menuSettings.Text = "Settings...";
             this.menuSettings.Click += new System.EventHandler(this.MenuSettings_Click);
             // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(170, 6);
+            this.toolStripSeparator8.Size = new System.Drawing.Size(174, 6);
             // 
             // menuExit
             // 
             this.menuExit.Name = "menuExit";
             this.menuExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.menuExit.Size = new System.Drawing.Size(173, 24);
+            this.menuExit.Size = new System.Drawing.Size(177, 24);
             this.menuExit.Text = "Exit";
             this.menuExit.Click += new System.EventHandler(this.MenuExit_Click);
             // 
@@ -421,6 +421,16 @@
             this.menuViewReflex.Size = new System.Drawing.Size(175, 24);
             this.menuViewReflex.Text = "Reflexes";
             this.menuViewReflex.Click += new System.EventHandler(this.menuViewReflex_Click);
+            // 
+            // menuViewCompressY
+            // 
+            this.menuViewCompressY.Checked = true;
+            this.menuViewCompressY.CheckOnClick = true;
+            this.menuViewCompressY.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.menuViewCompressY.Name = "menuViewCompressY";
+            this.menuViewCompressY.Size = new System.Drawing.Size(175, 24);
+            this.menuViewCompressY.Text = "Compress Y";
+            this.menuViewCompressY.Click += new System.EventHandler(this.compressYToolStripMenuItem_Click);
             // 
             // objectToolStripMenuItem1
             // 
@@ -573,7 +583,7 @@
             // 
             this.exportCNCToolStripMenuItem1.Name = "exportCNCToolStripMenuItem1";
             this.exportCNCToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-            this.exportCNCToolStripMenuItem1.Size = new System.Drawing.Size(222, 24);
+            this.exportCNCToolStripMenuItem1.Size = new System.Drawing.Size(226, 24);
             this.exportCNCToolStripMenuItem1.Text = "Export NC...";
             this.exportCNCToolStripMenuItem1.Click += new System.EventHandler(this.MenuRenderExportNC_Click);
             // 
@@ -581,14 +591,14 @@
             // 
             this.menuRenderExportImage.Name = "menuRenderExportImage";
             this.menuRenderExportImage.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.menuRenderExportImage.Size = new System.Drawing.Size(222, 24);
+            this.menuRenderExportImage.Size = new System.Drawing.Size(226, 24);
             this.menuRenderExportImage.Text = "Export Image...";
             this.menuRenderExportImage.Click += new System.EventHandler(this.MenuRenderExportImage_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(219, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(223, 6);
             // 
             // menuTEST
             // 
@@ -696,16 +706,6 @@
             this.btnExport.UseVisualStyleBackColor = true;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
-            // menuViewCompressY
-            // 
-            this.menuViewCompressY.Checked = true;
-            this.menuViewCompressY.CheckOnClick = true;
-            this.menuViewCompressY.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.menuViewCompressY.Name = "menuViewCompressY";
-            this.menuViewCompressY.Size = new System.Drawing.Size(175, 24);
-            this.menuViewCompressY.Text = "Compress Y";
-            this.menuViewCompressY.Click += new System.EventHandler(this.compressYToolStripMenuItem_Click);
-            // 
             // FormMain
             // 
             this.AccessibleName = "Scratchy";
@@ -725,9 +725,11 @@
             this.Text = "Scratchy (Beta)";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);
             this.Load += new System.EventHandler(this.FormMain_Load);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.FormMain_DragDrop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.FormMain_DragEnter);
+            this.GiveFeedback += new System.Windows.Forms.GiveFeedbackEventHandler(this.FormMain_GiveFeedback);
+            this.QueryContinueDrag += new System.Windows.Forms.QueryContinueDragEventHandler(this.FormMain_QueryContinueDrag);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormMain_KeyDown);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FormMain_KeyPress);
-            this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.FormMain_PreviewKeyDown);
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.menuStrip1.ResumeLayout(false);

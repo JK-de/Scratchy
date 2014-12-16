@@ -56,10 +56,21 @@ namespace Scratchy
 
     public class Point3DComparer : IComparer<Point3D>
     {
+        double _dFactorX;
+        double _dFactorY;
+        double _dFactorZ;
+
+        public Point3DComparer(double dFactorX, double dFactorY, double dFactorZ)
+        {
+            _dFactorX = dFactorX;
+            _dFactorY = dFactorY;
+            _dFactorZ = dFactorZ;
+        }
+
         public int Compare(Point3D P1, Point3D P2)
         {
-            double V1 = P1.Y + P1.Z + P1.X * 0.01;
-            double V2 = P2.Y + P2.Z + P2.X * 0.01;
+            double V1 = P1.Y + P1.Z * _dFactorZ + P1.X * 0.01;
+            double V2 = P2.Y + P2.Z * _dFactorZ + P2.X * 0.01;
 
             if (V1 > V2)
                 return 1;

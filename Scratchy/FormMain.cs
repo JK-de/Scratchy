@@ -40,7 +40,7 @@ namespace Scratchy
             pictureBox.Refresh();
         }
 
-        void Update()
+        void DoRender()
         {
             UseWaitCursor = true;
             S.UpdateImage();
@@ -66,11 +66,8 @@ namespace Scratchy
 
         private void MenuObjectGenerateXmasTreeRandom_Click(object sender, EventArgs e)
         {
-            UseWaitCursor = true;
             S.GenerateXmasTreeRandom();
-            S.UpdateImage();
-            pictureBox.Refresh();
-            UseWaitCursor = false;
+            DoRender();
         }
 
         private void btnOpen_Click(object sender, EventArgs e)
@@ -235,7 +232,7 @@ namespace Scratchy
                 //S.loadFileDialog.FileName(loadFileDialog.FileName);
                 S.Load(loadFileDialog.FileName);
                 //S.SmashLines(5);
-                Update();
+                DoRender();
             }
         }
 
@@ -273,8 +270,11 @@ namespace Scratchy
 
             if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                //S._data.Translate(dlg.Data.X, dlg.Data.Y, dlg.Data.Z);
-                Update();
+                S.SettingsChanged();
+                pictureBox.Image = S.GetImage();
+                S._render.progress = (ProgressBar)statusProgress.ProgressBar;
+
+                DoRender();
             }
         }
 
@@ -350,7 +350,7 @@ namespace Scratchy
             if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 S._data.Scale(dlg.Data.X, dlg.Data.Y, dlg.Data.Z);
-                Update();
+                DoRender();
             }
         }
 
@@ -361,7 +361,7 @@ namespace Scratchy
             if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 S._data.Rotate(dlg.Data.Axis, dlg.Data.Angle);
-                Update();
+                DoRender();
             }
         }
 
@@ -372,7 +372,7 @@ namespace Scratchy
             if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 S._data.Translate(dlg.Data.X, dlg.Data.Y, dlg.Data.Z);
-                Update();
+                DoRender();
             }
         }
 
@@ -383,14 +383,14 @@ namespace Scratchy
             if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 S._data.Fit(dlg.Data.Size);
-                Update();
+                DoRender();
             }
         }
 
         private void MenuObjectLevelToMinHeight_Click(object sender, EventArgs e)
         {
             S._data.LevelZ();
-            Update();
+            DoRender();
         }
 
         /// <summary>
@@ -405,7 +405,7 @@ namespace Scratchy
             if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 S._data.SmashLines(dlg.Data.Dist);
-                Update();
+                DoRender();
             }
         }
 
@@ -437,7 +437,7 @@ namespace Scratchy
 
         private void menuJoinPolygons_Click(object sender, EventArgs e)
         {
-
+            S._data.JoinPolygons();
         }
 
         private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
@@ -468,7 +468,7 @@ namespace Scratchy
 
             S._data.GenerateGrid(40, 40, calc);
             S._data.Points.Scale(40);
-            Update();
+            DoRender();
         }
 
         class GridCalcSinX2Y2 : ScratchData.IGridCalc
@@ -487,7 +487,7 @@ namespace Scratchy
 
             S._data.GenerateGrid(40, 40, calc);
             S._data.Points.Scale(40);
-            Update();
+            DoRender();
         }
 
         class GridCalcFunction : ScratchData.IGridCalc
@@ -583,7 +583,7 @@ namespace Scratchy
 
                 S._data.GenerateGrid(dlg.Data.nPoints, dlg.Data.nPoints, calc);
                 S._data.Points.Scale(dlg.Data.nPoints);
-                Update();
+                DoRender();
 
                 //JK S._data.Fit(dlg.Data.Size);
             }
@@ -615,25 +615,49 @@ namespace Scratchy
         private void MenuViewScratches_CheckStateChanged(object sender, EventArgs e)
         {
             Set.Default.View_ShowScratches = ((ToolStripMenuItem)sender).Checked;
-            Update();
+            DoRender();
         }
 
         private void menuViewGrid_Click(object sender, EventArgs e)
         {
             Set.Default.View_ShowGrid = ((ToolStripMenuItem)sender).Checked;
-            Update();
+            DoRender();
         }
 
         private void menuViewReflex_Click(object sender, EventArgs e)
         {
             Set.Default.View_ShowReflex = ((ToolStripMenuItem)sender).Checked;
-            Update();
+            DoRender();
         }
 
         private void compressYToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Set.Default.View_ShowCompressY = ((ToolStripMenuItem)sender).Checked;
-            Update();
+            DoRender();
+        }
+
+        private void FormMain_DragDrop(object sender, DragEventArgs e)
+        {
+            S._data.Clear();
+
+            S.Load((string)e.Data.GetData(System.Windows.DataFormats.StringFormat));
+
+            DoRender();
+        }
+
+        private void FormMain_GiveFeedback(object sender, GiveFeedbackEventArgs e)
+        {
+            
+        }
+
+        private void FormMain_QueryContinueDrag(object sender, QueryContinueDragEventArgs e)
+        {
+
+        }
+
+        private void FormMain_DragEnter(object sender, DragEventArgs e)
+        {
+
         }
     }
 }

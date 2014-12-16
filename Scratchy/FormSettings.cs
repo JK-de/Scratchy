@@ -64,6 +64,8 @@ namespace Scratchy
             numLightingAngle.Value = Set.Default.Common_LightingAngle;
             comboType.SelectedIndex = Set.Default.Common_Type;
             numScanningStepAngle.Value = Set.Default.Common_ScanningStepAngle;
+            numWorkingAreaX.Value=Set.Default.Common_WorkingAreaX;
+            numWorkingAreaY.Value=Set.Default.Common_WorkingAreaY;
 
             numToolAngle_ValueChanged(sender, e);
 
@@ -88,7 +90,10 @@ namespace Scratchy
             Set.Default.Common_ViewingAngle = numViewingAngle.Value;
             Set.Default.Common_LightingAngle = numLightingAngle.Value;
             Set.Default.Common_Type = comboType.SelectedIndex;
+            Set.Default.Common_WorkingAreaX = numWorkingAreaX.Value;
+            Set.Default.Common_WorkingAreaY = numWorkingAreaY.Value;
             Set.Default.Common_ScanningStepAngle = numScanningStepAngle.Value;
+            
 
             // tabCtrl NC
             Set.Default.NC_Prolog = textBoxProlog.Text;

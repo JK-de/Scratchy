@@ -166,7 +166,7 @@ namespace Scratchy
             NC_MoveDown(r);
 
             //JK
-            if (true)
+            if (false)
                 _file.WriteLine("G1 X{0:0.####} Y{1:0.####}", x1, y1);
 
             _file.WriteLine("G{3} X{0:0.####} Y{1:0.####} R{2:0.####}", x2, y2, r, bClockwise ? 2 : 3);

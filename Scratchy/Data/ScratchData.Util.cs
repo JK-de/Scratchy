@@ -348,6 +348,7 @@ namespace Scratchy
                     Polygons.RemoveAt(a);
             }
 
+            LinesFromPolygons();
         }
 
         /*
@@ -395,7 +396,7 @@ namespace Scratchy
         public void GenerateGrid(int nCountX, int nCountY, IGridCalc Callback)
         {
             double dStep;
-            if ( nCountX>nCountY)
+            if (nCountX > nCountY)
                 dStep = 2.0 / (nCountX - 1);
             else
                 dStep = 2.0 / (nCountY - 1);
@@ -409,12 +410,12 @@ namespace Scratchy
             for (int iY = 0; iY < nCountY; iY++)
                 for (int iX = 0; iX < nCountX; iX++)
                 {
-                    double dX=iX * dStep + dOffsetX;
-                    double dY=iY * dStep + dOffsetY;
+                    double dX = iX * dStep + dOffsetX;
+                    double dY = iY * dStep + dOffsetY;
                     double dZ = 0;
 
                     Callback.CalcZ(iX, iY, ref dX, ref dY, ref dZ);
-                    
+
                     double dScale = 1;
                     P = new Point3D(dX * dScale, dY * dScale, dZ * dScale);
                     Points.Add(P);
@@ -423,12 +424,12 @@ namespace Scratchy
             for (int iY = 0; iY < (nCountY - 1); iY++)
                 for (int iX = 0; iX < (nCountX - 1); iX++)
                 {
-                    int i = iX  + iY* nCountX;
+                    int i = iX + iY * nCountX;
 
-                    Y = new Polygon(i, i+1, i+nCountX);
+                    Y = new Polygon(i, i + 1, i + nCountX);
                     Polygons.Add(Y);
 
-                    Y = new Polygon(i + 1, i + nCountX+1, i + nCountX);
+                    Y = new Polygon(i + 1, i + nCountX + 1, i + nCountX);
                     Polygons.Add(Y);
                 }
 

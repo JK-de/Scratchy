@@ -85,6 +85,7 @@ namespace Scratchy
                 //_data.Points.SetMaxSize(70);
             }
 
+            _data.LinesFromPolygons();
         }
 
 
@@ -259,9 +260,6 @@ namespace Scratchy
 
                 matchFacet = matchFacet.NextMatch();
             }
-
-
-
         }
 
 

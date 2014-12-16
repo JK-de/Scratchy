@@ -16,6 +16,7 @@ namespace Scratchy
     {
         public string FileName;
         public ProgressBar progress;
+        PointList PointsX;
 
         ScratchData _data;
 
@@ -59,6 +60,8 @@ namespace Scratchy
                 _file.WriteLine(Set.Default.NC_Prolog);
             }
 
+            PointsX = new PointList(_data.Points);
+
             RenderInit();
 
             switch (Set.Default.Common_Type)
@@ -88,6 +91,7 @@ namespace Scratchy
                 _file = null;
             }
 
+            PointsX = null;
         }
 
         /// <summary>
@@ -168,7 +172,7 @@ namespace Scratchy
         void RenderExit()
         {
             G.Dispose();
-            NC_Init();
+            NC_Exit();
         }
 
         /// <summary>
@@ -176,11 +180,9 @@ namespace Scratchy
         /// </summary>
         void RenderTableTopArc()
         {
-            PointList L = new PointList(_data.Points);
+            PointsX.Sort(new Point3DComparer(0.01, 1, Math.Cos((double)Set.Default.Common_MovingAngle / 180 * Math.PI) ));
 
-            //L.Sort(new Point3DComparer());
-
-            foreach (Point3D P in L)
+            foreach (Point3D P in PointsX)
             {
                 Arc(P.X, P.Y, P.Z);
             }
@@ -191,7 +193,9 @@ namespace Scratchy
         /// </summary>
         void RenderTableTopCircle()
         {
-            foreach (Point3D P in _data.Points)
+            PointsX.Sort(new Point3DComparer(0.01, 0.001, 1));
+
+            foreach (Point3D P in PointsX)
             {
                 if (P.Z >= 0)
                     Circle(P.X, P.Y, P.Z);
@@ -216,8 +220,11 @@ namespace Scratchy
                 Steps /= 10;
 
             //            if (Settings.Default.ViewScraches != CheckState.Checked)
-            if (!Set.Default.View_ShowScratches)
-                Steps = 0;
+            if (_file == null)
+                if (!Set.Default.View_ShowScratches)
+                    Steps = 0;
+
+            PointsX.Sort(new Point3DComparer(0.01, 1, Math.Cos((double)Set.Default.Common_MovingAngle / 180 * Math.PI)));
 
             Point3D P1, P2;
             double x, y, z;
@@ -234,7 +241,7 @@ namespace Scratchy
             //progress.Step = 1;
             progress.UseWaitCursor = true;
 
-            foreach (Point3D P in _data.Points)
+            foreach (Point3D P in PointsX)
             {
                 progress.PerformStep();
 
@@ -304,7 +311,7 @@ namespace Scratchy
         /// <param name="FileName"></param>
         public void ExportImage(string FileName)
         {
-            Render();
+            //Render();
             _image.Save(FileName);
         }
 

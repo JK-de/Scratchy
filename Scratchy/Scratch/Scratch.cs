@@ -24,6 +24,11 @@ namespace Scratchy
             _render = new ScratchRender(_data);
         }
 
+        public void SettingsChanged()
+        {
+            _render = new ScratchRender(_data);
+        }
+
         public void UpdateImage()
         {
             _render.Render();
