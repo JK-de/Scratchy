@@ -17,6 +17,24 @@ namespace Scratchy
         double yAct = -9999;
         bool bUp = false;
 
+        void NC_Init()
+        {
+            xAct = -9999;
+            yAct = -9999;
+            bUp = false;
+            NC_MoveUp();
+        }
+
+        void NC_Exit()
+        {
+            NC_MoveUp();
+        }
+
+        bool NC_IsFinal()
+        {
+            return (_file != null);
+        }
+
         /// <summary>
         /// 
         /// </summary>

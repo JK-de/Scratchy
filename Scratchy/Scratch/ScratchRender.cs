@@ -64,26 +64,30 @@ namespace Scratchy
             switch (Set.Default.Common_Type)
             {
                 case 0:
-                    RenderTableCircle();
+                    RenderTableTopCircle();
                     break;
                 case 1:
                 default:
-                    RenderTableArc();
+                    RenderTableTopArc();
                     break;
                 case 2:
-                    RenderTableArcHidden();
+                    RenderTableTopArcSolid();
                     break;
             }
-            
+
             RenderExit();
 
             if (_file != null)
             {
                 _file.WriteLine(Set.Default.NC_Epilog);
-                _file.Close();
             }
 
-            _file = null;
+            if (_file != null)
+            {
+                _file.Close();
+                _file = null;
+            }
+
         }
 
         /// <summary>
@@ -91,8 +95,7 @@ namespace Scratchy
         /// </summary>
         void RenderInit()
         {
-
-            NC_MoveUp();
+            NC_Init();
 
             G = Graphics.FromImage(_image);
 
@@ -103,14 +106,17 @@ namespace Scratchy
             G.PageUnit = GraphicsUnit.Millimeter;
             G.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
+            double dStrechY = 1.0;
+            if (Set.Default.View_ShowCompressY)
+                dStrechY = 1.4;
+
             float fRangeX = (float)Set.Default.Common_WorkingAreaX / 2;
             float fRangeY = (float)Set.Default.Common_WorkingAreaY / 2;
-            float fRangeM = Math.Max(fRangeX, fRangeY);
 
             //G.ScaleTransform((float)(1024 / (range * 2.0)), (float)(1024 / (range * -2.0)));
             //G.TranslateTransform(512, 512, MatrixOrder.Append);
-            
-            G.ScaleTransform(1.0f, -1.0f);//  * 0.7f
+
+            G.ScaleTransform(1.0f, -1.0f / (float)dStrechY);//  * 0.7f
 
             //G.RotateTransform(30, MatrixOrder.Append);
             G.TranslateTransform(fRangeX, fRangeY, MatrixOrder.Append);
@@ -121,12 +127,15 @@ namespace Scratchy
             brushReflexR = new SolidBrush(colorReflexR);
             Color colorReflexC = Color.FromArgb(96, 0, 255, 255);
             brushReflexC = new SolidBrush(colorReflexC);
-            
-            
-            if ( Set.Default.View_ShowGrid )
+
+
+            if (Set.Default.View_ShowGrid)
             {
                 Color c = Color.FromArgb(48, 128, 255, 0);
                 Pen pen = new Pen(c, 0.1f);
+
+                fRangeY *= (float)dStrechY;
+                float fRangeM = Math.Max(fRangeX, fRangeY);
 
                 for (float fStep = 0; fStep < fRangeM; fStep += 1.0f)
                 {
@@ -158,15 +167,14 @@ namespace Scratchy
         /// </summary>
         void RenderExit()
         {
-            NC_MoveUp();
-
             G.Dispose();
+            NC_Init();
         }
 
         /// <summary>
         /// 
         /// </summary>
-        void RenderTableArc()
+        void RenderTableTopArc()
         {
             PointList L = new PointList(_data.Points);
 
@@ -181,7 +189,7 @@ namespace Scratchy
         /// <summary>
         /// 
         /// </summary>
-        void RenderTableCircle()
+        void RenderTableTopCircle()
         {
             foreach (Point3D P in _data.Points)
             {
@@ -199,14 +207,17 @@ namespace Scratchy
         /// Render image and NC for table-type-scratch with hidden-point-calculation
         /// </summary>
         /// <returns></returns>
-        public bool RenderTableArcHidden()
+        public bool RenderTableTopArcSolid()
         {
-            double ViewingAngle = 80;
-            int Steps = (int)(ViewingAngle / 10 + 0.5);
+            double ViewingAngle = (double)Set.Default.Common_MovingAngle;
+            int Steps = (int)(ViewingAngle / (double)Set.Default.Common_ScanningStepAngle + 0.5);
 
-//            if (Settings.Default.ViewScraches != CheckState.Checked)
-                if (!Set.Default.View_ShowScratches)
-                    Steps = 0;
+            if (!NC_IsFinal())
+                Steps /= 10;
+
+            //            if (Settings.Default.ViewScraches != CheckState.Checked)
+            if (!Set.Default.View_ShowScratches)
+                Steps = 0;
 
             Point3D P1, P2;
             double x, y, z;
@@ -241,14 +252,14 @@ namespace Scratchy
                     z = 1;
 
                     //JK debug
-                    if (P.X > 20 - 1 && P.X < 20 + 1 && P.Y < 1 && P.Y > -1 && P.Z > 10 - 1 && P.Z < 10 + 1 && AngleZ < 0.01 && AngleZ > -0.01)
-                    { }
+                    //if (P.X > 20 - 1 && P.X < 20 + 1 && P.Y < 1 && P.Y > -1 && P.Z > 10 - 1 && P.Z < 10 + 1 && AngleZ < 0.01 && AngleZ > -0.01)
+                    //{ }
 
                     // Calc viewing ray
                     P1 = new Point3D(P.X + x * 0.01, P.Y + y * 0.01, P.Z + z * 0.01);
                     P2 = new Point3D(P.X + x * 500, P.Y + y * 500, P.Z + z * 500);
 
-                    // collition of ray with any polygon?
+                    // collision of ray with any polygon?
                     bIntersect = _data.LinePolygonsIntersection(P1, P2);
 
 

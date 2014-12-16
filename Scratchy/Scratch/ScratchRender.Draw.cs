@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using Set = Scratchy.Properties.Settings;
 
 namespace Scratchy
 {
@@ -158,6 +159,9 @@ namespace Scratchy
         /// <param name="h"></param>
         void DrawReflex(double x, double y, double h)
         {
+            if (!Set.Default.View_ShowReflex)
+                return;
+
             h *= 0.02;
             G.FillEllipse(brushReflexR, (float)(x - h - 1), (float)(y - 1), (float)(2), (float)(2));
             G.FillEllipse(brushReflexC, (float)(x + h - 1), (float)(y - 1), (float)(2), (float)(2));

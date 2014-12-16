@@ -64,18 +64,6 @@ namespace Scratchy
 
         }
 
-        private void FormMain_Load(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.Reload();
-            pictureBox.Image = S.GetImage();
-            pictureBox.Focus();
-            S._render.progress = (ProgressBar)statusProgress.ProgressBar;
-
-            menuViewGrid.Checked = Set.Default.View_ShowGrid;
-            menuViewScratches.Checked = Set.Default.View_ShowScratches;
-            menuViewReflex.Checked = Set.Default.View_ShowReflex;
-        }
-
         private void MenuObjectGenerateXmasTreeRandom_Click(object sender, EventArgs e)
         {
             UseWaitCursor = true;
@@ -198,8 +186,14 @@ namespace Scratchy
                 //((ImageBox)sender).PointToClient(p);
                 p = ((ImageBox)sender).PointToImage(p);
 
-                double x = (double)p.X / ((ImageBox)sender).Image.Size.Width * S._render.fAxisMax * 2 - S._render.fAxisMax;
-                double y = (double)p.Y / ((ImageBox)sender).Image.Size.Height * S._render.fAxisMax * -2 + S._render.fAxisMax;
+                double SizeX = (double)Set.Default.Common_WorkingAreaX;
+                double SizeY = (double)Set.Default.Common_WorkingAreaY;
+
+                if (Set.Default.View_ShowCompressY)
+                    SizeY *= 1.4;
+
+                double x = (double)p.X / ((ImageBox)sender).Image.Size.Width * SizeX - SizeX/2;
+                double y = (double)p.Y / ((ImageBox)sender).Image.Size.Height * -SizeY + SizeY/2;
 
                 //((ImageBox)sender).Text = p.ToString();
                 //p.ToString();
@@ -605,6 +599,19 @@ namespace Scratchy
 
         }
 
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Reload();
+            pictureBox.Image = S.GetImage();
+            pictureBox.Focus();
+            S._render.progress = (ProgressBar)statusProgress.ProgressBar;
+
+            menuViewGrid.Checked = Set.Default.View_ShowGrid;
+            menuViewScratches.Checked = Set.Default.View_ShowScratches;
+            menuViewReflex.Checked = Set.Default.View_ShowReflex;
+            menuViewCompressY.Checked = Set.Default.View_ShowCompressY;
+        }
+
         private void MenuViewScratches_CheckStateChanged(object sender, EventArgs e)
         {
             Set.Default.View_ShowScratches = ((ToolStripMenuItem)sender).Checked;
@@ -620,6 +627,12 @@ namespace Scratchy
         private void menuViewReflex_Click(object sender, EventArgs e)
         {
             Set.Default.View_ShowReflex = ((ToolStripMenuItem)sender).Checked;
+            Update();
+        }
+
+        private void compressYToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Set.Default.View_ShowCompressY = ((ToolStripMenuItem)sender).Checked;
             Update();
         }
     }
