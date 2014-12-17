@@ -61,6 +61,7 @@ namespace Scratchy
             }
 
             PointsX = new PointList(_data.Points);
+            ScratchArcs.Clear();
 
             RenderInit();
 
@@ -80,10 +81,18 @@ namespace Scratchy
 
             RenderExit();
 
+            Optimize();
+
+            foreach (ScratchArc A in ScratchArcs)
+            {
+                NC_ArcDirect(A.ArcType, A.X1, A.Y1, A.X2, A.Y2, A.R);
+            }
+
             if (_file != null)
             {
                 _file.WriteLine(Set.Default.NC_Epilog);
             }
+
 
             if (_file != null)
             {
@@ -180,7 +189,7 @@ namespace Scratchy
         /// </summary>
         void RenderTableTopArc()
         {
-            PointsX.Sort(new Point3DComparer(0.01, 1, Math.Cos((double)Set.Default.Common_MovingAngle / 180 * Math.PI) ));
+            PointsX.Sort(new Point3DComparer(0.01, 1, Math.Cos((double)Set.Default.Common_MovingAngle / 180 * Math.PI)));
 
             foreach (Point3D P in PointsX)
             {
@@ -315,5 +324,192 @@ namespace Scratchy
             _image.Save(FileName);
         }
 
+        public class ScratchArc
+        {
+            public int ArcType;
+            public double X1;
+            public double Y1;
+            public double X2;
+            public double Y2;
+            public double R;
+            public int SortIndex;
+            public bool Reverse;
+            public int OptimizeSortIndex;
+            public bool OptimizeReverse;
+
+            public ScratchArc()
+            {
+                SortIndex = -1;
+                OptimizeSortIndex = -1;
+                Reverse = false;
+                OptimizeReverse = false;
+            }
+
+            public ScratchArc(int nArcType, double dX1, double dY1, double dX2, double dY2, double dR)
+                : this()
+            {
+                ArcType = nArcType;
+                X1 = dX1;
+                Y1 = dY1;
+                X2 = dX2;
+                Y2 = dY2;
+                R = dR;
+            }
+
+            public double GetDist1(double dX, double dY)
+            {
+                double x = dX - X1;
+                double y = dY - Y1;
+                return Math.Sqrt(x * x + y * y);
+            }
+            public double GetDist2(double dX, double dY)
+            {
+                double x = dX - X2;
+                double y = dY - Y2;
+                return Math.Sqrt(x * x + y * y);
+            }
+            //public double GetNearest(double dX, double dY)
+        }
+
+        List<ScratchArc> ScratchArcs = new List<ScratchArc>();
+        double dDistMin = 999999999;
+
+        public List<int> GetNearestScratchArcs(double dX, double dY)
+        {
+            Dictionary<int, double> Dic = new Dictionary<int, double>();
+            List<int> L = new List<int>();
+
+            for (int i = 0; i < ScratchArcs.Count; i++)
+                if (ScratchArcs[i].SortIndex < 0)
+                {
+                    double d = Math.Min(ScratchArcs[i].GetDist1(dX, dY), ScratchArcs[i].GetDist2(dX, dY));
+                    Dic.Add(i, d);
+                }
+
+            double dNearest = -1;
+            var query = Dic.OrderBy(e => e.Value);
+            foreach (var I in query)
+            {
+                if (dNearest < 0)
+                    dNearest = I.Value;
+                else
+                    if (I.Value > (dNearest + 25))
+                        break;
+                //if ( L.Find(I.Key)<0)
+                //if (!L.Exists(i => i == I.Key))
+                L.Add(I.Key);
+                if (L.Count >= 3 || dNearest==0)
+                    break;
+            }
+
+            return L;
+        }
+
+        public class ScratchArcComparer : IComparer<ScratchArc>
+        {
+            public int Compare(ScratchArc a, ScratchArc b)
+            {
+                if (a.OptimizeSortIndex > b.OptimizeSortIndex)
+                    return 1;
+                else if (a.OptimizeSortIndex < b.OptimizeSortIndex)
+                    return -1;
+                else
+                    return 0;
+            }
+        }
+
+        public void Optimize()
+        {
+            if (ScratchArcs.Count == 0)
+                return;
+
+            progress.Maximum = 3 * 3 * 3;
+            progress.Value = 0;
+            progress.UseWaitCursor = true;
+
+
+
+            dDistMin = 999999999;
+            OptimizeRecursive(0, 0, 0, 0);
+
+            ScratchArcComparer sac = new ScratchArcComparer();
+
+            ScratchArcs.Sort(sac);
+
+            foreach (ScratchArc A in ScratchArcs)
+            {
+                if (A.OptimizeReverse)
+                {
+                    A.OptimizeReverse = !A.OptimizeReverse;
+                    Swap(ref A.X1, ref A.X2);
+                    Swap(ref A.Y1, ref A.Y2);
+                    if (A.ArcType == 2)
+                        A.ArcType = 3;
+                    else if (A.ArcType == 3)
+                        A.ArcType = 2;
+                }
+                A.Reverse = A.OptimizeReverse;
+                A.SortIndex = A.OptimizeSortIndex;
+            }
+
+            progress.Value = 0;
+            progress.UseWaitCursor = false;
+        }
+
+        void OptimizeRecursive(int nRec, double dActX, double dActY, double dDistSum)
+        {
+            if (dDistSum >= dDistMin)
+                return;
+
+            if (nRec >= ScratchArcs.Count)
+            {
+                if (true)
+                {
+                    for (int i = 0; i < ScratchArcs.Count; i++)
+                    {
+                        ScratchArcs[i].OptimizeReverse = ScratchArcs[i].Reverse;
+                        ScratchArcs[i].OptimizeSortIndex = ScratchArcs[i].SortIndex;
+                    }
+                    dDistMin = dDistSum;
+                }
+                return;
+            }
+
+            List<int> L = GetNearestScratchArcs(dActX, dActY);
+
+            foreach (int i in L)
+            {
+                //}
+                //for (int i = 0; i < ScratchArcs.Count; i++)
+                //    if (ScratchArcs[i].SortIndex < 0)
+                //    {
+                double d;
+
+                if (nRec == 2)
+                {
+                    //Progress bar
+                    progress.PerformStep();
+                }
+
+                d = ScratchArcs[i].GetDist1(dActX, dActY);
+                if (d < 500)
+                {
+                    ScratchArcs[i].Reverse = false;
+                    ScratchArcs[i].SortIndex = nRec;
+                    OptimizeRecursive(nRec + 1, ScratchArcs[i].X2, ScratchArcs[i].Y2, dDistSum + d);
+                    ScratchArcs[i].SortIndex = -1;
+                }
+
+                d = ScratchArcs[i].GetDist2(dActX, dActY);
+                if (d < 500)
+                {
+                    ScratchArcs[i].Reverse = true;
+                    ScratchArcs[i].SortIndex = nRec;
+                    OptimizeRecursive(nRec + 1, ScratchArcs[i].X1, ScratchArcs[i].Y1, dDistSum + d);
+                    ScratchArcs[i].SortIndex = -1;
+                }
+
+            }
+        }
     }
 }

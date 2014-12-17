@@ -137,6 +137,28 @@ namespace Scratchy
             xAct = x; yAct = y;
         }
 
+        void NC_ArcDirect(int type , double x1, double y1, double x2, double y2, double r)
+        {
+            if (_file == null)
+                return;
+
+            if (Math.Abs(x1 - x2) < 0.001 && Math.Abs(y1 - y2) < 0.001)
+                return;
+
+            NC_MoveTo(x1, y1);
+
+            NC_MoveDown(r);
+
+            //JK
+            if (false)
+                _file.WriteLine("G1 X{0:0.####} Y{1:0.####}", x1, y1);
+
+            _file.WriteLine("G{3} X{0:0.####} Y{1:0.####} R{2:0.####}", x2, y2, r, type);
+
+            xAct = x2; yAct = y2;
+        }
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -161,17 +183,7 @@ namespace Scratchy
                 bClockwise = !bClockwise;
             }
 
-            NC_MoveTo(x1, y1);
-
-            NC_MoveDown(r);
-
-            //JK
-            if (false)
-                _file.WriteLine("G1 X{0:0.####} Y{1:0.####}", x1, y1);
-
-            _file.WriteLine("G{3} X{0:0.####} Y{1:0.####} R{2:0.####}", x2, y2, r, bClockwise ? 2 : 3);
-
-            xAct = x2; yAct = y2;
+            NC_ArcDirect(bClockwise ? 2 : 3, x1, y1, x2, y2, r);
         }
 
         /// <summary>

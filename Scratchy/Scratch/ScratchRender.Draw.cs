@@ -73,6 +73,9 @@ namespace Scratchy
                 dx = Math.Sin((ViewingAngle / 360) * Math.PI) * r;
                 dy = Math.Cos((ViewingAngle / 360) * Math.PI) * r;
 
+                ScratchArc arc = new ScratchArc(2, x - dx, y + dy, x + dx, y + dy, r);
+                ScratchArcs.Add(arc);
+
                 NC_Arc(x - dx, y + dy, x + dx, y + dy, r, true);
             }
             else if (r < 0)
@@ -84,6 +87,9 @@ namespace Scratchy
 
                 dx = Math.Sin((ViewingAngle / 360) * Math.PI) * r;
                 dy = Math.Cos((ViewingAngle / 360) * Math.PI) * r;
+
+                ScratchArc arc = new ScratchArc(3, x - dx, y - dy, x + dx, y - dy, r);
+                ScratchArcs.Add(arc);
 
                 NC_Arc(x - dx, y - dy, x + dx, y - dy, r, false);
             }
@@ -131,6 +137,9 @@ namespace Scratchy
                 dxEnd = Math.Sin((AngleEnd / 180) * Math.PI) * r;
                 dyEnd = Math.Cos((AngleEnd / 180) * Math.PI) * r;
 
+                ScratchArc arc = new ScratchArc(2, x - dxEnd, y + dyEnd, x - dxBegin, y + dyBegin,r);
+                ScratchArcs.Add(arc);
+
                 NC_Arc(x - dxEnd, y + dyEnd,x - dxBegin, y + dyBegin, r, true);
             }
             else if (r < 0)
@@ -142,6 +151,9 @@ namespace Scratchy
                 dyBegin = Math.Cos((AngleBegin / 180) * Math.PI) * r;
                 dxEnd = Math.Sin((AngleEnd / 180) * Math.PI) * r;
                 dyEnd = Math.Cos((AngleEnd / 180) * Math.PI) * r;
+
+                ScratchArc arc = new ScratchArc(3, x + dxBegin, y - dyBegin, x + dxEnd, y - dyEnd,r);
+                ScratchArcs.Add(arc);
 
                 NC_Arc(x + dxBegin, y - dyBegin, x + dxEnd, y - dyEnd, r, false);
             }
